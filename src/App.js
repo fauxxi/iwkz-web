@@ -7,7 +7,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="container is-primary">
+      <div className="container is-primary has-navbar-fixed-top">
         <Header />
         <Content />
         <Footer />

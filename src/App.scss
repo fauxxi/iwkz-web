@@ -1,0 +1,38 @@
+//custom bulma
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Open Sans", sans-serif;
+$grey-dark: $beige-lighter;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$black-bis: rgba(0,0,0,0);
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$footer-background-color: $grey-light;
+@import 'bulma/bulma.sass';
+
+
+
+
+*{
+  transition: all 350ms ease;
+}
+
+
+.navbar {
+  padding:0 5px;
+}
+
+.content{
+  margin-top: 50px;
+}

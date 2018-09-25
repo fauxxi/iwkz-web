@@ -19,12 +19,10 @@ class Header extends Component {
     return (
       <nav
         className="navbar is-transparent is-fixed-top"
-        role="navigation"
-        aria-label="main navigation"
         style={{ background: "none" }}
       >
         <div className="navbar-brand">
-          <a className="navbar-item" href="#">
+          <a className="navbar-item" href="">
             <img
               src={require("../../img/iwkz-navbar.svg")}
               alt="IWKZ"

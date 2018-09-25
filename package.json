@@ -2,7 +2,7 @@
   "name": "iwkz-web",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://iwkz.de/jdwlshalat_ibmus/",
+  "proxy": "https://localhost:3000",
   "dependencies": {
     "bulma": "^0.7.1",
     "hijri-date": "^0.2.2",

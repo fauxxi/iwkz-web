@@ -1,8 +1,10 @@
 const endPoint = 'https://iwkz.de/wp-json/wp/v2';
 const jadwalShalatURL = 'https://iwkz.de';
+const mjuanJadwalShalatURL = 'https://api.mjuan.info/jadwalshalat';
 const wpAPI = {
 	posts: `${endPoint}/posts`,
-	ibmus: `${jadwalShalatURL}/jdwlshalat_ibmus/`
+	ibmus: `${jadwalShalatURL}/jdwlshalat_ibmus/`,
+	mjuan: `${mjuanJadwalShalatURL}/berlin`,
 }
 
 export {wpAPI}

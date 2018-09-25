@@ -6425,7 +6425,3 @@ label.panel-block {
 
 .navbar {
   padding: 0 5px; }
-
-@media screen and (max-width: 768px) {
-  .column.jadwal {
-    max-height: 60px; } }

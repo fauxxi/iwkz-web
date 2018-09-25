@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './BlockJadwal.css';
 
 class BlockJadwal extends Component {
   constructor(props) {
@@ -23,23 +24,18 @@ class BlockJadwal extends Component {
     }
 
     return (
-      <div
+      <div className="block-jadwal"
         style={hoverStyle}
         onMouseEnter={this.toggleHover}
         onMouseLeave={this.toggleHover}
       >
-        <div className="column jadwal" style={jadwalShalatStyle}>
-          <div className="level">
+        <div className="column jadwal">
+          <div className="level is-mobile">
             <div className="level-left">
-              <div>
-                <p className="heading">{this.props.shalat}</p>
-                <p className="title is-size-5-mobile">{this.props.waktu}</p>
-              </div>
+              <p className="heading">{this.props.shalat}</p>
             </div>
-            <div className="level-right ">
-              {/* <figure className="image is-64x64 tablet">
-                <img src={this.props.imgSrc} />
-              </figure> */}
+            <div className="level-right">
+              <p className="title is-size-4 is-size-5-mobile">{this.props.waktu}</p>
             </div>
           </div>
         </div>
@@ -48,11 +44,5 @@ class BlockJadwal extends Component {
   }
 }
 
-const jadwalShalatStyle = {
-  boxShadow: "0 0 50px 1px rgba(0,0,0,.2)",
-  borderRadius:7,
-  marginBottom: 10,
-  backgroundColor: "rgba(255,255,255,0.2)"
-};
 
 export default BlockJadwal;

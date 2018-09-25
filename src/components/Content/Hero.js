@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { wpAPI } from "../../api/wp-api";
 import BlockJadwal from './blockJadwal/BlockJadwal';
-import HijriDate,{toHijri} from 'hijri-date/lib/safe';
+import HijriDate from 'hijri-date/lib/safe';
 
-class Content extends Component {
+class Hero extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ class Content extends Component {
 
 
   componentDidMount() {
-    fetch(wpAPI.ibmus)
+    fetch(wpAPI.mjuan)
       .then(res => res.json())
       .then(
         result => {
@@ -35,6 +35,26 @@ class Content extends Component {
           });
         }
       );
+
+      // fetch(wpAPI.posts)
+      //   .then(res => res.json())
+      //   .then(
+      //     results => {
+      //       this.setState({
+      //         posts: results
+      //       });
+      //       console.log(this.state.posts);
+      //     },
+      //
+      //     // Note: it's important to handle errors here
+      //     // instead of a catch() block so that we don't swallow
+      //     // exceptions from actual bugs in components.
+      //     errors => {
+      //       this.setState({
+      //         errors
+      //       });
+      //     }
+      //   );
 
       setInterval( () => {
         this.setState({
@@ -61,7 +81,7 @@ class Content extends Component {
 
 
 
-    let jadwal = Object.keys(this.state.jadwalShalat).slice(1).map((val,key) => (
+    let jadwal = Object.keys(this.state.jadwalShalat).slice(2).map((val,key) => (
 
 
         <BlockJadwal key={key} shalat={val} waktu={this.state.jadwalShalat[val]} />
@@ -101,15 +121,4 @@ class Content extends Component {
 }
 
 
-
-const jadwalShalatStyleActive = {
-  boxShadow: "0 0 50px 1px rgba(0,0,0,1)",
-  borderRadius: 10,
-  marginBottom: 10
-};
-
-const rightColumn = {
-  background: "linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%)"
-};
-
-export default Content;
+export default Hero;

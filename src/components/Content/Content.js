@@ -1,108 +1,115 @@
-import React, {Component} from "react";
-import {wpAPI} from "../../api/wp-api";
+import React, { Component } from "react";
+import { wpAPI } from "../../api/wp-api";
+import BlockJadwal from './blockJadwal/BlockJadwal';
+import HijriDate,{toHijri} from 'hijri-date/lib/safe';
 
 class Content extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
-      posts: []
-    }
+      posts: [],
+      jadwalShalat: [],
+    };
   }
 
 
 
-  componentDidMount(){
-    fetch(wpAPI.posts)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            this.setState({
-              isLoaded: true,
-              posts: result
-            });
+  componentDidMount() {
+    fetch(wpAPI.ibmus)
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            jadwalShalat: result
+          });
+          console.log(this.state.jadwalShalat);
+        },
 
-          },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
-          (error) => {
-            this.setState({
-              isLoaded: true,
-              error
-            });
-          }
-        );
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        error => {
+          this.setState({
+            error
+          });
+        }
+      );
+
+      setInterval( () => {
+        this.setState({
+          curTime : new Date().toLocaleString()
+        })
+      },1000);
+      this.setState({
+        curHijri: new HijriDate().toLocaleString().split(' ', 4).join(' ')
+      })
+
   }
 
   render() {
 
-    let titles = this.state.posts.map(function(title,index){
-      return (
-        <div key={index}>
-          <p className="title has-text-black" >{title.title.rendered}</p>
-          <div className="has-text-black">{title.content.rendered.replace(<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>, "")}</div>
-        </div>
-      )
-    });
+    // let titles = this.state.posts.map(function(title, index) {
+    //   return (
+    //     <div key={index}>
+    //       <p className="title has-text-black">{title.title.rendered}</p>
+    //       <div className=" has-text-black">{title.content.rendered}</div>
+    //     </div>
+    //   );
+    // });
 
 
-    console.log(titles);
 
 
-    return (<div className="container content">
-      <p className="title has-text-centered">Jadwal Shalat</p>
-      <div className="columns">
-        <div className="column" >
+    let jadwal = Object.keys(this.state.jadwalShalat).slice(1).map((val,key) => (
 
-        </div>
-        <div className="column">
-          <nav className="level">
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Isya</p>
-                <p className="title">20:36</p>
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Shubuh</p>
-                <p className="title">5:21</p>
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Dzuhr</p>
-                <p className="title">13:04</p>
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Ashr</p>
-                <p className="title">16:19</p>
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Maghrib</p>
-                <p className="title">19:06</p>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
 
+        <BlockJadwal key={key} shalat={val} waktu={this.state.jadwalShalat[val]} />
+
+    ));
+
+
+    console.log(this.state.curHijri);
+    return (
       <div className="container">
-        {titles}
-        <h1 className="title">Something</h1>
-        <p className="has-text-black">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-        </p>
+        <div className="columns ">
+          <div
+            className="column is-hidden-mobile"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "left"
+            }}
+          >
+            <p className="title is-1">IWKZ</p>
+            <p className="subtitle is-4">Indonesisches Weisheits- und Kulturzentrum e.V.</p>
+            {/* <p className="heading">Weisheits-</p>
+            <p className="heading">und Kulturzentrum e.V.</p> */}
+          </div>
+          <div className="column is-narrow-mobile">
+
+            <p className="has-text-centered title is-size-5-mobile">Jadwal Shalat</p>
+            <p className="has-text-centered subtitle is-5 is-size-8-mobile is-hidden-mobile">{this.state.curTime}</p>
+            <p className="has-text-centered subtitle is-5 is-size-8-mobile ">{this.state.curHijri}</p>
+            {jadwal}
+          </div>
+        </div>
       </div>
-    </div>);
+    );
   }
 }
 
 
+
+const jadwalShalatStyleActive = {
+  boxShadow: "0 0 50px 1px rgba(0,0,0,1)",
+  borderRadius: 10,
+  marginBottom: 10
+};
+
+const rightColumn = {
+  background: "linear-gradient(45deg, #00d2ff 0%, #3a47d5 100%)"
+};
 
 export default Content;

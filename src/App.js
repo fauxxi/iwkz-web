@@ -7,11 +7,13 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="container is-primary has-navbar-fixed-top">
-        <Header />
-        <Content />
-        <Footer />
-      </div>
+      <section className="hero is-fullheight" style={{background: "linear-gradient(45deg, #e0c3fc 0%,  #8ec5fc 100%)"}}>
+        <div className="hero-body">
+          <Header />
+          <Content />
+          <Footer />
+        </div>
+      </section>
     );
   }
 }

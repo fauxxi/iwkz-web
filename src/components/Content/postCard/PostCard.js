@@ -33,13 +33,13 @@ class PostCard extends Component {
 
   render() {
     let titles = this.state.posts.slice(0, 3).map(function(title, index) {
-      let regex = new RegExp(/<(?:.|\n)*?>/gm);
+      let regex = new RegExp(/<style(.+?)\/style> /gm);
       let res = regex.test(title.content.rendered);
       console.log(res);
       return (
         <div key={index}>
           <p className="title has-text-black">{title.title.rendered}</p>
-          <div className=" has-text-black">{title.content.rendered}</div>
+          <div className=" has-text-black" dangerouslySetInnerHTML={{__html: title.content.rendered}}></div>
           {/* .replace(/<(?:.|\n)*?>/gm, '') <style(.+?)\/style> */}
         </div>
       );

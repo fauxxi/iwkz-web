@@ -21,7 +21,7 @@ class Header extends Component {
         className="navbar is-transparent is-fixed-top"
         style={{ background: "none" }}
       >
-        <div className="navbar-brand">
+        <div className="navbar-brand ">
           <a className="navbar-item" href="">
             <img
               src={require("../../img/iwkz-navbar.svg")}
@@ -33,8 +33,8 @@ class Header extends Component {
           <div
             className={
               this.state.isActive
-                ? "navbar-burger is-active has-text-white"
-                : "navbar-burger has-text-white"
+                ? "navbar-burger is-active has-text-white is-transparent"
+                : "navbar-burger has-text-white is-transparent"
             }
             onClick={this.toggleNav}
             data-target="navbarExampleTransparentExample"

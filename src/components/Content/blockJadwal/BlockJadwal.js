@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './BlockJadwal.css';
+import "./BlockJadwal.css";
 
 class BlockJadwal extends Component {
   constructor(props) {
@@ -24,7 +24,8 @@ class BlockJadwal extends Component {
     }
 
     return (
-      <div className="block-jadwal"
+      <div
+        className="block-jadwal"
         style={hoverStyle}
         onMouseEnter={this.toggleHover}
         onMouseLeave={this.toggleHover}
@@ -32,10 +33,12 @@ class BlockJadwal extends Component {
         <div className="column jadwal">
           <div className="level is-mobile">
             <div className="level-left">
-              <p className="heading">{this.props.shalat}</p>
+              <p className="is-uppercase">{this.props.shalat}</p>
             </div>
             <div className="level-right">
-              <p className="title is-size-4 is-size-5-mobile">{this.props.waktu}</p>
+              <p className="has-text-weight-bold is-size-4 is-size-5-mobile">
+                {this.props.waktu}
+              </p>
             </div>
           </div>
         </div>
@@ -43,6 +46,5 @@ class BlockJadwal extends Component {
     );
   }
 }
-
 
 export default BlockJadwal;

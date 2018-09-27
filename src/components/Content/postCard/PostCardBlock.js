@@ -20,14 +20,21 @@ class PostCardBlock extends Component {
     if (this.state.isHover) {
       hoverStyle = {
         transform: "scale(1.025)",
-        boxShadow: "0 5px 100px 1px rgba(0,0,0,0.2)"
+        boxShadow: "0 5px 100px 1px rgba(0,0,0,0.2)",
+        height: 200,
+        width:200,
+        margin: "0 auto",
+        borderRadius: "50%"
 
       },
       cursorPointer = {
         cursor: "pointer"
       };
     } else {
-      hoverStyle = { transform: "scale(1)" };
+      hoverStyle = { transform: "scale(1)",height: 200,
+      width:200,
+      margin: "0 auto",
+      borderRadius: "50%" };
     }
 
     let imgUrl = this.props.thumbImgSrc;
@@ -44,12 +51,15 @@ class PostCardBlock extends Component {
             <div className="card-image" style={hoverStyle}>
               <div
                 className="image"
-                style={{
+                style={hoverStyle,{
                   height: 200,
+                  width:200,
+                  margin: "0 auto",
                   backgroundImage: `url(${imgUrl})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
-                  backgroundPosition: "50% 50%"
+                  backgroundPosition: "50% 50%",
+                  borderRadius: "50%"
                 }}
               />
             </div>

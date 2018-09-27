@@ -33,7 +33,7 @@ class PostCard extends Component {
   }
 
   render() {
-    let titles = this.state.posts.slice(0, 3).map(function(title, index) {
+    let titles = this.state.posts.slice(0, 4).map(function(title, index) {
 
       let regex = new RegExp(/<style([^]*?)\/style>/gm);
       //let res = regex.exec(title.content.rendered);

@@ -58,7 +58,6 @@ class Hero extends Component {
         />
       ));
 
-    console.log(this.state.curHijri);
     return (
       <div className="container">
         <div className="columns ">

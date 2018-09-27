@@ -34,6 +34,7 @@ class PostCard extends Component {
 
   render() {
     let titles = this.state.posts.slice(0, 3).map(function(title, index) {
+<<<<<<< HEAD
       let regex = new RegExp(/<style([^]*?)\/style>/gm);
       //let res = regex.exec(title.content.rendered);
       let date = new Date(title.date);
@@ -75,6 +76,13 @@ class PostCard extends Component {
               .concat("...")
           }}
         />
+
+      let regex = new RegExp(/<style(.+?)\/style> /gm);
+      return (
+        <div key={index}>
+          <p className="title has-text-black">{title.title.rendered}</p>
+          <div className=" has-text-black" dangerouslySetInnerHTML={{__html: title.content.rendered}}></div>
+        </div>
       );
     });
 

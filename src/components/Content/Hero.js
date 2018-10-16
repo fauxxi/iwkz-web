@@ -70,8 +70,8 @@ class Hero extends Component {
               alignItems: "left"
             }}
           >
-            <p className="has-text-weight-bold is-1">IWKZ</p>
-            <p className="bigtitle is-1">
+            <p className="is-size-5">IWKZ</p>
+            <p className="title is-size-1 is-size-3-touch">
               Indonesisches Weisheits- und Kulturzentrum e.V.
             </p>
             {/* <p className="heading">Weisheits-</p>

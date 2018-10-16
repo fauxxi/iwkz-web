@@ -18,7 +18,7 @@ class Header extends Component {
   render() {
     return (
       <nav
-        className="navbar is-transparent is-fixed-top"
+        className="navbar is-transparent"
         style={{ background: "none" }}
       >
         <div className="navbar-brand ">
@@ -33,8 +33,8 @@ class Header extends Component {
           <div
             className={
               this.state.isActive
-                ? "navbar-burger is-active has-text-white is-transparent"
-                : "navbar-burger has-text-white is-transparent"
+                ? "navbar-burger is-active is-transparent"
+                : "navbar-burger is-transparent"
             }
             onClick={this.toggleNav}
             data-target="navbarExampleTransparentExample"

@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Hero from "./components/Content/Hero";
 import PostCard from "./components/Content/postCard/PostCard";
 import ProfilAlfalah from "./components/Content/profilAlfalah/ProfilAlfalah";
+import Hadist from "./components/Content/hadistGenerator/Hadist";
 import "./App.css";
 
 class App extends Component {
@@ -27,10 +28,13 @@ class App extends Component {
           <ProfilAlfalah />
           <PostCard />
         </section>
-        <section className="section" >
-        <div className="hero-foot">
-          <Footer />
-        </div>
+        <section className="section has-background-white-ter">
+          <Hadist />
+        </section>
+        <section className="section">
+          <div className="hero-foot ">
+            <Footer />
+          </div>
         </section>
       </div>
     );

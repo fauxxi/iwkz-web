@@ -1,12 +1,20 @@
 /* eslint-disable */
 import React, { Component } from "react";
+import "./PostCardBlock.css";
 
 class PostCardBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHover: false
+      isHover: false,
+      isMore: false
     };
+  }
+
+  readMore = () => {
+    this.setState({
+      isMore: !this.state.isMore
+    });
   }
 
   toggleHover = () => {
@@ -16,68 +24,81 @@ class PostCardBlock extends Component {
   };
 
   render() {
-    let hoverStyle,cursorPointer;
+    let hoverStyle, cursorPointer;
     if (this.state.isHover) {
-      hoverStyle = {
+      (hoverStyle = {
         transform: "scale(1.025)",
         boxShadow: "0 5px 100px 1px rgba(0,0,0,0.2)",
-        height: 200,
-        width:200,
-        margin: "0 auto",
-        borderRadius: "50%"
-
-      },
-      cursorPointer = {
-        cursor: "pointer"
-      };
+        margin: "0 auto"
+      }),
+        (cursorPointer = {
+          cursor: "pointer"
+        });
     } else {
-      hoverStyle = { transform: "scale(1)",height: 200,
-      width:200,
-      margin: "0 auto",
-      borderRadius: "50%" };
+      hoverStyle = {
+        transform: "scale(1)",
+        margin: "0 auto"
+      };
     }
 
     let imgUrl = this.props.thumbImgSrc;
 
     return (
-      <div>
-        <div className="column">
-          <div
-            className="card"
+      <div className="column" style={{ margin: "50px 10px" }} onMouseEnter={this.toggleHover}
+      onMouseLeave={this.toggleHover}>
+        {/* <a href={this.props.link} target="_blank"> */}
+          <figure
+            className="image"
             style={cursorPointer}
-            onMouseEnter={this.toggleHover}
-            onMouseLeave={this.toggleHover}
-          >
-            <div className="card-image" style={hoverStyle}>
-              <div
-                className="image"
-                style={hoverStyle,{
-                  height: 200,
-                  width:200,
-                  margin: "0 auto",
-                  backgroundImage: `url(${imgUrl})`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "50% 50%",
-                  borderRadius: "50%"
-                }}
-              />
-            </div>
-            <div className="card-content is-paddingless">
-              <p className="is-size-6" style={{paddingTop: 10}}><strong>{this.props.title}</strong></p>
-              <div className="" style={{paddingTop: 10}}>
-                <div
-                  className="is-size-6"
-                  dangerouslySetInnerHTML={this.props.postHTML}
-                />
-              </div>
-              <div className="media">
-                <div className="media-content">
-                  <p className="is-size-7"><strong>{this.props.author}{ " | " }</strong>{this.props.postDatum}</p>
 
-                </div>
-              </div>
-            </div>
+            onClick={this.readMore}
+
+          >
+            <img
+              src={`${imgUrl}`}
+style={hoverStyle}
+              // style={hoverStyle,{
+              //   margin: "0 auto",
+              //   backgroundImage: `url(${imgUrl})`,
+              //   backgroundSize: "cover",
+              //   backgroundRepeat: "no-repeat",
+              //   backgroundPosition: "50% 50%"
+              // }}
+            />
+          </figure>
+          <p
+            className="is-size-6 is-size-7-mobile has-text-grey-light"
+            style={{ marginTop: 30,marginBottom: 20 }}
+          >
+            <strong className="has-text-grey-light">
+              {this.props.author}
+              {" | "}
+            </strong>
+            {this.props.postDatum}
+          </p>
+          <h1
+            className="title is-size-4 is-size-6-mobile"
+            onClick={this.readMore}
+            style={cursorPointer}
+          >
+            {this.props.title}
+          </h1>
+
+        {/* </a> */}
+        <div className={this.state.isMore ? "modal is-active" : "modal"}>
+          <div className="modal-background" />
+          <div className="modal-card">
+            <header className="modal-card-head">
+              <button className="delete" aria-label="close" onClick={this.readMore}/>
+            </header>
+            <section className="modal-card-body">
+              <p className="title">{this.props.title}</p>
+              <div className="is-size-6-mobile" dangerouslySetInnerHTML={this.props.postHTML}/>
+            </section>
+            <footer className="modal-card-foot">
+
+              <button className="button" onClick={this.readMore}>Tutup</button>
+            </footer>
           </div>
         </div>
       </div>

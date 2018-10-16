@@ -4,7 +4,7 @@ import React from "react";
 const ProfilAlfalah = () => {
   return (
     <div className="container" style={{ marginBottom: 30 }}>
-      <p className="bigtitle is-1 is-size-3-mobile">Masjid Al Falah</p>
+      <p className="is-size-3 is-size-3-mobile" style={{marginBottom:30}}>Masjid Al Falah</p>
       <div className="columns">
         <div
           className="column"

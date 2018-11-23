@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class Hadist extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
@@ -32,21 +33,28 @@ class Hadist extends Component {
   }
 
   componentDidMount(){
-    setInterval(() => {
+    this._isMounted = true;
 
-      this.setState({
-          index: this.state.index + 1
-        });
-        if(this.state.index > 3){
+
+      setInterval(() => {
+        if(this._isMounted){
           this.setState({
-            index: 0
-          });
-          clearInterval();
+              index: this.state.index + 1
+            });
+            if(this.state.index > 3){
+              this.setState({
+                index: 0
+              });
+              clearInterval();
+            }
         }
-    }, 15000);
 
+      }, 15000);
 
+  }
 
+  componentWillUnmount(){
+    this._isMounted = false;
   }
 
   render(){

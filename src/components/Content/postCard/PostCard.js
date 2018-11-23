@@ -3,6 +3,8 @@ import { wpAPI } from "../../../api/wp-api";
 import PostCardBlock from "./PostCardBlock";
 
 class PostCard extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -11,25 +13,35 @@ class PostCard extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     fetch(wpAPI.posts)
       .then(res => res.json())
       .then(
         results => {
-          this.setState({
-            posts: results
-          });
-          console.log(this.state.posts);
+          if(this._isMounted){
+
+              this.setState({
+                posts: results
+              });
+              //console.log(this.state.posts);
+          }
         },
 
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
         errors => {
-          this.setState({
-            errors
-          });
+          if(this._isMounted){
+            this.setState({
+              errors
+            });
+          }
         }
       );
+  }
+
+  componentWillUnmount(){
+    this._isMounted = false;
   }
 
 

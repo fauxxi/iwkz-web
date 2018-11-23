@@ -1,12 +1,38 @@
 import React, { Component } from "react";
+import {NavLink} from 'react-router-dom';
 
 class Header extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
-      isActive: false
+      isActive: false,
+      navColor: 'none'
     };
     this.toggleNav = this.toggleNav.bind(this);
+    this.listenScrollEvent = this.listenScrollEvent.bind(this);
+  }
+
+  listenScrollEvent = e =>{
+    if(window.scrollY > window.innerHeight){
+      this.setState({navColor: 'white'});
+      //console.log(this.state.navColor);
+    } else{
+      this.setState({navColor: 'none'});
+      //console.log(this.state.navColor);
+    }
+  }
+
+  componentDidMount(){
+    this._isMounted = true;
+    if(this._isMounted){
+      window.addEventListener('scroll', this.listenScrollEvent);
+    }
+  }
+
+  componentWillUnmount(){
+    this._isMounted = false;
   }
 
   toggleNav() {
@@ -18,18 +44,19 @@ class Header extends Component {
   render() {
     return (
       <nav
-        className="navbar is-transparent"
-        style={{ background: "none" }}
+        className="navbar is-fixed-top is-transparent"
+        style={{ background: this.state.navColor}}
       >
         <div className="navbar-brand ">
-          <a className="navbar-item" href="">
+
+          <NavLink className="navbar-item" to="/">
             <img
               src={require("../../img/iwkz-navbar.svg")}
               alt="IWKZ"
               width="120"
               height="120"
             />
-          </a>
+          </NavLink>
           <div
             className={
               this.state.isActive
@@ -54,12 +81,10 @@ class Header extends Component {
           }
         >
           <div className="navbar-start">
-            <a className="navbar-item">Home</a>
-            <a className="navbar-item">Kegiatan</a>
-            <a className="navbar-item">Layanan Masyarakat</a>
-            <a className="navbar-item">PRS</a>
-            <a className="navbar-item">Download</a>
-            <a className="navbar-item">Tentang Kami</a>
+            <a href="https://tutorium.iwkz.de/" target="_blank" rel="noopener noreferrer" className="navbar-item">Tutorium</a>
+            <NavLink className="navbar-item" to="/download">
+              Download
+            </NavLink>
           </div>
         </div>
       </nav>

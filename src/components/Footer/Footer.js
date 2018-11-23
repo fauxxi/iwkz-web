@@ -47,7 +47,7 @@ const Footer = () => {
           </table>
         </div>
 
-        <div className="column">
+        {/* <div className="column">
           <p className="has-text-weight-bold is-size-5">Situs Terkait</p>
           <p>
             <a>Situs Islam Indonesia di Jerman</a>
@@ -58,7 +58,8 @@ const Footer = () => {
           <p>
             <a>Komunitas Muslim / Masjid di Jerman</a>
           </p>
-        </div>
+        </div> */}
+
         <div className="column">
           <p className="has-text-weight-bold is-size-5">Partner</p>
           <figure className="image" style={{ maxWidth: 120 }}>
@@ -76,13 +77,13 @@ const Footer = () => {
         </div>
         <div className="level-right">
           <div className="level-item">
-            <a className="" target="_blank" href="https://lapordirijerman.de/" style={transition: "none"} >
+            <a className="" target="_blank" href="https://lapordirijerman.de/">
               <span className="icon">
-                <i class="fab fa-facebook"></i>
+                <i className="fab fa-facebook"></i>
               </span>
             </a>
             <a className="" target="_blank" href="https://lapordirijerman.de/" >
-                <i class="fab fa-instagram"></i>
+                <i className="fab fa-instagram"></i>
             </a>
           </div>
         </div>

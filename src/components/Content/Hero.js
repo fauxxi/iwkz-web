@@ -4,6 +4,7 @@ import BlockJadwal from "./blockJadwal/BlockJadwal";
 import HijriDate from "hijri-date/lib/safe";
 
 class Hero extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
@@ -14,37 +15,54 @@ class Hero extends Component {
   }
 
   componentDidMount() {
-    fetch(wpAPI.mjuan)
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            jadwalShalat: result
-          });
-          console.log(this.state.jadwalShalat);
-        },
+    this._isMounted = true;
 
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        error => {
+      fetch(wpAPI.mjuan)
+        .then(res => res.json())
+        .then(
+          result => {
+            if(this._isMounted){
+
+                this.setState({
+                  jadwalShalat: result
+                });
+                //console.log(this.state.jadwalShalat);
+            }
+
+          },
+
+          // Note: it's important to handle errors here
+          // instead of a catch() block so that we don't swallow
+          // exceptions from actual bugs in components.
+          error => {
+            if(this._isMounted){
+              this.setState({
+                error
+              });
+            }
+          }
+        );
+
+      setInterval(() => {
+        if(this._isMounted){
           this.setState({
-            error
+            curTime: new Date().toLocaleString()
           });
         }
-      );
+      }, 1000);
 
-    setInterval(() => {
-      this.setState({
-        curTime: new Date().toLocaleString()
-      });
-    }, 1000);
-    this.setState({
-      curHijri: new HijriDate()
-        .toLocaleString()
-        .split(" ", 4)
-        .join(" ")
-    });
+      if(this._isMounted){
+        this.setState({
+          curHijri: new HijriDate()
+            .toLocaleString()
+            .split(" ", 4)
+            .join(" ")
+        });
+      }
+  }
+
+  componentWillUnmount(){
+    this._isMounted = false;
   }
 
   render() {

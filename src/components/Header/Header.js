@@ -49,7 +49,7 @@ class Header extends Component {
       >
         <div className="navbar-brand ">
 
-          <NavLink className="navbar-item" to="/">
+          <NavLink className="navbar-item" to="/" activeClassName="is-active">
             <img
               src={require("../../img/iwkz-navbar.svg")}
               alt="IWKZ"
@@ -82,7 +82,7 @@ class Header extends Component {
         >
           <div className="navbar-start">
             <a href="https://tutorium.iwkz.de/" target="_blank" rel="noopener noreferrer" className="navbar-item">Tutorium</a>
-            <NavLink className="navbar-item" to="/download">
+            <NavLink className="navbar-item" to="/download" activeClassName="is-active">
               Download
             </NavLink>
           </div>

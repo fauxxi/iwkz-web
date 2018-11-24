@@ -60,10 +60,10 @@ class Hadist extends Component {
   render(){
 
     return(
-      <div className="container " style={{marginBottom: 100, marginTop:25}}>
-        <p className="has-text-weight-light is-size-3 is-size-5-mobile is-italic"><span className="has-text-danger has-text-weight-bold">"</span>{this.state.hadistArr[this.state.index].isi}<span className="has-text-danger has-text-weight-bold">" </span></p>
+      <div className="container" style={{marginBottom: 100, marginTop:25}}>
+        <p className="has-text-weight-light is-size-5 is-size-5-mobile is-italic"><span className="has-text-danger has-text-weight-bold">"</span>{this.state.hadistArr[this.state.index].isi}<span className="has-text-danger has-text-weight-bold">" </span></p>
         <br />
-        <p className="title is-size-5 is-size-6-mobile"><span>- </span>{this.state.hadistArr[this.state.index].riwayat}</p>
+        <p className="title is-size-5 is-size-6-mobile "><span>- {this.state.hadistArr[this.state.index].riwayat}</span></p>
       </div>
     );
   }

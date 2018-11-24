@@ -68,7 +68,7 @@ style={hoverStyle}
           </figure>
           <p
             className="is-size-6 is-size-7-mobile has-text-grey-light"
-            style={{ marginTop: 30,marginBottom: 20 }}
+            style={{ marginTop: 20,marginBottom: 5 }}
           >
             <strong className="has-text-grey-light">
               {this.props.author}

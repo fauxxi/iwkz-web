@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="container">
       <div className="columns">
         <div className="column">
-          <p className="has-text-weight-bold is-size-5">Support Our Masjid!</p>
+          <p className="has-text-weight-bold is-size-5"><span className="underlined-text-yellow">Support Our Masjid!</span></p>
           <p>
             <strong>Masjid Al-Falah Berlin - IWKZ e.V.</strong>
           </p>

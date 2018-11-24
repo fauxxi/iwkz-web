@@ -1,10 +1,12 @@
 /* eslint-disable */
 import React from "react";
 
+import './profilAlfalah.css';
+
 const ProfilAlfalah = () => {
   return (
     <div className="container" style={{ marginBottom: 30 }}>
-      <p className="is-size-3 is-size-3-mobile" style={{marginBottom:30}}>Masjid Al Falah</p>
+      <p className="is-size-2 is-size-3-mobile" style={{marginBottom:30}}><span className="underlined-text-green">Masjid Al Falah</span></p>
       <div className="columns">
         <div
           className="column"
@@ -26,7 +28,7 @@ const ProfilAlfalah = () => {
           </figure>
         </div>
         <div className="column">
-          <p className="is-size-4 has-text-weight-semibold">
+          <p className="is-size-3 is-size-4-mobile has-text-weight-semibold">
             Al-Falah sebagai sebuah masjid, telah berdiri sejak lebih dari 20
             tahun yang lalu.
           </p>
@@ -39,7 +41,7 @@ const ProfilAlfalah = () => {
             sekitarnya.
           </p>
           <br />
-          <p className="is-size-6">
+          <p>
             Melalui halaman ini, kami berusaha menunjukkan kepada
             saudara-saudara kaum muslimin di tempat lain bagaimana masjid
             Al-Falah Berlin dengan semua pengurus dan jamaahnya menghidupkan

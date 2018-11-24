@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto");
+@import url("https://fonts.googleapis.com/css?family=Hind+Madurai:700|Roboto");
 a img {
   border: 0; }
 
 .title {
-  font-family: 'Roboto', serif;
+  font-family: 'Hind Madurai', sans-serif;
   font-weight: normal; }
 
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
@@ -270,7 +270,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Open+Sans", sans-serif; }
+  font-family: "Roboto", serif; }
 
 code,
 pre {
@@ -6427,11 +6427,67 @@ label.panel-block {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
 
-.bigtitle {
-  font-family: 'Roboto', serif; }
+.underlined-text-green, .underlined-text-orange, .underlined-text-yellow, .underlined-text-blue {
+  text-decoration: none;
+  position: relative; }
+
+.underlined-text-green:after {
+  position: absolute;
+  content: '';
+  height: 12px;
+  bottom: 10px;
+  z-index: -1;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #38f9d7;
+  transition: .5s; }
+
+.underlined-text-orange:after {
+  position: absolute;
+  content: '';
+  height: 12px;
+  bottom: 10px;
+  z-index: -1;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #fda085;
+  transition: .5s; }
+
+.underlined-text-yellow:after {
+  position: absolute;
+  content: '';
+  height: 12px;
+  bottom: -1px;
+  z-index: -1;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #d4fc79;
+  transition: .5s; }
+
+.underlined-text-blue:after {
+  position: absolute;
+  content: '';
+  height: 12px;
+  bottom: -1px;
+  z-index: -1;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #a1c4fd;
+  transition: .5s; }
+
+.bigtitle, .is-size-3, .is-size-2, .is-size-4 {
+  font-family: 'Hind Madurai', sans-serif; }
 
 .bigtitle.is-1 {
-  font-family: 'Roboto', serif;
+  font-family: 'Hind Madurai', sans-serif;
   font-size: 5em; }
 
 * {

@@ -8,6 +8,7 @@ class PostCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoaded: false,
       posts: []
     };
   }
@@ -21,6 +22,7 @@ class PostCard extends Component {
           if(this._isMounted){
 
               this.setState({
+                isLoaded:true,
                 posts: results
               });
               //console.log(this.state.posts);
@@ -138,9 +140,14 @@ class PostCard extends Component {
       );
     });
 
+    if(!this.state.isLoaded){
+      return <div>LOADINGGGG</div>;
+    }
+
     return (
+
       <div className="container">
-        <p className="is-size-3 is-size-3-mobile">Berita Terbaru</p>
+        <p className="is-size-2 is-size-3-mobile"><span className="underlined-text-orange">Berita Terbaru</span></p>
         <div className="columns">{post1}</div>
         <div className="columns" >{post2}</div>
       </div>

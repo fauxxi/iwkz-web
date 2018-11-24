@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 //import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -7,8 +8,14 @@ import PostCard from '../Content/postCard/PostCard';
 import ProfilAlfalah from '../Content/profilAlfalah/ProfilAlfalah';
 import Hadist from '../Content/hadistGenerator/Hadist';
 
+
+
 class Home extends Component{
+
+
   render(){
+
+
     return(
 
       <div>
@@ -20,6 +27,7 @@ class Home extends Component{
         >
           {/* <Header /> */}
           <div className="hero-body wave-background">
+
             <Hero />
           </div>
         </section>
@@ -42,4 +50,4 @@ class Home extends Component{
   }
 }
 
-export default Home;
+export default connect()(Home);

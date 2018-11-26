@@ -49,7 +49,7 @@ class Header extends Component {
       >
         <div className="navbar-brand ">
 
-          <NavLink className="navbar-item" to="/" activeClassName="is-active">
+          <NavLink className="navbar-item" to="/" >
             <img
               src={require("../../img/iwkz-navbar.svg")}
               alt="IWKZ"

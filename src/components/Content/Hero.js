@@ -27,7 +27,7 @@ class Hero extends Component {
                   isLoaded: true
                 });
                 //console.log(this.state.isLoaded);
-                console.log(this.state.jadwalShalat);
+                //console.log(this.state.jadwalShalat);
             }
 
           },
@@ -107,9 +107,9 @@ class Hero extends Component {
                 <p className="has-text-centered has-text-weight-bold is-size-5-mobile">
                   Jadwal Shalat
                 </p>
-                <p className="has-text-centered subhas-text-weight-bold is-5 is-size-8-mobile is-hidden-mobile">
+                {/*<p className="has-text-centered subhas-text-weight-bold is-5 is-size-8-mobile is-hidden-mobile">
                   {this.state.curTime}
-                </p>
+                </p>*/}
                 <p className="has-text-centered subhas-text-weight-bold is-5 is-size-8-mobile " style={{marginBottom:30}}>
                   {this.state.curHijri}
                 </p>

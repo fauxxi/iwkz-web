@@ -6427,6 +6427,12 @@ label.panel-block {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
 
+.center-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%); }
+
 .underlined-text-green, .underlined-text-orange, .underlined-text-yellow, .underlined-text-blue {
   text-decoration: none;
   position: relative; }

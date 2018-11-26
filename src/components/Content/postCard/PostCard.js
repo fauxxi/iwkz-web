@@ -1,58 +1,33 @@
 import React, { Component } from "react";
-import { wpAPI } from "../../../api/wp-api";
+//import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {fetchPost} from '../../../actions/postAction';
+
+//import { wpAPI } from "../../../api/wp-api";
 import PostCardBlock from "./PostCardBlock";
 
 class PostCard extends Component {
-  _isMounted = false;
+  //_isMounted = false;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoaded: false,
-      posts: []
-    };
+
+  componentWillMount() {
+    this.props.fetchPost();
+
+    //this._isMounted = true;
+
   }
 
-  componentDidMount() {
-    this._isMounted = true;
-    fetch(wpAPI.posts)
-      .then(res => res.json())
-      .then(
-        results => {
-          if(this._isMounted){
-
-              this.setState({
-                isLoaded:true,
-                posts: results
-              });
-              //console.log(this.state.posts);
-          }
-        },
-
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        errors => {
-          if(this._isMounted){
-            this.setState({
-              errors
-            });
-          }
-        }
-      );
-  }
-
-  componentWillUnmount(){
-    this._isMounted = false;
-  }
+  // componentWillUnmount(){
+  //   this._isMounted = false;
+  // }
 
 
   render() {
-    let post1 = this.state.posts.slice(0, 2).map(function(title, index) {
+    let post1 = this.props.posts.slice(0, 2).map(function(post, index) {
 
       //let regex = new RegExp(/<style([^]*?)\/style>/gm);
-      //let res = regex.exec(title.content.rendered);
-      let date = new Date(title.date);
+      //let res = regex.exec(post.content.rendered);
+      let date = new Date(post.date);
       let year = date.getFullYear();
       let month = [];
       let datum = date.getDate();
@@ -75,14 +50,14 @@ class PostCard extends Component {
       return (
         <PostCardBlock
           key={index}
-          link={title.link}
-          thumbImgSrc={title._embedded["wp:featuredmedia"]["0"].source_url}
-          author={title._embedded["author"]["0"].name}
+          link={post.link}
+          thumbImgSrc={post._embedded["wp:featuredmedia"]["0"].source_url}
+          author={post._embedded["author"]["0"].name}
           postDatum={postDate}
-          statusPost={title._embedded["wp:term"]["0"]["0"].name}
-          title={title.title.rendered}
+          statusPost={post._embedded["wp:term"]["0"]["0"].name}
+          title={post.title.rendered}
           postHTML={{
-            __html: title.content.rendered
+            __html: post.content.rendered
               // .replace(regex, "")
               // .replace(/<[^>]+>/gm, "")
               // .split(/\s+/)
@@ -94,11 +69,11 @@ class PostCard extends Component {
       );
     });
 
-    let post2 = this.state.posts.slice(2, 4).map(function(title, index) {
+    let post2 = this.props.posts.slice(2, 4).map(function(post, index) {
 
       //let regex = new RegExp(/<style([^]*?)\/style>/gm);
-      //let res = regex.exec(title.content.rendered);
-      let date = new Date(title.date);
+      //let res = regex.exec(post.content.rendered);
+      let date = new Date(post.date);
       let year = date.getFullYear();
       let month = [];
       let datum = date.getDate();
@@ -121,14 +96,14 @@ class PostCard extends Component {
       return (
         <PostCardBlock
           key={index}
-          link={title.link}
-          thumbImgSrc={title._embedded["wp:featuredmedia"]["0"].source_url}
-          author={title._embedded["author"]["0"].name}
+          link={post.link}
+          thumbImgSrc={post._embedded["wp:featuredmedia"]["0"].source_url}
+          author={post._embedded["author"]["0"].name}
           postDatum={postDate}
-          statusPost={title._embedded["wp:term"]["0"]["0"].name}
-          title={title.title.rendered}
+          statusPost={post._embedded["wp:term"]["0"]["0"].name}
+          title={post.title.rendered}
           postHTML={{
-            __html: title.content.rendered
+            __html: post.content.rendered
               // .replace(regex, "")
               // .replace(/<[^>]+>/gm, "")
               // .split(/\s+/)
@@ -140,9 +115,9 @@ class PostCard extends Component {
       );
     });
 
-    if(!this.state.isLoaded){
-      return <div>LOADINGGGG</div>;
-    }
+    // if(!this.props.isLoaded){
+    //   return <div>LOADINGGGG</div>;
+    // }
 
     return (
 
@@ -155,4 +130,14 @@ class PostCard extends Component {
   }
 }
 
-export default PostCard;
+// PostCard.propTypes = {
+//   fetchPost: PropTypes.func.isRequired,
+//   posts: PropTypes.array.isRequired
+// }
+
+const mapStateToProps = state => ({
+  posts: state.posts.posts,
+  //isLoaded: state.posts.isLoaded
+})
+
+export default connect(mapStateToProps, {fetchPost})(PostCard);

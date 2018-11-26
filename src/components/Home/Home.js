@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
+// import {fetchPost} from '../../actions/postAction';
 
 //import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -13,7 +14,11 @@ import Hadist from '../Content/hadistGenerator/Hadist';
 class Home extends Component{
 
 
+
+
   render(){
+
+    
 
 
     return(
@@ -50,4 +55,6 @@ class Home extends Component{
   }
 }
 
-export default connect()(Home);
+
+
+export default Home;

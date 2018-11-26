@@ -20,6 +20,13 @@ $link-hover: hsl(348, 100%, 61%);
 
 @import 'bulma/bulma.sass';
 
+.center-spinner{
+  position: absolute;
+	left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .underlined-text-green,.underlined-text-orange,.underlined-text-yellow,.underlined-text-blue{
   text-decoration: none;
   position: relative;

@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import "./download.css";
 
 class Download extends Component {
-  constructor() {
-    super();
-  }
+  
 
   render(){
     return(

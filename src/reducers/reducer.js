@@ -2,5 +2,7 @@ import {combineReducers} from 'redux';
 import postReducer from './postReducer';
 
 export default combineReducers({
-  posts: postReducer
+  posts: postReducer,
+  docs: postReducer,
+  jadwal: postReducer
 });

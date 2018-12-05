@@ -1,8 +1,9 @@
-import {FETCH_POSTS} from '../actions/types';
-import {IS_LOADED} from '../actions/types';
+import {FETCH_POSTS, IS_LOADED, FETCH_DOCS, FETCH_JADWAL} from '../actions/types';
 
 const initialState = {
   posts: [],
+  docs: [],
+  jadwal: [],
   isLoaded: false
 }
 
@@ -20,6 +21,17 @@ export default (state = initialState, action) => {
         ...state,
         isLoaded: action.payload
       };
+    case FETCH_DOCS:
+      return{
+        ...state,
+        docs: action.payload
+      }
+    case FETCH_JADWAL:
+      return{
+        ...state,
+        jadwal: action.payload,
+        isLoaded: true
+      }
     default:
       return state
   }

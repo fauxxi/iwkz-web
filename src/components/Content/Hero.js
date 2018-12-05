@@ -1,70 +1,38 @@
 import React, { Component } from "react";
-import { wpAPI } from "../../api/wp-api";
+import {connect} from 'react-redux';
+import {fetchJadwal} from '../../actions/postAction';
+
 import BlockJadwal from "./blockJadwal/BlockJadwal";
 import HijriDate from "hijri-date/lib/safe";
 
+
 class Hero extends Component {
-  _isMounted = false;
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoaded: false,
-      jadwalShalat: []
-    };
-  }
+  //_isMounted = false;
+
 
   componentWillMount() {
-    this._isMounted = true;
+    //this._isMounted = true;
 
-      fetch(wpAPI.mjuan)
-        .then(res => res.json())
-        .then(
-          result => {
-            if(this._isMounted){
+    this.props.fetchJadwal();
+    //console.log(this.props.jadwal);
 
-                this.setState({
-                  jadwalShalat: result,
-                  isLoaded: true
-                });
-                //console.log(this.state.isLoaded);
-                //console.log(this.state.jadwalShalat);
-            }
 
-          },
 
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
-          error => {
-            if(this._isMounted){
-              this.setState({
-                error
-              });
-            }
-          }
-        );
 
-      setInterval(() => {
-        if(this._isMounted){
-          this.setState({
-            curTime: new Date().toLocaleString()
-          });
-        }
-      }, 1000);
-
-      if(this._isMounted){
         this.setState({
           curHijri: new HijriDate()
             .toLocaleString()
             .split(" ", 4)
             .join(" ")
         });
-      }
+
+        //console.log(new HijriDate().toLocaleString())
+
   }
 
-  componentWillUnmount(){
-    this._isMounted = false;
-  }
+  // componentWillUnmount(){
+  //   this._isMounted = false;
+  // }
 
   render() {
 
@@ -74,13 +42,13 @@ class Hero extends Component {
       //
       // }
 
-        let jadwal = Object.keys(this.state.jadwalShalat)
+        let jadwal = Object.keys(this.props.jadwal)
           .slice(2)
           .map((val, key) => (
             <BlockJadwal
               key={key}
               shalat={val}
-              waktu={this.state.jadwalShalat[val]}
+              waktu={this.props.jadwal[val]}
             />
           ));
 
@@ -123,4 +91,8 @@ class Hero extends Component {
   }
 }
 
-export default Hero;
+const mapStateToProps = state => ({
+  jadwal: state.jadwal.jadwal
+})
+
+export default connect(mapStateToProps, {fetchJadwal})(Hero);

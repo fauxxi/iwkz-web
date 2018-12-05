@@ -5,6 +5,7 @@ const wpAPI = {
 	posts: `${endPoint}/posts?_embed`,
 	ibmus: `${jadwalShalatURL}/jdwlshalat_ibmus/`,
 	mjuan: `${mjuanJadwalShalatURL}/berlin`,
+	documents: `${endPoint}/media?search=.pdf`
 }
 
 export {wpAPI}

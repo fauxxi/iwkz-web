@@ -23,6 +23,7 @@ class PostCard extends Component {
 
 
   render() {
+    
     let post1 = this.props.posts.slice(0, 2).map(function(post, index) {
 
       //let regex = new RegExp(/<style([^]*?)\/style>/gm);

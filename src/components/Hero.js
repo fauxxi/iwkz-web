@@ -4,7 +4,9 @@ import Navbar from './Navbar';
 const Hero = () => {
 
   return (
-    <section className="hero is-fullheight">
+    <section className="hero is-fullheight" style={{
+      background: "linear-gradient(45deg, #e0c3fc 0%,  #8ec5fc 100%)"
+    }}>
       <div className="hero-head">
         <Navbar/>
       </div>

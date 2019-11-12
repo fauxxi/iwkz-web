@@ -9,6 +9,7 @@ const Hero = () => {
       background: "linear-gradient(45deg, #e0c3fc 0%,  #8ec5fc 100%)"
     }}>
       <div className="hero-head">
+        <div className='bt bw1 b--light-red'></div>
         <Navbar/>
       </div>
 

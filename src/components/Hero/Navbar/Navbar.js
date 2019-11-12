@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../img/iwkz-navbar.svg'
+import logo from '../../../img/iwkz-navbar.svg'
 
 const Navbar = () => {
   const onBurgerClick = () => {

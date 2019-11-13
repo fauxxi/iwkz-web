@@ -6,7 +6,7 @@ const Hero = () => {
 
   return (
     <section className="hero is-fullheight" style={{
-      background: "linear-gradient(45deg, #e0c3fc 0%,  #8ec5fc 100%)"
+      background: 'linear-gradient( 109.6deg,  rgba(148,233,194,1) 11.2%, rgba(224,235,186,1) 91.1% )'
     }}>
       <div className="hero-head">
         <div className='bt bw1 b--light-red'></div>

@@ -1,14 +1,13 @@
 import React from 'react';
-import PeranIwkz from './PeranIwkz';
 import alFalah from '../../img/alfalah-black-300x300.png';
 
-const Home = () => {
+const AboutUs = () => {
   return (
     <section className="section is-medium">
       <div className="container">
         <div className="columns">      
           <div className="column is-6 is-offset-2 pb3">
-            <p className="is-size-4 has-text-weight-medium pv1">Masjid Al-Falah</p>
+            <p className="is-size-4 has-text-weight-medium pv1 ">Masjid Al-Falah</p>
             <p className='pv2 has-text-justified'>
             Al-Falah sebagai sebuah masjid, telah berdiri sejak lebih dari 20 tahun yang lalu. Ia tidak hanya menjadi tempat melaksanakan ritual ibadah saja. Bahkan sejak didirikannya, ia telah menjadi pusat kegiatan sosial, pendidikan dan dakwah bagi masyarakat muslim Indonesia di Berlin dan sekitarnya.
             </p>
@@ -20,12 +19,9 @@ const Home = () => {
            <img src={alFalah} alt='al-falah'/>
           </div>         
         </div>
-        <div className="column is-offset-2 is-8 pb3">
-            <PeranIwkz/>
-          </div>
       </div>
     </section>
   );
 };
 
-export default Home;
+export default AboutUs;

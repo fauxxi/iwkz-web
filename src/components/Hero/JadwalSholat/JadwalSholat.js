@@ -23,10 +23,11 @@ const JadwalSholat = () => {
   }
   const createBodyList = (prayerTimes) => {
     let list = [];
+    let index = 0;
     for (let item in prayerTimes) {
       if (item !== 'date'){
         list.push(
-          <div className="column is-full">
+          <div className="column is-full" key={"jadwal"+index}>
             <div className='level is-mobile br2 pa3' style={{backgroundColor:'rgba(255, 255, 255, 0.1)'}}>
               <div className='level-left'>
                {item}
@@ -37,6 +38,7 @@ const JadwalSholat = () => {
             </div>
           </div>
         );
+        index++;
       }
     }
     return list;
@@ -45,7 +47,6 @@ const JadwalSholat = () => {
     <div className="container">
       <p className='has-text-centered is-size-5 pb3'>{getDate()}</p>
       <div className="columns is-multiline">
-        {requestPrayer}
         {createBodyList(prayerTimes)}
       </div>
     </div>

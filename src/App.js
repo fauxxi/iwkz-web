@@ -3,13 +3,15 @@ import './App.css';
 // import './App.scss';
 import Hero from './components/Hero/Hero';
 import 'tachyons';
-import Home from './components/Home/Home';
+import AboutUs from './components/AboutUs/AboutUs';
+import PeranIwkz from './components/AboutUs/PeranIwkz';
 
 function App() {
   return (
     <div className="App">   
       <Hero/>
-      <Home/>
+      <AboutUs/>
+      <PeranIwkz/>
     </div>
   );
 }

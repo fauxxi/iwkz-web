@@ -1,6 +1,6 @@
 import React from "react";
 import SectionPeran from "./SectionPeran";
-
+import SectionPeranRight from "./SectionPeranRight";
 const PeranIwkz = () => {
   let peranIwkz = [
     {
@@ -34,8 +34,19 @@ const PeranIwkz = () => {
     let index = 0;
     return peranIwkz.map(item => {
       index++;
-
-      return <SectionPeran content={item} index={index} />;
+      if (index % 2) {
+        return (
+          <div key={"sectionPeran " + index}>
+            <SectionPeran content={item} />
+          </div>
+        );
+      } else {
+        return (
+          <div key={"sectionPeran " + index}>
+            <SectionPeranRight content={item} />
+          </div>
+        );
+      }
     });
   };
 

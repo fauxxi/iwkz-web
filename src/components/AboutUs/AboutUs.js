@@ -6,12 +6,11 @@ import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 
 const AboutUs = () => {
-  const [ref, inView] = useInView({
-    rootMargin: "-100px"
-  });
-  const props = useSpring({ opacity: inView ? 1 : 0 });
-
   const AboutMasjid = () => {
+    const [ref, inView] = useInView({
+      rootMargin: "-100px"
+    });
+    const props = useSpring({ opacity: inView ? 1 : 0 });
     return (
       <section className="section is-medium">
         <animated.div ref={ref} style={props}>

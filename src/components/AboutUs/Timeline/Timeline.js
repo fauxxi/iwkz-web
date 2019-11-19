@@ -4,7 +4,7 @@ import {
   VerticalTimelineElement
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import iwkzLogo from "../../img/iwkz-navbar.svg";
+import iwkzLogo from "../../../img/iwkz-navbar.svg";
 
 const Timeline = () => {
   const Icon = image => <img src={image.image} alt="icon timeline" />;

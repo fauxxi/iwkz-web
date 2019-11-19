@@ -8,7 +8,9 @@
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-intersection-observer": "^8.25.1",
     "react-scripts": "^3.2.0",
+    "react-spring": "^8.0.27",
     "react-vertical-timeline-component": "^2.5.0",
     "typescript": "^3.7.2"
   },

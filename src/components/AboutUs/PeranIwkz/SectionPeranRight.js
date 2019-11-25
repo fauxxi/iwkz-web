@@ -7,7 +7,7 @@ const SectionPeranRight = peran => {
   const { content } = peran;
 
   const [ref, inView] = useInView({
-    rootMargin: "-300px"
+    threshold: 0.3
   });
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (

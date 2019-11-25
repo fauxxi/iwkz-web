@@ -50,7 +50,11 @@ const PeranIwkz = () => {
     });
   };
 
-  return <div className="has-background-light section">{listPeran()}</div>;
+  return (
+    <div className="has-background-light section" id="peranIwkz">
+      {listPeran()}
+    </div>
+  );
 };
 
 export default PeranIwkz;

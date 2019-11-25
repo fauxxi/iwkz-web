@@ -3,7 +3,10 @@ import ladiLogo from "../../img/ladi_logo.png";
 
 const Impressium = () => {
   return (
-    <div className="section has-background-primary has-text-grey-dark ph5">
+    <div
+      className="section has-background-primary has-text-grey-dark ph5"
+      id="impressium"
+    >
       <div className="level">
         <div className="level-left">
           <div>

@@ -7,13 +7,13 @@ const SectionPeran = peran => {
   const { content } = peran;
 
   const [ref, inView] = useInView({
-    rootMargin: "-300px"
+    threshold: 0.3
   });
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
     <section className="section is-medium ">
-      <animated.div ref={ref} style={props}>
-        <div className="columns is-multiline is-vcentered">
+      <animated.div style={props}>
+        <div className="columns is-multiline is-vcentered" ref={ref}>
           <div className="column is-5 is-offset-1 is-hidden-touch">
             <img src={templateImage} alt={content.judul} />
           </div>

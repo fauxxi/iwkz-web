@@ -10,6 +10,7 @@ const Hero = () => {
         background:
           "linear-gradient( 109.6deg,  rgba(148,233,194,1) 11.2%, rgba(224,235,186,1) 91.1% )"
       }}
+      id="hero"
     >
       <div className="hero-head">
         <div className="bt bw1 b--light-red"></div>
@@ -19,7 +20,7 @@ const Hero = () => {
       <div className="hero-body">
         <div className="container">
           <div className="columns is-vcentered">
-            <div className="column is-medium is-offset-1 is-5">
+            <div className="column is-medium is-offset-1 is-5 is-hidden-touch">
               <p className="has-text-weight-semibold is-size-3">IWKZ</p>
               <p className="has-text-weight-medium is-size-5">
                 Indonesisches Weisheits- und Kulturzentrum e.V.

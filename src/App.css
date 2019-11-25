@@ -1,5 +1,6 @@
 .navbar-item {
   color: black;
+  cursor: pointer;
 }
 .background {
   background: url("./img/winterCamp.JPG");

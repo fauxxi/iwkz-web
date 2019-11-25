@@ -13,12 +13,11 @@ const Hero = () => {
       id="hero"
     >
       <div className="hero-head">
-        <div className="bt bw1 b--light-red"></div>
         <Navbar />
       </div>
 
       <div className="hero-body">
-        <div className="container">
+        <div className="container" id="jadwalSholat">
           <div className="columns is-vcentered">
             <div className="column is-medium is-offset-1 is-5 is-hidden-touch">
               <p className="has-text-weight-semibold is-size-3">IWKZ</p>

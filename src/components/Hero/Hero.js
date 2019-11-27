@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar/Navbar";
+
 import JadwalSholat from "./JadwalSholat/JadwalSholat";
 
 const Hero = () => {
@@ -12,12 +12,10 @@ const Hero = () => {
       }}
       id="hero"
     >
-      <div className="hero-head">
-        <Navbar />
-      </div>
+      <div className="hero-head"></div>
 
       <div className="hero-body">
-        <div className="container" id="jadwalSholat">
+        <div className="container" id="jadwal-sholat">
           <div className="columns is-vcentered">
             <div className="column is-medium is-offset-1 is-5 is-hidden-touch">
               <p className="has-text-weight-semibold is-size-3">IWKZ</p>

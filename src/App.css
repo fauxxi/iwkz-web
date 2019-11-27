@@ -13,3 +13,7 @@
 .list-image {
   list-style-image: url("./img/verified.png");
 }
+.navbar.is-transparent {
+  background-color: transparent;
+  background-image: none;
+}

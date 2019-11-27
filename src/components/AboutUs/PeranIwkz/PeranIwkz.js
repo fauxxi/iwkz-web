@@ -51,7 +51,7 @@ const PeranIwkz = () => {
   };
 
   return (
-    <div className="has-background-light section" id="peranIwkz">
+    <div className="has-background-light section" id="peran-iwkz">
       {listPeran()}
     </div>
   );

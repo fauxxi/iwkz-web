@@ -1,11 +1,11 @@
 import React from "react";
 import ladiLogo from "../../img/ladi_logo.png";
 
-const Impressium = () => {
+const Impressum = () => {
   return (
-    <div
+    <section
       className="section has-background-primary has-text-grey-dark ph5"
-      id="impressium"
+      id="impressum"
     >
       <div className="level">
         <div className="level-left">
@@ -36,8 +36,8 @@ const Impressium = () => {
           <img src={ladiLogo} alt="ladi logo" width="200" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Impressium;
+export default Impressum;

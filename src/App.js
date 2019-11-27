@@ -11,16 +11,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams,
-  withRouter,
+  withRouter
 } from "react-router-dom";
 
 function App() {
   const [currentSection, setCurrentSection] = useState("hero");
 
   useEffect(() => {
-    console.log("useeffect", currentSection);
-    smoothScroll(currentSection);
+    window.scrollTo(0, 0);
+    console.log("to top", window.scrollY);
   });
 
   // const onClicked = value => {
@@ -28,14 +27,20 @@ function App() {
   // };
 
   const smoothScroll = value => {
-    console.log("smooth", value);
     let elmnt = document.getElementById(value);
+
     if (elmnt) {
-      elmnt.scrollIntoView({ behavior: "smooth" });
+      if (window.scrollY) {
+        window.scroll(0, 0); // reset the scroll position to the top left of the document.
+      }
+      console.log("before", window.scrollY);
+      elmnt.scrollIntoView({ behavior: "auto" });
+      console.log("element top position", elmnt.offsetTop);
+      console.log("after", window.scrollY);
     }
   };
 
-  const TestAboutUs = (props) => {
+  const TestAboutUs = props => {
     //TODO: get current path buat dapetin ID, terus scroll pake given ID
     //yang jadi masalah:
     //1. component TestAboutUs ke render 2x (cek di console di browser)
@@ -43,12 +48,18 @@ function App() {
     //3. route /about-us doang gak jalan, bisanya kalo pake parameter e.g about-us/sejarah
     //4. bisa click on scroll, tapi kadang aneh/gak pas sama posisi nya
     const { hash } = props.location;
-    const id = hash.replace("#", '');
-    setCurrentSection(id);
-    console.log("TestAboutUs", id);
+    const id = hash.replace("#", "");
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+      // console.log("to top", window.scrollY);
+    });
+
+    useEffect(() => {
+      smoothScroll(id);
+    }, [id]);
     return (
       <div>
-        <p>{id}</p>
         <AboutUs />
       </div>
     );
@@ -60,8 +71,9 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/about-us">
-            
-            {withRouter(props => <TestAboutUs {...props} />)}
+            {withRouter(props => (
+              <TestAboutUs {...props} />
+            ))}
           </Route>
           <Route path="/jadwal-sholat">
             <Download />

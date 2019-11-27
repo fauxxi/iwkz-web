@@ -11,7 +11,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams
+  useParams,
+  withRouter,
 } from "react-router-dom";
 
 function App() {
@@ -34,14 +35,15 @@ function App() {
     }
   };
 
-  const TestAboutUs = () => {
+  const TestAboutUs = (props) => {
     //TODO: get current path buat dapetin ID, terus scroll pake given ID
     //yang jadi masalah:
     //1. component TestAboutUs ke render 2x (cek di console di browser)
     //2. page ke refresh padahal cuma mau scroll
     //3. route /about-us doang gak jalan, bisanya kalo pake parameter e.g about-us/sejarah
     //4. bisa click on scroll, tapi kadang aneh/gak pas sama posisi nya
-    let { id } = useParams();
+    const { hash } = props.location;
+    const id = hash.replace("#", '');
     setCurrentSection(id);
     console.log("TestAboutUs", id);
     return (
@@ -57,8 +59,9 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/about-us/:id">
-            <TestAboutUs />
+          <Route path="/about-us">
+            
+            {withRouter(props => <TestAboutUs {...props} />)}
           </Route>
           <Route path="/jadwal-sholat">
             <Download />

@@ -75,14 +75,14 @@ const Navbar = () => {
               About Us
             </Link>
             <div className="navbar-dropdown is-boxed is-right">
-              <Link className="navbar-item" to="/about-us/peran-iwkz">
+              <Link className="navbar-item" to="/about-us#peran-iwkz">
                 Peran IWKZ
               </Link>
-              <Link className="navbar-item" to="/about-us/sejarah">
+              <Link className="navbar-item" to="/about-us#sejarah">
                 Sejarah IWKZ
               </Link>
 
-              <Link className="navbar-item" to="/about-us/impressum">
+              <Link className="navbar-item" to="/about-us#impressum">
                 impressum
               </Link>
             </div>

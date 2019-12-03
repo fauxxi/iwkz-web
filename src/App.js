@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 // import './App.scss';
-import Hero from "./components/Hero/Hero";
+import Home from "./components/Home/Home";
 import "tachyons";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Download from "./components/Download/Download";
@@ -15,8 +15,6 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [currentSection, setCurrentSection] = useState("hero");
-
   useEffect(() => {
     window.scrollTo(0, 0);
     console.log("to top", window.scrollY);
@@ -79,7 +77,7 @@ function App() {
             <Download />
           </Route>
           <Route path="/">
-            <Hero />
+            <Home />
           </Route>
         </Switch>
       </Router>

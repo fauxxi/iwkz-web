@@ -3,15 +3,12 @@
   cursor: pointer;
 }
 .background {
-  background: url("./img/winterCamp.JPG");
+  background: url("./img/heroImage.JPG");
   background-size: cover;
-  filter: grayscale(100%);
-  background-position: left bottom;
+  /* filter: grayscale(50%); */
+  background-position: center;
   height: 25rem;
   color: aliceblue;
-}
-.list-image {
-  list-style-image: url("./img/verified.png");
 }
 .navbar.is-transparent {
   background-color: transparent;

@@ -5,19 +5,15 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [burgerActive, setBurgerActive] = useState(false);
-  const [visibleNavbar, setVisibleNavbar] = useState(false);
-  const [heroNavbar, setHeroNavbar] = useState(true);
+
   const activeBurgerClass = classNames("navbar-burger burger", {
     "is-active": burgerActive
   });
   const activeDropdownClass = classNames("navbar-menu", {
     "is-active": burgerActive
   });
-  const navbarColorClass = classNames(
-    "navbar is-fixed-top bt bw1 b--light-red",
-    { "is-transparent": heroNavbar },
-    { "has-background-white": visibleNavbar },
-    { "shadow-5": visibleNavbar }
+  const navbarClass = classNames(
+    "navbar is-fixed-top bt bw1 b--light-red has-background-white shadow-5"
   );
   const onBurgerClick = () => {
     if (burgerActive) {
@@ -31,25 +27,8 @@ const Navbar = () => {
   //   // currentPage(value);
   // };
 
-  window.addEventListener("scroll", function() {
-    let scrollpos = window.scrollY;
-    let areaJadwalSholat = document.getElementById("jadwal-sholat");
-    if (areaJadwalSholat) {
-      if (
-        scrollpos + 100 >
-        document.getElementById("jadwal-sholat").offsetTop
-      ) {
-        setVisibleNavbar(true);
-        setHeroNavbar(false);
-      } else {
-        setVisibleNavbar(false);
-        setHeroNavbar(true);
-      }
-    }
-  });
-
   return (
-    <nav className={navbarColorClass} style={{ transitionDuration: "0.4s" }}>
+    <nav className={navbarClass} style={{ transitionDuration: "0.4s" }}>
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
           <img src={logo} alt="iwkz logo" width="112" height="112" />

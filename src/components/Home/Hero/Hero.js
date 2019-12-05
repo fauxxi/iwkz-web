@@ -27,8 +27,8 @@ const Hero = () => {
           <animated.div ref={ref} style={props}>
             <div className="columns is-vcentered">
               <div className="column is-medium is-offset-1 is-5 is-hidden-touch has-text-white">
+                <p className="has-text-weight-semibold is-size-3">IWKZ</p>
                 <div className="content">
-                  <p className="has-text-weight-semibold is-size-3">IWKZ</p>
                   <p className="has-text-weight-medium is-size-5">
                     Indonesisches Weisheits- und Kulturzentrum e.V.
                   </p>

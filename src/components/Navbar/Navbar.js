@@ -6,17 +6,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [burgerActive, setBurgerActive] = useState(false);
 
-  const [itemActive, setItemActive] = useState(false);
-
   const activeBurgerClass = classNames("navbar-burger burger", {
     "is-active": burgerActive
   });
   const activeDropdownClass = classNames("navbar-menu", {
     "is-active": burgerActive
   });
-  const activeNavbarItem = classNames("navbar-item", {
-    "is-active": itemActive
-  });
+
   const navbarClass = classNames(
     "navbar is-fixed-top bt bw1 b--light-red has-background-white shadow-5"
   );
@@ -26,12 +22,6 @@ const Navbar = () => {
     } else {
       setBurgerActive(true);
     }
-  };
-  const onClickNav = () => {
-    // e.preventDefault();
-    console.log("clicked");
-
-    setItemActive(false);
   };
 
   return (
@@ -56,11 +46,7 @@ const Navbar = () => {
           <Link className="navbar-item" to="/">
             Home
           </Link>
-          <Link
-            className={activeNavbarItem}
-            to="/#tentang-masjid"
-            onClick={onClickNav}
-          >
+          <Link className="navbar-item" to="/#tentang-masjid">
             Tentang Masjid
           </Link>
           <Link className="navbar-item" to="/#peran-iwkz">

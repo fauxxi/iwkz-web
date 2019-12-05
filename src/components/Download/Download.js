@@ -3,7 +3,7 @@ import Iframe from "react-iframe";
 
 const Download = () => {
   return (
-    <section className="section">
+    <section className="section is-medium">
       <article className="media">
         <div className="media-content">
           <div classname="content">

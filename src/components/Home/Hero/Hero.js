@@ -27,23 +27,38 @@ const Hero = () => {
           <animated.div ref={ref} style={props}>
             <div className="columns is-vcentered">
               <div className="column is-medium is-offset-1 is-5 is-hidden-touch has-text-white">
-                <p className="has-text-weight-semibold is-size-3">IWKZ</p>
-                <p className="has-text-weight-medium is-size-5">
-                  Indonesisches Weisheits- und Kulturzentrum e.V.
-                </p>
-                <p className="is-size-5">
-                  penjelasan singkat tentang proyek PRS terus kasih button
-                  donasi
-                </p>
-                <button
-                  className="button has-text-light "
-                  style={{
-                    background: "linear-gradient(to right, #11998e, #38ef7d)",
-                    border: "none"
-                  }}
-                >
-                  Read More
-                </button>
+                <div className="content">
+                  <p className="has-text-weight-semibold is-size-3">IWKZ</p>
+                  <p className="has-text-weight-medium is-size-5">
+                    Indonesisches Weisheits- und Kulturzentrum e.V.
+                  </p>
+                  <p className="">
+                    Saat ini kami berencana untuk membeli gedung sendiri, klik
+                    tombol dibawah untuk info lebih lanjut atau berdonasi
+                  </p>
+                  <div className="buttons">
+                    <button
+                      className="button has-text-light is-rounded"
+                      style={{
+                        background:
+                          "linear-gradient(to right, #11998e, #38ef7d)",
+                        border: "none"
+                      }}
+                    >
+                      Info
+                    </button>
+                    <button
+                      className="button has-text-light is-rounded"
+                      style={{
+                        background:
+                          "linear-gradient(to right, #89216B,#DA4453 )",
+                        border: "none"
+                      }}
+                    >
+                      Donasi
+                    </button>
+                  </div>
+                </div>
               </div>
               <div className="column is-offset-1 is-4">
                 <JadwalSholat />

@@ -1,8 +1,14 @@
 import React from "react";
 
+import { useInView } from "react-intersection-observer";
+import { useSpring, animated } from "react-spring";
 import JadwalSholat from "../Hero/JadwalSholat/JadwalSholat";
 
 const Hero = () => {
+  const [ref, inView] = useInView({
+    rootMargin: "-100px"
+  });
+  const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
     <section
       className="hero is-fullheight background"
@@ -18,29 +24,32 @@ const Hero = () => {
 
       <div className="hero-body">
         <div className="container" id="jadwal-sholat">
-          <div className="columns is-vcentered">
-            <div className="column is-medium is-offset-1 is-5 is-hidden-touch has-text-white">
-              <p className="has-text-weight-semibold is-size-3">IWKZ</p>
-              <p className="has-text-weight-medium is-size-5">
-                Indonesisches Weisheits- und Kulturzentrum e.V.
-              </p>
-              <p className="is-size-5">
-                penjelasan singkat tentang proyek PRS terus kasih button donasi
-              </p>
-              <button
-                className="button has-text-light "
-                style={{
-                  background: "linear-gradient(to right, #11998e, #38ef7d)",
-                  border: "none"
-                }}
-              >
-                Read More
-              </button>
+          <animated.div ref={ref} style={props}>
+            <div className="columns is-vcentered">
+              <div className="column is-medium is-offset-1 is-5 is-hidden-touch has-text-white">
+                <p className="has-text-weight-semibold is-size-3">IWKZ</p>
+                <p className="has-text-weight-medium is-size-5">
+                  Indonesisches Weisheits- und Kulturzentrum e.V.
+                </p>
+                <p className="is-size-5">
+                  penjelasan singkat tentang proyek PRS terus kasih button
+                  donasi
+                </p>
+                <button
+                  className="button has-text-light "
+                  style={{
+                    background: "linear-gradient(to right, #11998e, #38ef7d)",
+                    border: "none"
+                  }}
+                >
+                  Read More
+                </button>
+              </div>
+              <div className="column is-offset-1 is-4">
+                <JadwalSholat />
+              </div>
             </div>
-            <div className="column is-offset-1 is-4">
-              <JadwalSholat />
-            </div>
-          </div>
+          </animated.div>
         </div>
       </div>
 

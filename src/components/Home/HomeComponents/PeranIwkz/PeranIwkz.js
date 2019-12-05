@@ -7,31 +7,62 @@ const PeranIwkz = () => {
       judul: "Bagian dari komunitas Indonesia",
       content:
         "mitra Perwakilan RI di Jerman dalam hal pelayanan sosial & keagamaan",
-      kegiatan: ["Shalat Jumat", "Pengajian Bulanan"]
+      kegiatan: [
+        "Shalat Jumat",
+        "Pengajian Bulanan",
+        "Pengajian Al-Hisab",
+        "Pengajian Ummul Falah",
+        "Mentoring Pemuda & Pemudi",
+        "Taman Pendidikan Al-Quran",
+        "Rihlah TPA Ceria Al-Falah",
+        "Ramadhan dan perayaan Hari Besar Islam Lainnya"
+      ]
     },
     {
       judul: "Bagian dari komunitas Jerman",
       content:
         "mitra Pemerintah Jerman sebagai wakil masyarakat Islam di Berlin",
-      kegiatan: ["Bürgerplatform"]
+      kegiatan: [
+        "Lange Nacht der Religionen",
+        "Berpartisipasi dalam Bürgerplatform"
+      ]
     },
     {
       judul: "Organisasi budaya",
       content:
         "bagian dari penyelenggara kegiatan kebudayaan dan olah-raga antara Indonesia-Jerman",
-      kegiatan: ["Tim Saman IWKZ", "Lange Nacht der Religionen"]
+      kegiatan: [
+        "Tag der offenen Moschee",
+        "Salam Kyai",
+        "Tim Saman IWKZ",
+        "Berliner Nasyid"
+      ]
     },
     {
       judul: "Organisasi sosial",
       content:
         "menyelenggarakan kegiatan sosial berbasis kekeluargaan bertujuan untuk mempererat tali silaturahim",
-      kegiatan: ["Sate Somay", "Wintercamp"]
+      kegiatan: [
+        "Muslimah Day",
+        `Dilatasi (Pendidikan dan
+        Pelatihan Organisasi)`,
+        "Sate Somay",
+        "Wintercamp",
+        "IWKZ Cup",
+        "Kantin Al-Falah",
+        "Malam Keluarga Al-Falah"
+      ]
     },
     {
       judul: "Pelayan masyarakat di bidang pendidikan",
       content:
         "mendorong keberhasilan studi mahasiswa Indonesia di Jerman, terutama di Berlin",
-      kegiatan: ["IWKZ Tutorium", "IWKZ Wissenschaft"]
+      kegiatan: [
+        "IWKZ Tutorium",
+        "IWKZ Wissenschaft",
+        "Guter Start in Deutschland",
+        "The Language Club"
+      ]
     }
   ];
 

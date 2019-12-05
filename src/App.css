@@ -14,3 +14,6 @@
   background-color: transparent;
   background-image: none;
 }
+li {
+  list-style-image: url("./img/like.svg");
+}

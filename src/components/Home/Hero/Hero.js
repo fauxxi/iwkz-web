@@ -24,7 +24,9 @@ const Hero = () => {
               <p className="has-text-weight-medium is-size-5">
                 Indonesisches Weisheits- und Kulturzentrum e.V.
               </p>
-
+              <p className="is-size-5">
+                penjelasan singkat tentang proyek PRS terus kasih button donasi
+              </p>
               <button
                 className="button has-text-light "
                 style={{

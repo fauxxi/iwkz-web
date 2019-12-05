@@ -9,12 +9,12 @@ const AboutMasjid = () => {
   });
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
-    <section className="section is-medium">
+    <section className="section is-medium" id="tentang-masjid">
       <animated.div ref={ref} style={props}>
         <div className="container">
           <div className="columns">
             <div className="column is-6 is-offset-2 pb3">
-              <p className="is-size-4 has-text-weight-medium pv1 ">
+              <p className="is-size-4 has-text-weight-medium pv1">
                 Masjid Al-Falah
               </p>
               <p className="pv2 has-text-justified">

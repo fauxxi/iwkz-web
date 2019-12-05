@@ -49,33 +49,18 @@ const Navbar = () => {
           <Link className="navbar-item" to="/">
             Home
           </Link>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link className="navbar-item" to="/about-us">
-              About Us
-            </Link>
-            <div className="navbar-dropdown is-boxed is-right">
-              <Link className="navbar-item" to="/about-us#peran-iwkz">
-                Peran IWKZ
-              </Link>
-              <Link className="navbar-item" to="/about-us#sejarah">
-                Sejarah IWKZ
-              </Link>
-
-              <Link className="navbar-item" to="/about-us#impressum">
-                impressum
-              </Link>
-            </div>
-          </div>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link className="navbar-item" to="/">
-              Download
-            </Link>
-            <div className="navbar-dropdown is-boxed is-right">
-              <Link className="navbar-item" to="/jadwal-sholat">
-                Jadwal Sholat
-              </Link>
-            </div>
-          </div>
+          <Link className="navbar-item" to="/#tentang-masjid">
+            Tentang Masjid
+          </Link>
+          <Link className="navbar-item" to="/#peran-iwkz">
+            Peran IWKZ
+          </Link>
+          <Link className="navbar-item" to="/about-us#sejarah">
+            Sejarah IWKZ
+          </Link>
+          <Link className="navbar-item" to="/jadwal-sholat">
+            Jadwal Sholat
+          </Link>
         </div>
       </div>
     </nav>

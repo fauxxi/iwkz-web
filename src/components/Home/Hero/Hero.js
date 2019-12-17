@@ -11,7 +11,7 @@ const Hero = () => {
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
     <section
-      className="hero is-fullheight background"
+      className="hero is-fullheight parallax"
       style={
         {
           // background:
@@ -44,6 +44,7 @@ const Hero = () => {
                           "linear-gradient(to right, #11998e, #38ef7d)",
                         border: "none"
                       }}
+                      onClick={() => window.open("http://prs.iwkz.de/")}
                     >
                       Info
                     </button>
@@ -54,6 +55,7 @@ const Hero = () => {
                           "linear-gradient(to right, #89216B,#DA4453 )",
                         border: "none"
                       }}
+                      onClick={() => window.open("http://prs.iwkz.de/")}
                     >
                       Donasi
                     </button>

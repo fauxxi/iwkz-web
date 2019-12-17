@@ -4,8 +4,9 @@ import ladiLogo from "../../img/ladi_logo.png";
 const Impressum = () => {
   return (
     <section
-      className="section has-background-primary has-text-grey-dark ph5"
+      className="section has-text-grey-dark ph5"
       id="impressum"
+      style={{ backgroundColor: "#b6e5b0" }}
     >
       <div className="level">
         <div className="level-left">

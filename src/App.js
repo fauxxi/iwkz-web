@@ -3,7 +3,7 @@ import "./App.css";
 // import './App.scss';
 import Home from "./components/Home/Home";
 import "tachyons";
-import AboutUs from "./components/AboutUs/AboutUs";
+
 import Download from "./components/Download/Download";
 import Navbar from "./components/Navbar/Navbar";
 import Impressum from "./components/Impressum/Impressum";
@@ -23,22 +23,6 @@ function App() {
     }
   };
 
-  const TestAboutUs = props => {
-    const { hash } = props.location;
-    const id = hash.replace("#", "");
-
-    useEffect(() => {
-      if (id) {
-        smoothScroll(id);
-      } else {
-      }
-    });
-    return (
-      <div>
-        <AboutUs />
-      </div>
-    );
-  };
   const TestHome = props => {
     const { hash } = props.location;
     const id = hash.replace("#", "");
@@ -62,11 +46,6 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/about-us">
-            {withRouter(props => (
-              <TestAboutUs {...props} />
-            ))}
-          </Route>
           <Route path="/jadwal-sholat">
             <Download />
           </Route>

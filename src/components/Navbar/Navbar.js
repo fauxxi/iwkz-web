@@ -52,7 +52,8 @@ const Navbar = () => {
           <Link className="navbar-item" to="/#peran-iwkz">
             Peran IWKZ
           </Link>
-          <Link className="navbar-item" to="/about-us#sejarah">
+          {/* <Link className="navbar-item" to="/about-us#sejarah">*/}
+          <Link className="navbar-item" to="/#sejarah">
             Sejarah IWKZ
           </Link>
           <Link className="navbar-item" to="/jadwal-sholat">

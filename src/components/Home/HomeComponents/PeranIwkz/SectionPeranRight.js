@@ -1,9 +1,8 @@
 import React from "react";
-import templateImage from "../../../../img/winterCamp.JPG";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 
-const SectionPeranRight = ({ content, judul, kegiatan }) => {
+const SectionPeranRight = ({ content, judul, kegiatan, image }) => {
   const [ref, inView] = useInView({
     threshold: 0.3
   });
@@ -24,7 +23,7 @@ const SectionPeranRight = ({ content, judul, kegiatan }) => {
             </div>
           </div>
           <div className="column is-5  is-hidden-touch">
-            <img src={templateImage} alt={judul} />
+            <img src={require(`${image}`)} alt={judul} />
           </div>
         </div>
       </animated.div>

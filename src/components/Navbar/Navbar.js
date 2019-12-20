@@ -57,7 +57,7 @@ const Navbar = () => {
             Sejarah IWKZ
           </Link>
           <Link className="navbar-item" to="/jadwal-sholat">
-            Jadwal Sholat
+            Download Jadwal Sholat
           </Link>
         </div>
       </div>

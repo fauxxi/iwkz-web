@@ -7,9 +7,6 @@
   background-color: transparent;
   background-image: none;
 }
-li {
-  list-style-image: url("./img/like.svg");
-}
 
 .parallax {
   /* The image used */

@@ -1,0 +1,26 @@
+.accordion {
+  color: #444;
+  cursor: pointer;
+  padding: 14px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+
+  &:hover {
+    color: rgb(166, 219, 136);
+  }
+}
+
+.active {
+  color: rgb(166, 219, 136);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.penjelasan {
+  padding: 0 0 0 32px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}

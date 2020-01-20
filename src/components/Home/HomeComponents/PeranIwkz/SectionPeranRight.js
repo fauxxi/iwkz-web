@@ -2,7 +2,13 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 
-const SectionPeranRight = ({ content, judul, kegiatan, image }) => {
+const SectionPeranRight = ({
+  content,
+  judul,
+  kegiatan,
+  image,
+  handleAccordion
+}) => {
   const [ref, inView] = useInView({
     threshold: 0.3
   });
@@ -15,11 +21,19 @@ const SectionPeranRight = ({ content, judul, kegiatan, image }) => {
             <div className="content">
               <p className="is-size-4">{judul}</p>
               <p>{content}</p>
-              <ul>
-                {kegiatan.map((acara, i) => (
-                  <li key={i}>{acara}</li>
-                ))}
-              </ul>
+              {kegiatan.map(({ acara, penjelasan }, i) => (
+                <div key={i}>
+                  <button
+                    className="accordion has-background-light"
+                    onClick={e => handleAccordion(e)}
+                  >
+                    &#8226; {acara}
+                  </button>
+                  <div className="penjelasan">
+                    <p>{penjelasan}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           <div className="column is-5  is-hidden-touch">

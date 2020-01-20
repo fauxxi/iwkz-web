@@ -1,6 +1,7 @@
 import React from "react";
 import SectionPeran from "./SectionPeran";
 import SectionPeranRight from "./SectionPeranRight";
+import "./peranIwkz.scss";
 
 const PeranIwkz = () => {
   let peranIwkz = [
@@ -10,15 +11,49 @@ const PeranIwkz = () => {
         "mitra Perwakilan RI di Jerman dalam hal pelayanan sosial & keagamaan",
       image: "./mualaf.jpg",
       kegiatan: [
-        "Shalat Jumat",
-        "Pengajian Bulanan",
-        "Pengajian Al-Hisab",
-        "Pengajian Ummul Falah",
-        "Mentoring Pemuda & Pemudi",
-        "Taman Pendidikan Al-Quran",
-        "Rihlah TPA Ceria Al-Falah",
-        "Ramadhan dan Perayaan Hari Besar Islam Lainnya",
-        "Pelayanan masyarakat: membimbing mualaf, membantu pernikahan, mengurusi jenazah"
+        {
+          acara: "Shalat Jumat",
+          penjelasan:
+            "Pelayanan persiapan Shalat Jumat bersama di Masjid dengan Khutbah berbahasa Indonesia"
+        },
+        {
+          acara: "Pengajian Bulanan",
+          penjelasan:
+            "Pengajian bulanan adalah sarana silaturahim masyarakat muslim Indonesia di Berlin dengan melalui acara halal-bihalal dan taklim."
+        },
+        {
+          acara: "Pengajian Al-Hisab",
+          penjelasan:
+            "Pengajian rutin mingguan untuk bapak-bapak mukimin di Berlin."
+        },
+        {
+          acara: "Pengajian Ummul Falah",
+          penjelasan:
+            "Pengajian rutin mingguan untuk ibu-ibu mukimin di Berlin."
+        },
+        {
+          acara: "Mentoring Pemuda & Pemudi",
+          penjelasan: "Pengajian rutin mingguan untuk mahasiswa dan remaja."
+        },
+        {
+          acara: "Taman Pendidikan Al-Quran",
+          penjelasan:
+            "Sekolah pendidikan islam dan membaca Al-Quran untuk anak anak. Selain kegiatan belajar, anak anak juga diajak untuk ber rekreasi dan mendatangi taman bermain melalui"
+        },
+        {
+          acara: "Rihlah TPA Ceria Al-Falah",
+          penjelasan: " kosong "
+        },
+        {
+          acara: "Ramadhan dan Perayaan Hari Besar Islam Lainnya",
+          penjelasan:
+            "Setiap tahunnya Masjid Al-Falah IWKZ e.V. berkerjasama dengan KBRI Berlin membuat serangkaian kegiatan Ramadhan, seperti tarawih bersama, kajian keislaman serta sahur dan buka puasa bersama. Dalam kegiatan ini secara khusus mengundang ustad dari tanah air untuk menemani jamaah selama satu bulan penuh serta menyeleng-garakan perayaan hari raya Idul Fitri di KBRI Berlin. Selain itu Masjid Al-Falah IWKZ e.V. juga memfasilitasi jamaah yang ingin berkurban pada Hari Raya Idul Adha."
+        },
+        {
+          acara:
+            "Pelayanan masyarakat: membimbing mualaf, membantu pernikahan, mengurusi jenazah",
+          penjelasan: " kosong"
+        }
       ]
     },
     {
@@ -27,8 +62,15 @@ const PeranIwkz = () => {
         "mitra Pemerintah Jerman sebagai wakil masyarakat Islam di Berlin",
       image: "./komunitas-jerman.jpg",
       kegiatan: [
-        "Lange Nacht der Religionen",
-        "Berpartisipasi dalam Bürgerplatform"
+        {
+          acara: "Lange Nacht der Religionen",
+          penjelasan:
+            "Acara satu malam bersama masyarakat Jerman, untuk memperkenalkan islam beserta keindahannya kepada masyarakat Jerman."
+        },
+        {
+          acara: "Berpartisipasi dalam Bürgerplatform",
+          penjelasan: "kosong"
+        }
       ]
     },
     {
@@ -37,10 +79,26 @@ const PeranIwkz = () => {
         "bagian dari penyelenggara kegiatan kebudayaan dan olah-raga antara Indonesia-Jerman",
       image: "./kebudayaan.jpg",
       kegiatan: [
-        "Tag der offenen Moschee",
-        "Salam Kyai",
-        "Tim Saman IWKZ",
-        "Berliner Nasyid"
+        {
+          acara: "Tag der offenen Moschee",
+          penjelasan:
+            "Masjid Al-Falah membuka pintu kepada masyarakat Jerman pada hari tertentu yang ingin tahu lebih dalam tentang Islam dan kebudayaan Islam Indonesia."
+        },
+        {
+          acara: "Salam Kyai",
+          penjelasan:
+            "Satu Malam Kenal Budaya Indonesia. Pertunjukan bertema budaya islam Indonesia yang dipersembahkan oleh jamaah masjid Al-Falah dari anak-anak TPA hingga bapak-bapak Al-Hisab."
+        },
+        {
+          acara: "Tim Saman IWKZ",
+          penjelasan:
+            "Tari Saman asal Aceh ini sering di pro mosikan oleh kelompok tari saman IWKZ dalam berbagai kegiatan kegiatan besar di Berlin"
+        },
+        {
+          acara: "Berliner Nasyid",
+          penjelasan:
+            "Grup vocal pemuda IWKZ sering tampil mewakili Indonesia menyanyikan beberapa lagu berbahasa Indonesia di berbagai acara dengan masyarakat Jerman."
+        }
       ]
     },
     {
@@ -49,14 +107,41 @@ const PeranIwkz = () => {
         "menyelenggarakan kegiatan sosial berbasis kekeluargaan bertujuan untuk mempererat tali silaturahim",
       image: "./sosial.jpg",
       kegiatan: [
-        "Muslimah Day",
-        `Dilatasi (Pendidikan dan
-        Pelatihan Organisasi)`,
-        "Sate Somay",
-        "Wintercamp",
-        "IWKZ Cup",
-        "Kantin Al-Falah",
-        "Malam Keluarga Al-Falah"
+        {
+          acara: "Muslimah Day",
+          penjelasan:
+            "Kegiatan khusus muslimah yang berisikan fashion show muslimah, seminar dan kegiatan perekat ukhuwah. Forum diskusi untuk kepemudian secara berkala juga diadakan dengan nama Let’s girl talk!"
+        },
+        {
+          acara: `Dilatasi (Pendidikan dan Pelatihan Organisasi)`,
+          penjelasan:
+            "Latihan dasar kepemimpinan dan keorganisasian untuk pengurus masjid untuk menambah bekal soft-skill mereka"
+        },
+        {
+          acara: "Sate Somay",
+          penjelasan:
+            "Festival makanan Indonesia terbesar di Berlin yang diselenggarakan setiap tahunnya, dari jama’ah Masjid Al-Falah yang seluruh keuntungannya diperuntukkan kembali kepada Masjid Al-Falah."
+        },
+        {
+          acara: "Wintercamp",
+          penjelasan:
+            "Kegiatan khusus pemuda dan pemudi yang berisikan diskusi keislaman, team building, jelajah alam, pertunjukan teater, yang bertempat di penginapan di tepi danau Wannsee, Berlin. Khusus pada bulan Ramadhan, Masjid Al-Falah merayakannya"
+        },
+        {
+          acara: "IWKZ Cup",
+          penjelasan:
+            "Dalam hal kebugaran, IWKZ mengadakan kegiatan rutin berolahraga seperti bermain futsal dan badaminton bersama sama dan juga turnamen olahraga bersama untuk maysarakat Indonesia di Jerman."
+        },
+        {
+          acara: "Kantin Al-Falah",
+          penjelasan:
+            "Dana usaha guna menunjang kebutuhan masjid dengan menjual makan siang setelah sholat Jumat."
+        },
+        {
+          acara: "Malam Keluarga Al-Falah",
+          penjelasan:
+            "Kegiatan ramah tamah antar jamaah Masjid, muhasabah, dan pelaporan kegiatan pengurus masjid"
+        }
       ]
     },
     {
@@ -65,10 +150,26 @@ const PeranIwkz = () => {
         "mendorong keberhasilan studi mahasiswa Indonesia di Jerman, terutama di Berlin",
       image: "./pendidikan.jpg",
       kegiatan: [
-        "IWKZ Tutorium",
-        "IWKZ Wissenschaft",
-        "Guter Start in Deutschland",
-        "The Language Club"
+        {
+          acara: "IWKZ Tutorium",
+          penjelasan:
+            "Bimbingan untuk mahasiswa dan calon mahasiswa mengenai program studi serta mata kuliahnya"
+        },
+        {
+          acara: "IWKZ Wissenschaft",
+          penjelasan:
+            "Forum khusus mengenai bidang ke ilmiahan. Melalui IWKZ Wissenschaft, sering diadakan seminar-seminar ilmiah secara berkala (SciFi -Science For Indonesia-) dan forum pelatihan pembuatan karya ilmiah (HDMI -Himpunan Diaspora Muda Indonesia)."
+        },
+        {
+          acara: "Guter Start in Deutschland",
+          penjelasan:
+            "Seminar 2 Hari 1 malam mengenai persiapan studi untuk mahasiswa/i baru"
+        },
+        {
+          acara: "The Language Club",
+          penjelasan:
+            "Forum praktik berkomunikasi dengan bahasa asing (inggris & jerman)"
+        }
       ]
     }
   ];
@@ -81,17 +182,28 @@ const PeranIwkz = () => {
       if (index % 2) {
         return (
           <div key={"sectionPeran " + index}>
-            <SectionPeran {...item} />
+            <SectionPeran handleAccordion={handleAccordion} {...item} />
           </div>
         );
       } else {
         return (
           <div key={"sectionPeran " + index}>
-            <SectionPeranRight {...item} />
+            <SectionPeranRight handleAccordion={handleAccordion} {...item} />
           </div>
         );
       }
     });
+  };
+
+  const handleAccordion = e => {
+    e.target.classList.toggle("active");
+    let panel = e.target.nextElementSibling;
+
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
   };
 
   return (

@@ -41,18 +41,14 @@ const PeranIwkz = () => {
             "Sekolah pendidikan islam dan membaca Al-Quran untuk anak anak. Selain kegiatan belajar, anak anak juga diajak untuk ber rekreasi dan mendatangi taman bermain melalui"
         },
         {
-          acara: "Rihlah TPA Ceria Al-Falah",
-          penjelasan: " kosong "
-        },
-        {
           acara: "Ramadhan dan Perayaan Hari Besar Islam Lainnya",
           penjelasan:
             "Setiap tahunnya Masjid Al-Falah IWKZ e.V. berkerjasama dengan KBRI Berlin membuat serangkaian kegiatan Ramadhan, seperti tarawih bersama, kajian keislaman serta sahur dan buka puasa bersama. Dalam kegiatan ini secara khusus mengundang ustad dari tanah air untuk menemani jamaah selama satu bulan penuh serta menyeleng-garakan perayaan hari raya Idul Fitri di KBRI Berlin. Selain itu Masjid Al-Falah IWKZ e.V. juga memfasilitasi jamaah yang ingin berkurban pada Hari Raya Idul Adha."
         },
         {
-          acara:
-            "Pelayanan masyarakat: membimbing mualaf, membantu pernikahan, mengurusi jenazah",
-          penjelasan: " kosong"
+          acara: "Pelayanan masyarakat",
+          penjelasan:
+            "membimbing mualaf, membantu mempersiapkan akad pernikahan dan mengurusi jenazah jika ada kerabat yang meninggal"
         }
       ]
     },
@@ -69,7 +65,8 @@ const PeranIwkz = () => {
         },
         {
           acara: "Berpartisipasi dalam Bürgerplatform",
-          penjelasan: "kosong"
+          penjelasan:
+            "Bürgerplatform adalah forum masyarakat yang diikuti oleh beragam komunitas di Berlin dengan tujuan untuk menyampaikan aspirasi untuk kota dan lingkungan yang lebih baik"
         }
       ]
     },

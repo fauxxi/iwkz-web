@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./jadwalSholat.styles.scss";
 
 const JadwalSholat = () => {
   const [prayerTimes, setPrayerTimes] = useState("");
@@ -27,11 +28,8 @@ const JadwalSholat = () => {
     for (let item in prayerTimes) {
       if (item !== "date") {
         list.push(
-          <div className="column is-offset-1 is-10" key={"jadwal" + index}>
-            <div
-              className="level is-mobile br2 pa3 has-text-dark has-text-weight-medium"
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)" }}
-            >
+          <div className=" column is-offset-1 is-10" key={"jadwal" + index}>
+            <div className="jadwal-sholat level is-mobile br2 pa3 has-text-dark has-text-weight-medium">
               <div className="level-left">{item}</div>
               <div className="level-right">{prayerTimes[item]}</div>
             </div>
@@ -42,6 +40,7 @@ const JadwalSholat = () => {
     }
     return list;
   };
+
   return (
     <div className="container has-text-white">
       <p className="has-text-centered is-size-5 pb3">{getDate()}</p>

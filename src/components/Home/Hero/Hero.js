@@ -2,7 +2,8 @@ import React from "react";
 
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
-import JadwalSholat from "../Hero/JadwalSholat/JadwalSholat";
+import JadwalSholat from "./HeroComponents/JadwalSholat/JadwalSholat";
+import CustomButton from "./HeroComponents/CustomButton/CustomButton";
 
 const Hero = () => {
   const [ref, inView] = useInView({
@@ -37,28 +38,9 @@ const Hero = () => {
                     tombol dibawah untuk info lebih lanjut atau berdonasi
                   </p>
                   <div className="buttons">
-                    <button
-                      className="button has-text-light is-rounded"
-                      style={{
-                        background:
-                          "linear-gradient(to right, #11998e, #38ef7d)",
-                        border: "none"
-                      }}
-                      onClick={() => window.open("http://prs.iwkz.de/")}
-                    >
-                      Info
-                    </button>
-                    <button
-                      className="button has-text-light is-rounded"
-                      style={{
-                        background:
-                          "linear-gradient(to right, #89216B,#DA4453 )",
-                        border: "none"
-                      }}
-                      onClick={() => window.open("http://prs.iwkz.de/")}
-                    >
-                      Donasi
-                    </button>
+                    <CustomButton prs text="info" />
+
+                    <CustomButton donasi text="donasi" />
                   </div>
                 </div>
               </div>

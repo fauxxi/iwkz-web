@@ -26,3 +26,18 @@
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+
+.image-wrapper {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.inner-image {
+  vertical-align: middle;
+  transition: 1s;
+  width: 100%;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

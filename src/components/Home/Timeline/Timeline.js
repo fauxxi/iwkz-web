@@ -9,11 +9,15 @@ import iwkzLogo from "../../../img/iwkz-navbar.svg";
 const Timeline = () => {
   const Icon = image => <img src={image.image} alt="icon timeline" />;
   return (
-    <section className="section has-background-white-ter" id="sejarah">
+    <section
+      className="section"
+      id="sejarah"
+      style={{ backgroundColor: "#F2FFEF" }}
+    >
       <VerticalTimeline>
         <VerticalTimelineElement
           contentStyle={{ background: "#d3ebbb" }}
-          contentArrowStyle={{ borderRight: "7px solid  #d3ebbb" }}
+          contentArrowStyle={{ borderRight: "7px solid  #D0FFC4" }}
           date="1984"
           iconStyle={{ background: "#d3ebbb" }}
         >

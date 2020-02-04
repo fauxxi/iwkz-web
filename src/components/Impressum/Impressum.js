@@ -6,7 +6,7 @@ const Impressum = () => {
     <section
       className="section has-text-grey-dark ph5"
       id="impressum"
-      style={{ backgroundColor: "#b6e5b0" }}
+      style={{ backgroundColor: "#E8FFE2" }}
     >
       <div className="level">
         <div className="level-left">

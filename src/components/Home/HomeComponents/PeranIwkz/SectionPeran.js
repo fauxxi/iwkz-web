@@ -8,13 +8,17 @@ const SectionPeran = ({ content, judul, kegiatan, image, handleAccordion }) => {
   });
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
-    <section className="section is-medium ">
+    <section className="section">
       <animated.div style={props}>
         <div className="columns is-multiline is-vcentered" ref={ref}>
-          <div className="column is-5 is-offset-1 is-hidden-touch">
-            <img src={require(`${image}`)} alt={judul} />
+          <div className="column is-4 is-offset-2 is-hidden-touch">
+            <img
+              src={require(`${image}`)}
+              alt={judul}
+              style={{ borderRadius: "30px" }}
+            />
           </div>
-          <div className="column is-5">
+          <div className="column is-4 ">
             <div className="content">
               <p className="is-size-4">{judul}</p>
               <p>{content}</p>
@@ -27,7 +31,7 @@ const SectionPeran = ({ content, judul, kegiatan, image, handleAccordion }) => {
               {kegiatan.map(({ acara, penjelasan }, i) => (
                 <div key={i}>
                   <button
-                    className="accordion has-background-light"
+                    className="accordion"
                     onClick={e => handleAccordion(e)}
                   >
                     &#8226; {acara}

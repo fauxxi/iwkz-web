@@ -5,11 +5,19 @@ import alFalah from "../../../img/alfalah-black-300x300.png";
 
 const AboutMasjid = () => {
   const [ref, inView] = useInView({
-    rootMargin: "-100px"
+    threshold: 0.5
   });
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
-    <section className="section is-medium" id="tentang-masjid">
+    <section
+      className="section"
+      id="tentang-masjid"
+      style={{
+        backgroundColor: "#F2FFEF",
+        paddingBottom: "10px",
+        paddingTop: "120px"
+      }}
+    >
       <animated.div ref={ref} style={props}>
         <div className="container">
           <div className="columns">

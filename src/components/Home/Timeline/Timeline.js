@@ -8,6 +8,7 @@ import iwkzLogo from "../../../img/iwkz-navbar.svg";
 
 const Timeline = () => {
   const Icon = image => <img src={image.image} alt="icon timeline" />;
+  const font = "12px";
   return (
     <section
       className="section is-medium"
@@ -21,7 +22,7 @@ const Timeline = () => {
           date="1984"
           iconStyle={{ background: "#d3ebbb" }}
         >
-          <p className="text-small">
+          <p style={{ fontSize: font }}>
             Masjid Al-Falah dirintis oleh para mahasiswa Indonesia
           </p>
         </VerticalTimelineElement>
@@ -31,7 +32,7 @@ const Timeline = () => {
           contentArrowStyle={{ borderRight: "7px solid #b6e5b0" }}
           iconStyle={{ background: "#b6e5b0" }}
         >
-          <p className="text-small">
+          <p style={{ fontSize: font }}>
             Menempati tempat di Melanchthon Str. 23, 10557 Berlin
           </p>
         </VerticalTimelineElement>
@@ -42,11 +43,11 @@ const Timeline = () => {
           contentArrowStyle={{ borderRight: "7px solid #93dfab" }}
           iconStyle={{ background: "#93dfab" }}
         >
-          <p className="text-small">
+          <p style={{ fontSize: font }}>
             Terdaftar sebagai organisasi resmi bernama Indonesisches Weisheits-
             und Kulturzentrum (IWKZ) e.V.
           </p>
-          <p className="text-small">
+          <p style={{ fontSize: font }}>
             Menempati tempat di Feldzeugmeister Str. 1, 10557 Berlin, dan
             melebarkan bangunannya di Perleberger Str. 61, 10559 Berlin
           </p>
@@ -58,7 +59,7 @@ const Timeline = () => {
           contentArrowStyle={{ borderRight: "7px solid #67d8ac" }}
           iconStyle={{ background: "#67d8ac" }}
         >
-          <p className="text-small">
+          <p style={{ fontSize: font }}>
             Masjid Al-Falah menjadi pusat peradaban muslim Indonesia di kota
             Berlin dengan kegiatan Keagamaan, Pendidikan & Kebudayaan.
           </p>

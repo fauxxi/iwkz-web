@@ -13,7 +13,7 @@ const Impressum = () => {
           <div>
             <p className="is-size-4">Support our Masjid</p>
             <br />
-            <p>
+            <p className="text">
               Indonesisches Weisheits- & Kulturzentrum <br />
               Feldzeugmeister. 1<br />
               10557 Berlin

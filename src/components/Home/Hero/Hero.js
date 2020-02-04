@@ -33,7 +33,7 @@ const Hero = () => {
                   <p className="has-text-weight-medium is-size-5">
                     Indonesisches Weisheits- und Kulturzentrum e.V.
                   </p>
-                  <p className="">
+                  <p className="is-size-6">
                     Saat ini kami berencana untuk membeli gedung sendiri, klik
                     tombol dibawah untuk info lebih lanjut atau berdonasi
                   </p>

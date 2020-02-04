@@ -8,7 +8,7 @@ const PeranIwkz = () => {
     {
       judul: "Bagian dari komunitas Indonesia",
       content:
-        "mitra Perwakilan RI di Jerman dalam hal pelayanan sosial & keagamaan",
+        "Mitra Perwakilan RI di Jerman dalam hal pelayanan sosial & keagamaan",
       image: "./mualaf.jpg",
       kegiatan: [
         {
@@ -55,7 +55,7 @@ const PeranIwkz = () => {
     {
       judul: "Bagian dari komunitas Jerman",
       content:
-        "mitra Pemerintah Jerman sebagai wakil masyarakat Islam di Berlin",
+        "Mitra Pemerintah Jerman sebagai wakil masyarakat Islam di Berlin",
       image: "./komunitas-jerman.jpg",
       kegiatan: [
         {
@@ -73,7 +73,7 @@ const PeranIwkz = () => {
     {
       judul: "Organisasi budaya",
       content:
-        "bagian dari penyelenggara kegiatan kebudayaan dan olah-raga antara Indonesia-Jerman",
+        "Bagian dari penyelenggara kegiatan kebudayaan dan olah-raga antara Indonesia-Jerman",
       image: "./kebudayaan.jpg",
       kegiatan: [
         {
@@ -101,7 +101,7 @@ const PeranIwkz = () => {
     {
       judul: "Organisasi sosial",
       content:
-        "menyelenggarakan kegiatan sosial berbasis kekeluargaan bertujuan untuk mempererat tali silaturahim",
+        "Menyelenggarakan kegiatan sosial berbasis kekeluargaan bertujuan untuk mempererat tali silaturahim",
       image: "./sosial.jpg",
       kegiatan: [
         {
@@ -144,7 +144,7 @@ const PeranIwkz = () => {
     {
       judul: "Pelayan masyarakat di bidang pendidikan",
       content:
-        "mendorong keberhasilan studi mahasiswa Indonesia di Jerman, terutama di Berlin",
+        "Mendorong keberhasilan studi mahasiswa Indonesia di Jerman, terutama di Berlin",
       image: "./pendidikan.jpg",
       kegiatan: [
         {
@@ -160,7 +160,7 @@ const PeranIwkz = () => {
         {
           acara: "Guter Start in Deutschland",
           penjelasan:
-            "Seminar 2 Hari 1 malam mengenai persiapan studi untuk mahasiswa/i baru"
+            "Seminar mengenai persiapan studi untuk mahasiswa/i baru di Jerman"
         },
         {
           acara: "The Language Club",

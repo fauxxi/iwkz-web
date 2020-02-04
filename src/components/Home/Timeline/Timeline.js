@@ -10,7 +10,7 @@ const Timeline = () => {
   const Icon = image => <img src={image.image} alt="icon timeline" />;
   return (
     <section
-      className="section"
+      className="section is-medium"
       id="sejarah"
       style={{ backgroundColor: "#F2FFEF" }}
     >
@@ -21,7 +21,9 @@ const Timeline = () => {
           date="1984"
           iconStyle={{ background: "#d3ebbb" }}
         >
-          <p>Masjid Al-Falah dirintis oleh para mahasiswa Indonesia</p>
+          <p className="text-small">
+            Masjid Al-Falah dirintis oleh para mahasiswa Indonesia
+          </p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           date="1986"
@@ -29,7 +31,9 @@ const Timeline = () => {
           contentArrowStyle={{ borderRight: "7px solid #b6e5b0" }}
           iconStyle={{ background: "#b6e5b0" }}
         >
-          <p>Menempati tempat di Melanchthon Str. 23, 10557 Berlin</p>
+          <p className="text-small">
+            Menempati tempat di Melanchthon Str. 23, 10557 Berlin
+          </p>
         </VerticalTimelineElement>
 
         <VerticalTimelineElement
@@ -38,11 +42,11 @@ const Timeline = () => {
           contentArrowStyle={{ borderRight: "7px solid #93dfab" }}
           iconStyle={{ background: "#93dfab" }}
         >
-          <p>
+          <p className="text-small">
             Terdaftar sebagai organisasi resmi bernama Indonesisches Weisheits-
             und Kulturzentrum (IWKZ) e.V.
           </p>
-          <p>
+          <p className="text-small">
             Menempati tempat di Feldzeugmeister Str. 1, 10557 Berlin, dan
             melebarkan bangunannya di Perleberger Str. 61, 10559 Berlin
           </p>
@@ -54,7 +58,7 @@ const Timeline = () => {
           contentArrowStyle={{ borderRight: "7px solid #67d8ac" }}
           iconStyle={{ background: "#67d8ac" }}
         >
-          <p>
+          <p className="text-small">
             Masjid Al-Falah menjadi pusat peradaban muslim Indonesia di kota
             Berlin dengan kegiatan Keagamaan, Pendidikan & Kebudayaan.
           </p>

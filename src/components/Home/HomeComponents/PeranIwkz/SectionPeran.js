@@ -2,9 +2,9 @@ import React from "react";
 
 const SectionPeran = ({ content, judul, kegiatan, image, handleAccordion }) => {
   return (
-    <section className="section ">
+    <section className="section is-medium">
       <div className="columns is-multiline is-vcentered">
-        <div className="column is-4 is-offset-2 is-hidden-touch">
+        <div className="column is-4 is-offset-2 is-hidden-touch ">
           <div className="image-wrapper">
             <img
               className="inner-image"
@@ -13,10 +13,10 @@ const SectionPeran = ({ content, judul, kegiatan, image, handleAccordion }) => {
             />
           </div>
         </div>
-        <div className="column is-4 ">
+        <div className="column is-4 is-offset-2-mobile">
           <div className="content">
             <p className="is-size-4">{judul}</p>
-            <p>{content}</p>
+            <p className="peran-content">{content}</p>
             {/* <ul>
                 {kegiatan.map((acara, i) => (
                   <li key={i}>{acara}</li>
@@ -25,7 +25,10 @@ const SectionPeran = ({ content, judul, kegiatan, image, handleAccordion }) => {
 
             {kegiatan.map(({ acara, penjelasan }, i) => (
               <div key={i}>
-                <button className="accordion" onClick={e => handleAccordion(e)}>
+                <button
+                  className="accordion peran-text"
+                  onClick={e => handleAccordion(e)}
+                >
                   &#8226; {acara}
                 </button>
                 <div className="penjelasan">

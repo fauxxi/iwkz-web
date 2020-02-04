@@ -25,7 +25,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={navbarClass} style={{ transitionDuration: "0.4s" }}>
+    <nav
+      className={navbarClass}
+      style={{ transitionDuration: "0.4s", fontSize: "12px" }}
+    >
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
           <img src={logo} alt="iwkz logo" width="112" height="112" />

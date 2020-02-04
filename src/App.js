@@ -13,6 +13,7 @@ import {
   Route,
   withRouter
 } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const smoothScroll = value => {
@@ -57,6 +58,7 @@ function App() {
         </Switch>
       </Router>
       <Impressum />
+      <Footer />
     </div>
   );
 }

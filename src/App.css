@@ -21,3 +21,9 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.text {
+  font-size: 14px;
+}
+.text-small {
+  font-size: 12px;
+}

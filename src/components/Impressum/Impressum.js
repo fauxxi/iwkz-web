@@ -2,18 +2,19 @@ import React from "react";
 import ladiLogo from "../../img/ladi_logo.png";
 
 const Impressum = () => {
+  const font = "12px";
   return (
     <section
-      className="section has-text-grey-dark ph5"
+      className="section has-text-grey-dark ph6"
       id="impressum"
       style={{ backgroundColor: "#E8FFE2" }}
     >
       <div className="level">
         <div className="level-left">
           <div>
-            <p className="is-size-4">Support our Masjid</p>
+            <p className="is-size-5">Support our Masjid</p>
             <br />
-            <p className="text">
+            <p className="text" style={{ fontSize: font }}>
               Indonesisches Weisheits- & Kulturzentrum <br />
               Feldzeugmeister. 1<br />
               10557 Berlin

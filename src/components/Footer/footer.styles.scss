@@ -1,8 +1,17 @@
 .foot {
-  height: 50px;
+  padding: 15px 130px;
+
   background-color: #8cd37a;
 }
 .copyright {
   color: white;
   font-size: small;
+}
+
+.icon {
+  width: auto;
+  background-color: white;
+  border-radius: 100%;
+  cursor: pointer;
+  margin-right: 15px;
 }

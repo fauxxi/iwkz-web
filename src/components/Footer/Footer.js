@@ -7,11 +7,11 @@ import YoutubeIcon from "../../img/youtube-round-color.svg";
 const Footer = () => {
   return (
     <footer className="foot level is-mobile">
-      <div className="level-left">
+      <div className="level-item">
         <p className="copyright">© 2020 IWKZ.</p>
       </div>
 
-      <div className="level-right ">
+      <div className="level-item ">
         {
           //social media account here pls
         }

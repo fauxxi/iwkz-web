@@ -1,17 +1,18 @@
 import React from "react";
 import ladiLogo from "../../img/ladi_logo.png";
+import "./impressum.styles.scss";
 
 const Impressum = () => {
   const font = "12px";
   return (
     <section
-      className="section has-text-grey-dark ph6"
+      className="section has-text-grey-dark"
       id="impressum"
       style={{ backgroundColor: "#E8FFE2" }}
     >
       <div className="level">
-        <div className="level-left">
-          <div>
+        <div className="level-item">
+          <div className="text-center-mobile">
             <p className="is-size-5">Support our Masjid</p>
             <br />
             <p className="text" style={{ fontSize: font }}>
@@ -34,8 +35,8 @@ const Impressum = () => {
           </div>
         </div>
 
-        <div className="level-right">
-          <img src={ladiLogo} alt="ladi logo" width="200" />
+        <div className="level-item">
+          <img className="image-center-mobile" src={ladiLogo} alt="ladi logo" />
         </div>
       </div>
     </section>

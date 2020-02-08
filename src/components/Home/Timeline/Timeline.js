@@ -15,6 +15,7 @@ const Timeline = () => {
       id="sejarah"
       style={{ backgroundColor: "#F2FFEF" }}
     >
+      <h1 className="title has-text-weight-medium">Sejarah IWKZ</h1>
       <VerticalTimeline>
         <VerticalTimelineElement
           contentStyle={{ background: "#d3ebbb" }}

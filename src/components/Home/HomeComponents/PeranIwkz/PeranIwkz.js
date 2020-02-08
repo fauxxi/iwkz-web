@@ -1,6 +1,5 @@
 import React from "react";
 import SectionPeran from "./SectionPeran";
-import SectionPeranRight from "./SectionPeranRight";
 import "./peranIwkz.scss";
 
 const PeranIwkz = () => {
@@ -175,27 +174,35 @@ const PeranIwkz = () => {
     let index = 0;
 
     return peranIwkz.map(item => {
-      index++;
-      if (index % 2) {
-        return (
-          <div key={"sectionPeran " + index}>
-            <SectionPeran handleAccordion={handleAccordion} {...item} />
-          </div>
-        );
-      } else {
-        return (
-          <div key={"sectionPeran " + index}>
-            <SectionPeranRight handleAccordion={handleAccordion} {...item} />
-          </div>
-        );
-      }
+      return (
+        <div key={"sectionPeran " + index}>
+          <SectionPeran handleAccordion={handleAccordion} {...item} />
+        </div>
+      );
     });
   };
 
   const handleAccordion = e => {
+    var elements = document.getElementsByClassName("accordion");
+    if (elements) {
+      for (let i = 0; i < elements.length; i++) {
+        if (
+          elements[i].classList.contains("active") &&
+          elements[i] !== e.target
+        ) {
+          elements[i].classList.remove("active");
+          let activePanel = elements[i].nextElementSibling;
+
+          handleAccordionPanel(activePanel);
+        }
+      }
+    }
     e.target.classList.toggle("active");
     let panel = e.target.nextElementSibling;
+    handleAccordionPanel(panel);
+  };
 
+  const handleAccordionPanel = panel => {
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
     } else {
@@ -205,6 +212,7 @@ const PeranIwkz = () => {
 
   return (
     <div className="section" id="peran-iwkz">
+      <h1 className="title has-text-weight-medium">Peran IWKZ</h1>
       {listPeran()}
     </div>
   );

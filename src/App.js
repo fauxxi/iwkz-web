@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
-// import './App.scss';
+
 import Home from "./components/Home/Home";
-import "tachyons";
 
 import Download from "./components/Download/Download";
 import Navbar from "./components/Navbar/Navbar";

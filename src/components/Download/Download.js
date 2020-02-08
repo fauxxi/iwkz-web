@@ -7,14 +7,14 @@ const Download = () => {
       <div className="content has-text-centered">
         <h1>Download Jadwal Sholat</h1>
         <p className="has-text-weight-medium">
-          {`Pilih bulan dan tahun, lalu klik generate :)`}
+          {`Pilih bulan dan tahun, lalu klik generate`}
         </p>
       </div>
       <article className="media">
         <div className="media-content">
           <div classname="content">
             <Iframe
-              url="https://iwkz.de/jadwal-shalat/generatePdf.php"
+              url="http://old.iwkz.de/jadwal-shalat/generatePdf.php"
               width="100%"
               height="300px"
               border="0"

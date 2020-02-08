@@ -19,7 +19,7 @@ const JadwalSholat = () => {
   };
 
   const requestPrayer = async () => {
-    const res = await axios.get("https://iwkz.de/jdwlshalat_ibmus/");
+    const res = await axios.get("https://old.iwkz.de/jdwlshalat_ibmus/");
     setPrayerTimes(res.data);
   };
   const createBodyList = prayerTimes => {

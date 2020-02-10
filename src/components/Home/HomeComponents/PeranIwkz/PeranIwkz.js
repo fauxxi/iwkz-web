@@ -174,6 +174,7 @@ const PeranIwkz = () => {
     let index = 0;
 
     return peranIwkz.map(item => {
+      index++;
       return (
         <div key={"sectionPeran " + index}>
           <SectionPeran handleAccordion={handleAccordion} {...item} />

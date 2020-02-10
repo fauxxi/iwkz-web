@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./jadwalSholat.styles.scss";
+import { StyledBox, StyledDate } from "./StyledJadwalSholat";
 
+//main component
 const JadwalSholat = () => {
   const [prayerTimes, setPrayerTimes] = useState("");
 
@@ -29,10 +30,10 @@ const JadwalSholat = () => {
       if (item !== "date") {
         list.push(
           <div className=" column is-offset-2 is-8" key={"jadwal" + index}>
-            <div className="jadwal-sholat level is-mobile box-sholat">
+            <StyledBox className=" level is-mobile">
               <div className="level-left">{item}</div>
               <div className="level-right">{prayerTimes[item]}</div>
-            </div>
+            </StyledBox>
           </div>
         );
         index++;
@@ -43,7 +44,7 @@ const JadwalSholat = () => {
 
   return (
     <div className="container">
-      <p className="has-text-centered date">{getDate()}</p>
+      <StyledDate>{getDate()}</StyledDate>
       <div className="columns is-multiline is-mobile">
         {createBodyList(prayerTimes)}
       </div>

@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import JadwalSholat from "./HeroComponents/JadwalSholat/JadwalSholat";
 import CustomButton from "./HeroComponents/CustomButton/CustomButton";
-import "./hero.styles.scss";
+import { StyledTitle } from "./StyledHero.js";
 
 const Hero = () => {
   const [ref, inView] = useInView({
@@ -29,9 +29,9 @@ const Hero = () => {
           <animated.div ref={ref} style={props}>
             <div className="columns is-vcentered">
               <div className="column is-medium is-offset-1 is-5  has-text-white">
-                <p className="has-text-weight-normal is-size-3 main-title">
+                <StyledTitle className="has-text-weight-normal is-size-3">
                   IWKZ
-                </p>
+                </StyledTitle>
                 <div className="content is-hidden-touch">
                   <p className="has-text-weight-medium is-size-5">
                     Indonesisches Weisheits- und Kulturzentrum e.V.

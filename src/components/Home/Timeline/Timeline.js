@@ -5,6 +5,7 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import iwkzLogo from "../../../img/iwkz-navbar.svg";
+import { StyledTitle } from "./styled.components";
 
 const Timeline = () => {
   const Icon = image => <img src={image.image} alt="icon timeline" />;
@@ -15,7 +16,7 @@ const Timeline = () => {
       id="sejarah"
       style={{ backgroundColor: "#F2FFEF" }}
     >
-      <h1 className="title has-text-weight-medium">Sejarah IWKZ</h1>
+      <StyledTitle className="has-text-weight-medium">Sejarah IWKZ</StyledTitle>
       <VerticalTimeline>
         <VerticalTimelineElement
           contentStyle={{ background: "#d3ebbb" }}

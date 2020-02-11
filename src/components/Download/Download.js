@@ -1,11 +1,14 @@
 import React from "react";
 import Iframe from "react-iframe";
+import { StyledTitle } from "./styled.components";
 
 const Download = () => {
   return (
     <section className="section is-medium">
       <div className="content has-text-centered">
-        <h1>Download Jadwal Sholat</h1>
+        <StyledTitle className="has-text-weight-medium">
+          Download Jadwal Sholat
+        </StyledTitle>
         <p className="has-text-weight-medium">
           {`Pilih bulan dan tahun, lalu klik generate`}
         </p>

@@ -1,6 +1,6 @@
 import React from "react";
 import ladiLogo from "../../img/ladi_logo.png";
-import "./impressum.styles.scss";
+import { SyledImage, SyledDiv } from "./styled.components";
 
 const Impressum = () => {
   const font = "12px";
@@ -12,7 +12,7 @@ const Impressum = () => {
     >
       <div className="level">
         <div className="level-item">
-          <div className="text-center-mobile">
+          <SyledDiv>
             <p className="is-size-5">Support our Masjid</p>
             <br />
             <p className="text" style={{ fontSize: font }}>
@@ -32,11 +32,11 @@ const Impressum = () => {
               BLZ : 1001 0010, Post Bank Berlin
               <br />
             </p>
-          </div>
+          </SyledDiv>
         </div>
 
         <div className="level-item">
-          <img className="image-center-mobile" src={ladiLogo} alt="ladi logo" />
+          <SyledImage src={ladiLogo} alt="ladi logo" />
         </div>
       </div>
     </section>

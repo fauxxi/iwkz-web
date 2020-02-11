@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../img/iwkz-navbar.svg";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import "./navbar.styles.scss";
+import { SyledNav, StyledText } from "./styled.components.js";
 
 const Navbar = () => {
   const [burgerActive, setBurgerActive] = useState(false);
@@ -24,10 +24,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={navbarClass}
-      style={{ transitionDuration: "0.4s", fontSize: "12px" }}
-    >
+    <SyledNav className={navbarClass}>
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
           <img
@@ -49,30 +46,30 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={activeDropdownClass}>
+      <div className={activeDropdownClass} onClick={onBurgerClick}>
         <div className="navbar-end">
           <Link className="navbar-item" to="/">
-            Home
+            <StyledText>Home</StyledText>
           </Link>
           <Link className="navbar-item" to="/#tentang-masjid">
-            Tentang Masjid
+            <StyledText>Tentang Masjid</StyledText>
           </Link>
           <Link className="navbar-item" to="/#peran-iwkz">
-            Peran IWKZ
+            <StyledText>Peran IWKZ</StyledText>
           </Link>
-          {/* <Link className="navbar-item" to="/about-us#sejarah">*/}
+
           <Link className="navbar-item" to="/#sejarah">
-            Sejarah IWKZ
+            <StyledText>Sejarah IWKZ</StyledText>
           </Link>
           <Link className="navbar-item" to="#impressum">
-            Contact us
+            <StyledText>Contact us</StyledText>
           </Link>
           <Link className="navbar-item" to="/jadwal-sholat">
-            Download Jadwal Sholat
+            <StyledText>Download Jadwal Sholat</StyledText>
           </Link>
         </div>
       </div>
-    </nav>
+    </SyledNav>
   );
 };
 

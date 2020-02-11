@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import JadwalSholat from "./HeroComponents/JadwalSholat/JadwalSholat";
 import CustomButton from "./HeroComponents/CustomButton/CustomButton";
-import { StyledTitle } from "./styled.components";
+import { StyledTitle, StyledParallaxSection } from "./styled.components";
 
 const Hero = () => {
   const [ref, inView] = useInView({
@@ -12,7 +12,7 @@ const Hero = () => {
   });
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
-    <section className="hero is-fullheight parallax" id="hero">
+    <StyledParallaxSection className="hero is-fullheight parallax" id="hero">
       <div className="hero-head"></div>
 
       <div className="hero-body">
@@ -47,7 +47,7 @@ const Hero = () => {
       </div>
 
       <div className="hero-foot"></div>
-    </section>
+    </StyledParallaxSection>
   );
 };
 

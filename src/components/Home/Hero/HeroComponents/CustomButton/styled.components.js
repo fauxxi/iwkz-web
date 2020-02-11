@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
+  letter-spacing: 1px;
   transition: transform 0.2s;
   border: none;
   background-image: ${props => handleColor(props.color)};

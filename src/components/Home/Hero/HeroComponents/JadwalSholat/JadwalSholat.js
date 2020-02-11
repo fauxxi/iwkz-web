@@ -29,7 +29,7 @@ const JadwalSholat = () => {
     for (let item in prayerTimes) {
       if (item !== "date") {
         list.push(
-          <div className=" column is-offset-2 is-8" key={"jadwal" + index}>
+          <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
             <StyledBox className=" level is-mobile">
               <div className="level-left">{item}</div>
               <div className="level-right">{prayerTimes[item]}</div>

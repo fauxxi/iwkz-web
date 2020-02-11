@@ -1,6 +1,6 @@
 import React from "react";
-import SectionPeran from "./SectionPeran";
-import "./peranIwkz.scss";
+import SectionPeran from "./SecionPeranIwkz/SectionPeran";
+import { StyledTitle } from "./styled.components";
 
 const PeranIwkz = () => {
   let peranIwkz = [
@@ -213,7 +213,7 @@ const PeranIwkz = () => {
 
   return (
     <div className="section" id="peran-iwkz">
-      <h1 className="title has-text-weight-medium">Peran IWKZ</h1>
+      <StyledTitle className="has-text-weight-medium">Peran IWKZ</StyledTitle>
       {listPeran()}
     </div>
   );

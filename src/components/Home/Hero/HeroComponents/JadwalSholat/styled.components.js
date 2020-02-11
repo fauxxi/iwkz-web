@@ -9,7 +9,12 @@ export const StyledBox = styled.div`
   color: #444444;
   padding: 1rem;
   border-radius: 6px;
-
+  ${props =>
+    props.highlight
+      ? `transform: scale(1.2);
+    background-color: #F9C693;
+    box-shadow: 0px 0px 10px #F9C693;`
+      : ``}
   &:hover {
     transform: scale(1.1);
     background-color: #e8ffe2;

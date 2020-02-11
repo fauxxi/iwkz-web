@@ -10,6 +10,25 @@ const JadwalSholat = () => {
     requestPrayer();
   }, []);
 
+  const convertToMinute = (hours, minutes) => {
+    let totalMinutes = parseInt(hours) * 60 + parseInt(minutes);
+    return totalMinutes;
+  };
+
+  const isPrayMinuteBigger = prayTime => {
+    let today = new Date();
+    let prayHours = prayTime.split(":")[0];
+    let prayMinutes = prayTime.split(":")[1];
+
+    let prayNext = convertToMinute(prayHours, prayMinutes);
+    let currentMinutes = convertToMinute(today.getHours(), today.getMinutes());
+
+    if (prayNext > currentMinutes) {
+      return true;
+    }
+    return false;
+  };
+
   const getDate = () => {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
@@ -23,11 +42,29 @@ const JadwalSholat = () => {
     const res = await axios.get("https://old.iwkz.de/jdwlshalat_ibmus/");
     setPrayerTimes(res.data);
   };
+
   const createBodyList = prayerTimes => {
     let list = [];
     let index = 0;
+    let nextPray = false;
     for (let item in prayerTimes) {
       if (item !== "date") {
+        if (nextPray !== true) {
+          if (isPrayMinuteBigger(prayerTimes[item])) {
+            nextPray = true;
+            list.push(
+              <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
+                <StyledBox highlight className=" level is-mobile">
+                  <div className="level-left">{item}</div>
+                  <div className="level-right">{prayerTimes[item]}</div>
+                </StyledBox>
+              </div>
+            );
+            index++;
+            continue;
+          }
+        }
+
         list.push(
           <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
             <StyledBox className=" level is-mobile">

@@ -15,15 +15,27 @@ const Footer = () => {
         {
           //social media account here pls
         }
-        <a target="_blank" href="https://www.facebook.com/IWKZ.Berlin">
-          <img className="icon" src={FacebookIcon} />
+        <a
+          target="_blank"
+          href="https://www.facebook.com/IWKZ.Berlin"
+          rel="noopener noreferrer"
+        >
+          <img className="icon" src={FacebookIcon} alt="facebook-icon" />
         </a>
 
-        <a target="_blank" href="https://www.instagram.com/iwkzalfalah/">
-          <img className="icon" src={InstagramIcon} />
+        <a
+          target="_blank"
+          href="https://www.instagram.com/iwkzalfalah/"
+          rel="noopener noreferrer"
+        >
+          <img className="icon" src={InstagramIcon} alt="instagram-icon" />
         </a>
-        <a target="_blank" href="https://www.youtube.com/user/alfalahberlin">
-          <img className="icon" src={YoutubeIcon} />
+        <a
+          target="_blank"
+          href="https://www.youtube.com/user/alfalahberlin"
+          rel="noopener noreferrer"
+        >
+          <img className="icon" src={YoutubeIcon} alt="youtube-icon" />
         </a>
       </div>
     </footer>

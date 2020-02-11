@@ -1,20 +1,15 @@
 import React from "react";
-import "./customButton.styles.scss";
-import classNames from "classnames";
+import { StyledButton } from "./styled.components";
 
-const customButton = ({ donasi, prs, text }) => {
-  const buttonClass = classNames("button has-text-light is-rounded ", {
-    donasi: donasi,
-    prs: prs
-  });
-
+const customButton = ({ color, text }) => {
   return (
-    <button
-      className={buttonClass}
+    <StyledButton
+      color={color}
+      className="button has-text-light is-rounded"
       onClick={() => window.open("http://prs.iwkz.de/")}
     >
       {text}
-    </button>
+    </StyledButton>
   );
 };
 

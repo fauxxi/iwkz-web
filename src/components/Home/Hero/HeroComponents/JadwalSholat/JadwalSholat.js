@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { StyledBox, StyledDate } from "./StyledJadwalSholat";
+import { StyledBox, StyledDate } from "./styled.components";
 
 //main component
 const JadwalSholat = () => {

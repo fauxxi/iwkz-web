@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from "../../img/iwkz-navbar.svg";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
-import { SyledNav, StyledText } from "./styled.components.js";
+
+import { SyledNav, StyledText, StyledLink } from "./styled.components.js";
 
 const Navbar = () => {
   const [burgerActive, setBurgerActive] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <SyledNav className={navbarClass}>
       <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
+        <StyledLink className="navbar-item" to="/">
           <img
             className="iwkz-logo"
             src={logo}
@@ -34,7 +34,7 @@ const Navbar = () => {
             width="112"
             height="112"
           />
-        </Link>
+        </StyledLink>
         <div
           className={activeBurgerClass}
           data-target="navbarExampleTransparentExample"
@@ -48,25 +48,25 @@ const Navbar = () => {
 
       <div className={activeDropdownClass} onClick={onBurgerClick}>
         <div className="navbar-end">
-          <Link className="navbar-item" to="/">
+          <StyledLink className="navbar-item" to="/">
             <StyledText>Home</StyledText>
-          </Link>
-          <Link className="navbar-item" to="/#tentang-masjid">
+          </StyledLink>
+          <StyledLink className="navbar-item" to="/#tentang-masjid">
             <StyledText>Tentang Masjid</StyledText>
-          </Link>
-          <Link className="navbar-item" to="/#peran-iwkz">
+          </StyledLink>
+          <StyledLink className="navbar-item" to="/#peran-iwkz">
             <StyledText>Peran IWKZ</StyledText>
-          </Link>
+          </StyledLink>
 
-          <Link className="navbar-item" to="/#sejarah">
+          <StyledLink className="navbar-item" to="/#sejarah">
             <StyledText>Sejarah IWKZ</StyledText>
-          </Link>
-          <Link className="navbar-item" to="#impressum">
+          </StyledLink>
+          <StyledLink className="navbar-item" to="#impressum">
             <StyledText>Contact us</StyledText>
-          </Link>
-          <Link className="navbar-item" to="/jadwal-sholat">
+          </StyledLink>
+          <StyledLink className="navbar-item" to="/jadwal-sholat">
             <StyledText>Download Jadwal Sholat</StyledText>
-          </Link>
+          </StyledLink>
         </div>
       </div>
     </SyledNav>

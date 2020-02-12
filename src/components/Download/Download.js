@@ -1,6 +1,6 @@
 import React from "react";
 import Iframe from "react-iframe";
-import { StyledTitle } from "./styled.components";
+import { StyledTitle } from "./styled.components.js";
 
 const Download = () => {
   return (

@@ -35,7 +35,7 @@ const Hero = () => {
                   tombol dibawah untuk info lebih lanjut atau berdonasi
                 </p>
                 <div className="buttons">
-                  <CustomButton color="prs" text="more info" />
+                  <CustomButton color="prs" text="More info" />
 
                   {/*<CustomButton color="donasi" text="donasi" />*/}
                 </div>

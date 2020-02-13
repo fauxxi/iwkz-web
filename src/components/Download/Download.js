@@ -17,7 +17,7 @@ const Download = () => {
         <div className="media-content">
           <div className="content">
             <Iframe
-              url="http://old.iwkz.de/jadwal-shalat/generatePdf.php"
+              url="https://old.iwkz.de/jadwal-shalat/generatePdf.php"
               width="100%"
               height="300px"
               border="0"

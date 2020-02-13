@@ -60,17 +60,18 @@ const JadwalSholat = () => {
   //get the current and next prayer time at current time
   const getCurrentAndNextPrayer = prayerTimes => {
     let currentPrayer = "";
+    let nextPrayer = "";
     let result = [];
     for (let item in prayerTimes) {
       if (item !== "date") {
         if (isPrayMinuteBigger(prayerTimes[item])) {
-          result = [currentPrayer, item];
+          nextPrayer = item;
           break;
         }
         currentPrayer = item;
       }
     }
-    return result;
+    return [currentPrayer, nextPrayer];
   };
 
   //get today's date

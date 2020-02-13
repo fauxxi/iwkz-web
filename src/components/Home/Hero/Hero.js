@@ -19,11 +19,11 @@ const Hero = () => {
         <div className="container" id="jadwal-sholat">
           <animated.div style={props}>
             <div className="columns is-vcentered" ref={ref}>
-              <div className="column is-medium is-offset-1 is-5  has-text-white">
+              <div className="column is-medium is-offset-1 is-5 is-block-mobile has-text-white">
                 <StyledTitle className="has-text-weight-normal is-size-3">
                   IWKZ
                 </StyledTitle>
-                <div className="content is-hidden-touch">
+                <div className="content is-hidden-mobile">
                   <p className="has-text-weight-medium is-size-5">
                     Indonesisches Weisheits- und Kulturzentrum e.V.
                   </p>

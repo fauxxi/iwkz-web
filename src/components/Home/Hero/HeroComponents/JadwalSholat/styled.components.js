@@ -10,15 +10,21 @@ export const StyledBox = styled.div`
   padding: 1rem;
   border-radius: 6px;
   ${props =>
-    props.highlight
-      ? `transform: scale(1.2);
-    background-color: #F9C693;
-    box-shadow: 0px 0px 10px #F9C693;`
+    props.highlightCurrent
+      ? `transform: scale(1.3);
+    background-color: #e8ffe2;
+    box-shadow: 0px 0px 10px #e8ffe2;`
+      : ``}
+  ${props =>
+    props.highlightNext
+      ? `transform: scale(1.1);
+    background-color: #F3E3E4;
+    box-shadow: 0px 0px 10px #F3E3E4;`
       : ``}
   &:hover {
-    transform: scale(1.1);
-    background-color: #e8ffe2;
-    box-shadow: 0px 0px 10px #e8ffe2;
+    transform: scale(1.2);
+    background-color: #fbdfc4;
+    box-shadow: 0px 0px 10px #fbdfc4;
   }
 `;
 

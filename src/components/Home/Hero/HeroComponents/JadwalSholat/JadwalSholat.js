@@ -9,6 +9,14 @@ const JadwalSholat = () => {
 
   useEffect(() => {
     requestPrayer();
+
+    const startTime = () => {
+      let today = new Date();
+      let currentSecond =
+        today.getHours() * 3600 + today.getMinutes() * 60 + today.getSeconds();
+      setCurrentSecond(currentSecond);
+    };
+
     setInterval(() => startTime(), 1000);
   }, []);
 
@@ -22,16 +30,7 @@ const JadwalSholat = () => {
     return totalSeconds;
   };
 
-  const startTime = () => {
-    let today = new Date();
-    let currentSecond = convertToSecond(
-      today.getHours(),
-      today.getMinutes(),
-      today.getSeconds()
-    );
-    setCurrentSecond(currentSecond);
-  };
-
+  //get the hourly countdown
   const getCountdown = prayTime => {
     let prayHours = prayTime.split(":")[0];
     let prayMinutes = prayTime.split(":")[1];
@@ -43,6 +42,7 @@ const JadwalSholat = () => {
     return newCountdown;
   };
 
+  //logic to get the next prayer time
   const isPrayMinuteBigger = prayTime => {
     let prayHours = prayTime.split(":")[0];
     let prayMinutes = prayTime.split(":")[1];
@@ -57,6 +57,23 @@ const JadwalSholat = () => {
     return false;
   };
 
+  //get the current and next prayer time at current time
+  const getCurrentAndNextPrayer = prayerTimes => {
+    let currentPrayer = "";
+    let result = [];
+    for (let item in prayerTimes) {
+      if (item !== "date") {
+        if (isPrayMinuteBigger(prayerTimes[item])) {
+          result = [currentPrayer, item];
+          break;
+        }
+        currentPrayer = item;
+      }
+    }
+    return result;
+  };
+
+  //get today's date
   const getDate = () => {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, "0");
@@ -66,6 +83,7 @@ const JadwalSholat = () => {
     return today;
   };
 
+  //request to api
   const requestPrayer = async () => {
     const res = await axios.get("https://old.iwkz.de/jdwlshalat_ibmus/");
     setPrayerTimes(res.data);
@@ -74,28 +92,42 @@ const JadwalSholat = () => {
   const createBodyList = prayerTimes => {
     let list = [];
     let index = 0;
-    let nextPray = false;
+    let currentAndNext = getCurrentAndNextPrayer(prayerTimes);
+
+    let currentPray = currentAndNext[0];
+    let nextPray = currentAndNext[1];
     for (let item in prayerTimes) {
       if (item !== "date") {
-        if (nextPray !== true) {
-          if (isPrayMinuteBigger(prayerTimes[item])) {
-            nextPray = true;
-            console.log("asd");
+        if (item === currentPray) {
+          list.push(
+            <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
+              <StyledBox highlightCurrent className=" level is-mobile">
+                <div className="level-item">{item}</div>
+                <div className="level-item" style={{ fontSize: "10px" }}>
+                  <p>NOW</p>
+                </div>
+                <div className="level-item">{prayerTimes[item]}</div>
+              </StyledBox>
+            </div>
+          );
+          index++;
+          continue;
+        }
 
-            list.push(
-              <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
-                <StyledBox highlight className=" level is-mobile">
-                  <div className="level-item">{item}</div>
-                  <div className="level-item">
-                    ({getCountdown(prayerTimes[item])})
-                  </div>
-                  <div className="level-item">{prayerTimes[item]}</div>
-                </StyledBox>
-              </div>
-            );
-            index++;
-            continue;
-          }
+        if (item === nextPray) {
+          list.push(
+            <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
+              <StyledBox highlightNext className=" level is-mobile">
+                <div className="level-item">{item} </div>
+                <div className="level-item" style={{ fontSize: "10px" }}>
+                  <p>(-{getCountdown(prayerTimes[item])})</p>
+                </div>
+                <div className="level-item">{prayerTimes[item]}</div>
+              </StyledBox>
+            </div>
+          );
+          index++;
+          continue;
         }
 
         list.push(

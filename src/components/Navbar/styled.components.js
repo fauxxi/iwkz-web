@@ -13,10 +13,6 @@ export const StyledText = styled.p`
   color: #363636;
   cursor: pointer;
   font-weight: 500;
-
-  &:hover {
-    font-weight: 600;
-  }
 `;
 
 export const StyledLink = styled(Link)`

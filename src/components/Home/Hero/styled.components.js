@@ -25,3 +25,8 @@ export const StyledParallaxSection = styled.section`
     background-attachment: scroll !important;
   }
 `;
+
+export const StyledDiv = styled.div`
+  transition: 1.5s;
+  ${props => (props.inView ? `opacity:1;` : `opacity:0;`)}
+`;

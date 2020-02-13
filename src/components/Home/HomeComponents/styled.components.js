@@ -22,3 +22,8 @@ export const StyledSection = styled.section`
   padding-bottom: 130px;
   padding-top: 250px;
 `;
+
+export const StyledDiv = styled.div`
+  transition: 0.8s;
+  ${props => (props.inView ? `opacity:1;` : `opacity:0;`)}
+`;

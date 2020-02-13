@@ -17,7 +17,10 @@ const JadwalSholat = () => {
       setCurrentSecond(currentSecond);
     };
 
-    setInterval(() => startTime(), 1000);
+    let interval = setInterval(() => startTime(), 1000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const convertToMinute = (hours, minutes) => {

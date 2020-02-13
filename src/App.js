@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import "./App.css";
-
 import Home from "./components/Home/Home";
-
 import Download from "./components/Download/Download";
 import Navbar from "./components/Navbar/Navbar";
 import Impressum from "./components/Impressum/Impressum";

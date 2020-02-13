@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import JadwalSholat from "./HeroComponents/JadwalSholat/JadwalSholat";
 import CustomButton from "./HeroComponents/CustomButton/CustomButton";
-import "./hero.styles.scss";
+import { StyledTitle, StyledParallaxSection } from "./styled.components";
 
 const Hero = () => {
   const [ref, inView] = useInView({
@@ -12,26 +12,17 @@ const Hero = () => {
   });
   const props = useSpring({ opacity: inView ? 1 : 0 });
   return (
-    <section
-      className="hero is-fullheight parallax"
-      style={
-        {
-          // background:
-          //   "linear-gradient( 109.6deg,  rgba(148,233,194,1) 11.2%, rgba(224,235,186,1) 91.1% )"
-        }
-      }
-      id="hero"
-    >
+    <StyledParallaxSection className="hero is-fullheight parallax" id="hero">
       <div className="hero-head"></div>
 
       <div className="hero-body">
         <div className="container" id="jadwal-sholat">
-          <animated.div ref={ref} style={props}>
-            <div className="columns is-vcentered">
+          <animated.div style={props}>
+            <div className="columns is-vcentered" ref={ref}>
               <div className="column is-medium is-offset-1 is-5  has-text-white">
-                <p className="has-text-weight-normal is-size-3 main-title">
+                <StyledTitle className="has-text-weight-normal is-size-3">
                   IWKZ
-                </p>
+                </StyledTitle>
                 <div className="content is-hidden-touch">
                   <p className="has-text-weight-medium is-size-5">
                     Indonesisches Weisheits- und Kulturzentrum e.V.
@@ -41,9 +32,9 @@ const Hero = () => {
                     tombol dibawah untuk info lebih lanjut atau berdonasi
                   </p>
                   <div className="buttons">
-                    <CustomButton prs text="info" />
+                    <CustomButton color="prs" text="info" />
 
-                    <CustomButton donasi text="donasi" />
+                    <CustomButton color="donasi" text="donasi" />
                   </div>
                 </div>
               </div>
@@ -56,7 +47,7 @@ const Hero = () => {
       </div>
 
       <div className="hero-foot"></div>
-    </section>
+    </StyledParallaxSection>
   );
 };
 

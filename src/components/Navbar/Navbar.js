@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from "../../img/iwkz-navbar.svg";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
-import "./navbar.styles.scss";
+
+import { SyledNav, StyledText, StyledLink } from "./styled.components.js";
 
 const Navbar = () => {
   const [burgerActive, setBurgerActive] = useState(false);
@@ -24,12 +24,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={navbarClass}
-      style={{ transitionDuration: "0.4s", fontSize: "12px" }}
-    >
+    <SyledNav className={navbarClass}>
       <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
+        <StyledLink className="navbar-item" to="/">
           <img
             className="iwkz-logo"
             src={logo}
@@ -37,7 +34,7 @@ const Navbar = () => {
             width="112"
             height="112"
           />
-        </Link>
+        </StyledLink>
         <div
           className={activeBurgerClass}
           data-target="navbarExampleTransparentExample"
@@ -49,30 +46,30 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={activeDropdownClass}>
+      <div className={activeDropdownClass} onClick={onBurgerClick}>
         <div className="navbar-end">
-          <Link className="navbar-item" to="/">
-            Home
-          </Link>
-          <Link className="navbar-item" to="/#tentang-masjid">
-            Tentang Masjid
-          </Link>
-          <Link className="navbar-item" to="/#peran-iwkz">
-            Peran IWKZ
-          </Link>
-          {/* <Link className="navbar-item" to="/about-us#sejarah">*/}
-          <Link className="navbar-item" to="/#sejarah">
-            Sejarah IWKZ
-          </Link>
-          <Link className="navbar-item" to="#impressum">
-            Contact us
-          </Link>
-          <Link className="navbar-item" to="/jadwal-sholat">
-            Download Jadwal Sholat
-          </Link>
+          <StyledLink className="navbar-item" to="/">
+            <StyledText>Home</StyledText>
+          </StyledLink>
+          <StyledLink className="navbar-item" to="/#tentang-masjid">
+            <StyledText>Tentang Masjid</StyledText>
+          </StyledLink>
+          <StyledLink className="navbar-item" to="/#peran-iwkz">
+            <StyledText>Peran IWKZ</StyledText>
+          </StyledLink>
+
+          <StyledLink className="navbar-item" to="/#sejarah">
+            <StyledText>Sejarah IWKZ</StyledText>
+          </StyledLink>
+          <StyledLink className="navbar-item" to="#impressum">
+            <StyledText>Contact us</StyledText>
+          </StyledLink>
+          <StyledLink className="navbar-item" to="/jadwal-sholat">
+            <StyledText>Download Jadwal Sholat</StyledText>
+          </StyledLink>
         </div>
       </div>
-    </nav>
+    </SyledNav>
   );
 };
 

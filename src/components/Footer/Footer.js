@@ -1,32 +1,45 @@
 import React from "react";
-import "./footer.styles.scss";
+import { StyledFooter, StyledIcon, StyledText } from "./styled.components";
 import FacebookIcon from "../../img/facebook-round-color.svg";
 import InstagramIcon from "../../img/instagram-round-color.svg";
 import YoutubeIcon from "../../img/youtube-round-color.svg";
 
 const Footer = () => {
   return (
-    <footer className="foot level is-mobile">
+    <StyledFooter className="footer level is-mobile">
       <div className="level-item">
-        <p className="copyright">© 2020 IWKZ.</p>
+        <StyledText>© 2020 IWKZ.</StyledText>
       </div>
 
       <div className="level-item ">
-        {
-          //social media account here pls
-        }
-        <a target="_blank" href="https://www.facebook.com/IWKZ.Berlin">
-          <img className="icon" src={FacebookIcon} />
+        <a
+          target="_blank"
+          href="https://www.facebook.com/IWKZ.Berlin"
+          rel="noopener noreferrer"
+        >
+          <StyledIcon className="icon" src={FacebookIcon} alt="facebook-icon" />
         </a>
 
-        <a target="_blank" href="https://www.instagram.com/iwkzalfalah/">
-          <img className="icon" src={InstagramIcon} />
+        <a
+          target="_blank"
+          href="https://www.instagram.com/iwkzalfalah/"
+          rel="noopener noreferrer"
+        >
+          <StyledIcon
+            className="icon"
+            src={InstagramIcon}
+            alt="instagram-icon"
+          />
         </a>
-        <a target="_blank" href="https://www.youtube.com/user/alfalahberlin">
-          <img className="icon" src={YoutubeIcon} />
+        <a
+          target="_blank"
+          href="https://www.youtube.com/user/alfalahberlin"
+          rel="noopener noreferrer"
+        >
+          <StyledIcon className="icon" src={YoutubeIcon} alt="youtube-icon" />
         </a>
       </div>
-    </footer>
+    </StyledFooter>
   );
 };
 

@@ -13,7 +13,7 @@ export const StyledAccordion = styled.button`
   font-size: 14px;
   letter-spacing: 1px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     text-align: center;
   }
   &:hover {
@@ -25,13 +25,13 @@ export const StyledAccordion = styled.button`
 `;
 
 export const StyledTitle = styled.p`
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     text-align: center;
   }
 `;
 
 export const StyledSubtitle = styled.p`
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     text-align: center;
   }
 `;
@@ -45,7 +45,7 @@ export const StyledContent = styled.div`
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     text-align: center;
   }
 `;

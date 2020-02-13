@@ -24,4 +24,10 @@ export const StyledLink = styled(Link)`
   &:focus {
     background-color: #ffffff !important;
   }
+
+  @media only screen and (min-width: 1024px) {
+    &:hover {
+      border-bottom: 2px solid rgb(255, 136, 0);
+    }
+  }
 `;

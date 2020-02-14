@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { StyledBox, StyledDate } from "./styled.components";
+import { StyledBox, StyledDate, StyledText } from "./styled.components";
 
 //main component
 const JadwalSholat = () => {
@@ -105,8 +105,8 @@ const JadwalSholat = () => {
             <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
               <StyledBox highlightCurrent className=" level is-mobile">
                 <div className="level-item">{item}</div>
-                <div className="level-item" style={{ fontSize: "10px" }}>
-                  <p>NOW</p>
+                <div className="level-item">
+                  <StyledText>NOW</StyledText>
                 </div>
                 <div className="level-item">{prayerTimes[item]}</div>
               </StyledBox>
@@ -118,8 +118,8 @@ const JadwalSholat = () => {
             <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
               <StyledBox highlightNext className=" level is-mobile">
                 <div className="level-item">{item} </div>
-                <div className="level-item" style={{ fontSize: "10px" }}>
-                  <p>(-{getCountdown(prayerTimes[item])})</p>
+                <div className="level-item">
+                  <StyledText>(-{getCountdown(prayerTimes[item])})</StyledText>
                 </div>
                 <div className="level-item">{prayerTimes[item]}</div>
               </StyledBox>

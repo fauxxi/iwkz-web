@@ -26,14 +26,14 @@ export const StyledBox = styled.div`
     background-color: #fbdfc4;
     box-shadow: 0px 0px 10px #fbdfc4;
   }
-  @media only screen and (max-device-width: 569px) {
+  @media only screen and (max-device-width: 360px) {
     font-size: 9px;
   }
 `;
 //for iphone 5se
 export const StyledText = styled.p`
   font-size: 10px;
-  @media only screen and (max-device-width: 569px) {
+  @media only screen and (max-device-width: 360px) {
     font-size: 8px;
   }
 `;

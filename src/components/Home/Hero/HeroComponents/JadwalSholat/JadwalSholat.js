@@ -96,12 +96,11 @@ const JadwalSholat = () => {
     let list = [];
     let index = 0;
     let currentAndNext = getCurrentAndNextPrayer(prayerTimes);
-
     let currentPray = currentAndNext[0];
     let nextPray = currentAndNext[1];
     for (let item in prayerTimes) {
       if (item !== "date") {
-        if (item === currentPray) {
+        if (item === currentPray && item !== "terbit") {
           list.push(
             <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
               <StyledBox highlightCurrent className=" level is-mobile">
@@ -114,10 +113,7 @@ const JadwalSholat = () => {
             </div>
           );
           index++;
-          continue;
-        }
-
-        if (item === nextPray) {
+        } else if (item === nextPray) {
           list.push(
             <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
               <StyledBox highlightNext className=" level is-mobile">
@@ -130,18 +126,17 @@ const JadwalSholat = () => {
             </div>
           );
           index++;
-          continue;
+        } else {
+          list.push(
+            <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
+              <StyledBox className=" level is-mobile">
+                <div className="level-left">{item}</div>
+                <div className="level-right">{prayerTimes[item]}</div>
+              </StyledBox>
+            </div>
+          );
+          index++;
         }
-
-        list.push(
-          <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
-            <StyledBox className=" level is-mobile">
-              <div className="level-left">{item}</div>
-              <div className="level-right">{prayerTimes[item]}</div>
-            </StyledBox>
-          </div>
-        );
-        index++;
       }
     }
     return list;

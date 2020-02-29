@@ -54,6 +54,9 @@ const Navbar = () => {
           <StyledLink className="navbar-item" to="/#tentang-masjid">
             <StyledText>Tentang Masjid</StyledText>
           </StyledLink>
+          <StyledLink className="navbar-item" to="/#blogs">
+            <StyledText>Blogs</StyledText>
+          </StyledLink>
           <StyledLink className="navbar-item" to="/#peran-iwkz">
             <StyledText>Peran IWKZ</StyledText>
           </StyledLink>

@@ -16,7 +16,7 @@ const Blogs = () => {
     });
 
     const callbackBlogData = (data) => setBlogData(data);
-    console.log(blogData)
+
     return (
         <BlogsSection id="blogs">
             <StyledTitle className="has-text-weight-medium">Berita IWKZ</StyledTitle>

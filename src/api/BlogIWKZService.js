@@ -10,7 +10,7 @@ const getBlogs = (totalPost, cb) => {
             return cb(postData);
         })
         .catch(() => {
-            return {};
+            return cb([]);
         });
 };
 

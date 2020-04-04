@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { channels, getLiveStreamId } from '../../api/youtubeLiveStreamService';
+import {
+    DEFAULT_CHANNEL_ID,
+    getChannels,
+    getLiveStreamId,
+} from '../../api/youtubeLiveStreamService';
 
 import LiveStreaming from './LiveStreaming';
 import StreamList from './StreamList';
@@ -8,17 +12,18 @@ import { StreamSection, TitleSection, ContentSection } from './styled.components
 
 const Streaming = () => {
     const [selectedChannel, setSelectedChannel] = useState(null);
+    const [channelList, setChannelList] = useState({});
     const [streamId, setStreamId] = useState(null);
     const [isLoading, setLoading] = useState(false);
 
-    const onChangeChannel = (channelName) => {
-        setSelectedChannel(channelName);
-        getLiveStreamIdByChannel(channelName);
+    const onChangeChannel = (channelId) => {
+        setSelectedChannel(channelId);
+        getLiveStreamIdByChannel(channelId);
     };
 
-    const getLiveStreamIdByChannel = (channelName) => {
+    const getLiveStreamIdByChannel = (channelId) => {
         setLoading(true);
-        getLiveStreamId(channelName, callbackStreamId);
+        getLiveStreamId(channelId, callbackStreamId);
     }
 
     const callbackStreamId = ({ streamId }) => {
@@ -26,11 +31,21 @@ const Streaming = () => {
         setLoading(false);
     };
 
-    useEffect(() => {
-        if (selectedChannel === null) {
-            setSelectedChannel("iwkz");
-            getLiveStreamIdByChannel("iwkz");
+    const getChannelList = async () => {
+        if (!Object.keys(channelList).length) {
+            const channelList = await getChannels();
+            setChannelList(channelList); 
         }
+    }
+
+    useEffect(() => {
+        //get default selected channel
+        if (!selectedChannel) {
+            setSelectedChannel(DEFAULT_CHANNEL_ID);
+            getLiveStreamIdByChannel(DEFAULT_CHANNEL_ID);
+        }
+
+        getChannelList();
     });
 
     return (
@@ -39,9 +54,9 @@ const Streaming = () => {
                 Live Streaming IWKZ
             </TitleSection>
             <ContentSection>
-                <StreamList channelList={channels} selectedChannel={selectedChannel} onChangeChannel={onChangeChannel} />
+                <StreamList channelList={channelList} selectedChannel={selectedChannel} onChangeChannel={onChangeChannel} />
                 {
-                    isLoading && (<progress class="progress is-large is-info" max="100">60%</progress>)
+                    isLoading && (<progress className="progress is-large is-info" max="100">60%</progress>)
                 }
                 {
                     !isLoading && (<LiveStreaming streamId={streamId} />)

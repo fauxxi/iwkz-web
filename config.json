@@ -1,0 +1,13 @@
+{
+    "YOUTUBE_KEY": "",
+    "YOUTUBE_CHANNELS": {
+        "UCzlY1aUSt8z0c4NKOlDWUdQ": {
+            "name": "IWKZ Live",
+            "image": "http://info.iwkz.de/images/iwkz.png"
+        },
+        "UCos52azQNBgW63_9uDJoPDA": {
+            "name": "Makkah Live",
+            "image": "http://info.iwkz.de/images/makkah_live.jpg"
+        }
+    }
+}

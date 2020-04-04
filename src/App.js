@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Home from "./components/Home/Home";
 import Download from "./components/Download/Download";
+import Streaming from "./components/Streaming";
 import Navbar from "./components/Navbar/Navbar";
 import Impressum from "./components/Impressum/Impressum";
 import {
@@ -45,6 +46,9 @@ function App() {
         <Switch>
           <Route path="/jadwal-sholat">
             <Download />
+          </Route>
+          <Route path="/streaming">
+            <Streaming />
           </Route>
           <Route path="/">
             {withRouter(props => (

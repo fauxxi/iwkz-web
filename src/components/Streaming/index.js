@@ -8,6 +8,7 @@ import {
 
 import LiveStreaming from './LiveStreaming';
 import StreamList from './StreamList';
+import ChatBox from './ChatBox';
 import { StreamSection, TitleSection, ContentSection } from './styled.components';
 
 const Streaming = () => {
@@ -15,6 +16,8 @@ const Streaming = () => {
     const [channelList, setChannelList] = useState({});
     const [streamId, setStreamId] = useState(null);
     const [isLoading, setLoading] = useState(false);
+
+    const isEnableChatBox = selectedChannel === DEFAULT_CHANNEL_ID;
 
     const onChangeChannel = (channelId) => {
         setSelectedChannel(channelId);
@@ -36,7 +39,7 @@ const Streaming = () => {
             const channelList = await getChannels();
             setChannelList(channelList); 
         }
-    }
+    };
 
     useEffect(() => {
         //get default selected channel
@@ -49,19 +52,19 @@ const Streaming = () => {
     });
 
     return (
-        <StreamSection className="section is-medium">
+        <StreamSection className="section is-medium container">
             <TitleSection className="content has-text-centered">
-                Live Streaming IWKZ
+                <h1 className="has-text-weight-medium">Live Streaming IWKZ</h1>
             </TitleSection>
-            <ContentSection>
-                <StreamList channelList={channelList} selectedChannel={selectedChannel} onChangeChannel={onChangeChannel} />
-                {
-                    isLoading && (<progress className="progress is-large is-info" max="100">60%</progress>)
-                }
-                {
-                    !isLoading && (<LiveStreaming streamId={streamId} />)
-                }
-            </ContentSection>
+            <StreamList channelList={channelList} selectedChannel={selectedChannel} onChangeChannel={onChangeChannel} />
+            {
+                isLoading 
+                    ? (<progress className="progress is-large is-info" max="100">60%</progress>)
+                    : (<ContentSection className={isEnableChatBox && "showChat"}>
+                            <LiveStreaming streamId={streamId} />
+                            <ChatBox isActive={isEnableChatBox} />
+                        </ContentSection>) 
+            }
         </StreamSection>
     );
 };

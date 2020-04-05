@@ -5,7 +5,7 @@ import { LiveStreamSection, StyledIframe } from './styled.components';
 const LiveStreaming = ({ streamId }) => (
     <LiveStreamSection className="video">
         {
-            !streamId && (<h5>no live streaming...</h5>)
+            !streamId && (<h5 className="has-text-weight-medium">no live streaming...</h5>)
         }
         {
             streamId && (

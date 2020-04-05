@@ -1,5 +1,5 @@
 {
-    "YOUTUBE_KEY": "",
+    "YOUTUBE_KEY": "AIzaSyBaRv7fGSu6dt0-_HDDXtA5c12rqUmg1D4",
     "YOUTUBE_CHANNELS": {
         "UCzlY1aUSt8z0c4NKOlDWUdQ": {
             "name": "IWKZ Live",
@@ -7,6 +7,10 @@
         },
         "UCos52azQNBgW63_9uDJoPDA": {
             "name": "Makkah Live",
+            "image": "http://info.iwkz.de/images/makkah_live.jpg"
+        },
+        "UC_ANPr8IkWibKlKhmi_-H1g": {
+            "name": "Madinah Live",
             "image": "http://info.iwkz.de/images/makkah_live.jpg"
         }
     }

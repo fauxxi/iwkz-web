@@ -9,7 +9,7 @@ const StreamList = ({
     <div className="tabs is-toggle is-fullwidth is-large">
         <ul>
             {Object.keys(channelList).map((channelId) => (
-                <li className={selectedChannel === channelId ? 'is-active' : ''}>
+                <li key={channelId} className={selectedChannel === channelId ? 'is-active' : ''}>
                     <a onClick={() => onChangeChannel(channelId)}>
                         <span>{channelList[channelId].name}</span>
                     </a>

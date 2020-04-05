@@ -18,7 +18,7 @@ const Blogs = () => {
     const callbackBlogData = (data) => setBlogData(data);
 
     return (
-        <BlogsSection id="blogs">
+        <BlogsSection id="blogs" className="section container">
             <StyledTitle className="has-text-weight-medium">Berita IWKZ</StyledTitle>
             <BlogList>
                 {blogData.map((data) => (<Card key={data.id} {...data}/>))}

@@ -26,6 +26,14 @@ const Streaming = () => {
 
   const isEnableChatBox = selectedChannel === DEFAULT_CHANNEL_ID;
 
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   const onChangeChannel = (channelId) => {
     setSelectedChannel(channelId);
     getLiveStreamIdByChannel(channelId);
@@ -91,12 +99,21 @@ const Streaming = () => {
           </h2>
         </TitleSection>
         <InfoDiv>
-          <div style={{ width: "70%" }}></div>
+          <div
+            style={{
+              width: "70%",
+              backgroundColor: "pink",
+              marginRight: "10px",
+            }}
+          >
+            disini kasih gambar kalender ramadhan acara sebulan(30 hari) aja
+            kali ya?
+          </div>
           <div
             style={{
               margin: "0 auto",
-              backgroundColor: "rgba(25, 90, 50, 0.1)",
-              padding: "50px",
+              backgroundColor: "rgba(215, 90, 90, 0.2)",
+              padding: "55px",
               borderRadius: "10px",
             }}
           >

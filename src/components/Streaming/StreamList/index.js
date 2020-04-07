@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, CustomList, CustomLink } from "./styled.components";
 import ExampleImage from "../../../img/al-falah.svg";
+import IwkzLogo from "../../../img/iwkz-navbar.svg";
 
 const StreamList = ({
   channelList,
@@ -16,10 +17,14 @@ const StreamList = ({
       >
         <CustomLink onClick={() => onChangeChannel(channelId)}>
           <img
-            src={ExampleImage}
+            src={
+              channelList[channelId].name === "IWKZ Live"
+                ? IwkzLogo
+                : ExampleImage
+            }
             alt="example image"
-            width="112"
-            height="112"
+            width="50"
+            height="50"
           />
         </CustomLink>
       </CustomList>

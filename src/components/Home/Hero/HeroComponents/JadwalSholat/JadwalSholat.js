@@ -3,7 +3,7 @@ import axios from "axios";
 import { StyledBox, StyledDate, StyledText } from "./styled.components";
 
 //main component
-const JadwalSholat = () => {
+const JadwalSholat = ({ titleColor }) => {
   const [prayerTimes, setPrayerTimes] = useState("");
   const [currentSecond, setCurrentSecond] = useState("");
 
@@ -34,7 +34,7 @@ const JadwalSholat = () => {
   };
 
   //get the hourly countdown
-  const getCountdown = prayTime => {
+  const getCountdown = (prayTime) => {
     let prayHours = prayTime.split(":")[0];
     let prayMinutes = prayTime.split(":")[1];
     let praySeconds = convertToSecond(prayHours, prayMinutes);
@@ -46,7 +46,7 @@ const JadwalSholat = () => {
   };
 
   //logic to get the next prayer time
-  const isPrayMinuteBigger = prayTime => {
+  const isPrayMinuteBigger = (prayTime) => {
     let prayHours = prayTime.split(":")[0];
     let prayMinutes = prayTime.split(":")[1];
     let today = new Date();
@@ -61,7 +61,7 @@ const JadwalSholat = () => {
   };
 
   //get the current and next prayer time at current time
-  const getCurrentAndNextPrayer = prayerTimes => {
+  const getCurrentAndNextPrayer = (prayerTimes) => {
     let currentPrayer = "";
     let nextPrayer = "";
     for (let item in prayerTimes) {
@@ -92,7 +92,7 @@ const JadwalSholat = () => {
     setPrayerTimes(res.data);
   };
 
-  const createBodyList = prayerTimes => {
+  const createBodyList = (prayerTimes) => {
     let list = [];
     let index = 0;
     let currentAndNext = getCurrentAndNextPrayer(prayerTimes);
@@ -102,7 +102,7 @@ const JadwalSholat = () => {
       if (item !== "date") {
         if (item === currentPray && item !== "terbit") {
           list.push(
-            <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
+            <div className=" column is-12" key={"jadwal-" + index}>
               <StyledBox highlightCurrent className=" level is-mobile">
                 <div className="level-item">{item}</div>
                 <div className="level-item">
@@ -115,7 +115,7 @@ const JadwalSholat = () => {
           index++;
         } else if (item === nextPray) {
           list.push(
-            <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
+            <div className=" column  is-12" key={"jadwal-" + index}>
               <StyledBox highlightNext className=" level is-mobile">
                 <div className="level-item">{item} </div>
                 <div className="level-item">
@@ -128,8 +128,8 @@ const JadwalSholat = () => {
           index++;
         } else {
           list.push(
-            <div className=" column is-offset-2 is-8" key={"jadwal-" + index}>
-              <StyledBox className=" level is-mobile">
+            <div className=" column  is-12" key={"jadwal-" + index}>
+              <StyledBox className=" level is-mobile normal">
                 <div className="level-left">{item}</div>
                 <div className="level-right">{prayerTimes[item]}</div>
               </StyledBox>
@@ -144,9 +144,11 @@ const JadwalSholat = () => {
 
   return (
     <div className="container">
-      <StyledDate>{getDate()}</StyledDate>
-      <div className="columns is-multiline is-mobile">
-        {createBodyList(prayerTimes)}
+      <StyledDate color={titleColor}>{getDate()}</StyledDate>
+      <div style={{ margin: "0 auto", maxWidth: "280px" }}>
+        <div className="columns is-multiline is-mobile">
+          {createBodyList(prayerTimes)}
+        </div>
       </div>
     </div>
   );

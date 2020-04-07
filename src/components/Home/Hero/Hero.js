@@ -7,12 +7,12 @@ import CustomButton from "./HeroComponents/CustomButton/CustomButton";
 import {
   StyledTitle,
   StyledParallaxSection,
-  StyledDiv
+  StyledDiv,
 } from "./styled.components";
 
 const Hero = () => {
   const [ref, inView] = useInView({
-    rootMargin: "-100px"
+    rootMargin: "-100px",
   });
 
   return (
@@ -42,7 +42,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="column is-offset-1 is-4">
-              <JadwalSholat />
+              <JadwalSholat titleColor="white" />
             </div>
           </StyledDiv>
         </div>

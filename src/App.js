@@ -8,20 +8,27 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  withRouter
+  withRouter,
 } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  const smoothScroll = value => {
+  const smoothScroll = (value) => {
+    if (value === "hero" || value === "home") {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+      return;
+    }
     let elmnt = document.getElementById(value);
-
     if (elmnt) {
       elmnt.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const TestHome = props => {
+  const TestHome = (props) => {
     const { hash } = props.location;
     const id = hash.replace("#", "");
 
@@ -32,6 +39,7 @@ function App() {
         smoothScroll("hero");
       }
     });
+    //change return based on props
     return (
       <div>
         <Home />
@@ -43,19 +51,21 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-        <Switch>
-          <Route path="/jadwal-sholat">
-            <Download />
-          </Route>
-          <Route path="/streaming">
-            <Streaming />
-          </Route>
-          <Route path="/">
-            {withRouter(props => (
-              <TestHome {...props} />
-            ))}
-          </Route>
-        </Switch>
+        <div style={{ paddingTop: "50px" }}>
+          <Switch>
+            <Route path="/jadwal-sholat">
+              <Download />
+            </Route>
+            <Route path="/streaming">
+              <Streaming />
+            </Route>
+            <Route path="/">
+              {withRouter((props) => (
+                <TestHome {...props} />
+              ))}
+            </Route>
+          </Switch>
+        </div>
       </Router>
       <Impressum />
       <Footer />

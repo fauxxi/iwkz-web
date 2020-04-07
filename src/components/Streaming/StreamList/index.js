@@ -1,22 +1,30 @@
-import React from 'react';
+import React from "react";
+import { Container, CustomList, CustomLink } from "./styled.components";
+import ExampleImage from "../../../img/al-falah.svg";
 
 const StreamList = ({
-    channelList,
-    selectedChannel,
-    
-    onChangeChannel,
+  channelList,
+  selectedChannel,
+
+  onChangeChannel,
 }) => (
-    <div className="tabs is-toggle is-fullwidth is-large">
-        <ul>
-            {Object.keys(channelList).map((channelId) => (
-                <li key={channelId} className={selectedChannel === channelId ? 'is-active' : ''}>
-                    <a onClick={() => onChangeChannel(channelId)}>
-                        <span>{channelList[channelId].name}</span>
-                    </a>
-                </li>
-            ))}
-        </ul>
-    </div>
+  <Container>
+    {Object.keys(channelList).map((channelId) => (
+      <CustomList
+        className={selectedChannel === channelId ? "is-active" : ""}
+        key={channelId}
+      >
+        <CustomLink onClick={() => onChangeChannel(channelId)}>
+          <img
+            src={ExampleImage}
+            alt="example image"
+            width="112"
+            height="112"
+          />
+        </CustomLink>
+      </CustomList>
+    ))}
+  </Container>
 );
 
 export default StreamList;

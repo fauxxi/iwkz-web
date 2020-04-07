@@ -1,17 +1,16 @@
-import React from 'react';
-import axios from 'axios';
+import axios from "axios";
 
 let config;
 
 const loadConfiguration = async () => {
-    if (config) {
-        return config;
-    }
-
-    const response = await axios.get('./config.json');
-    config = response.data;
-
+  if (config) {
     return config;
+  }
+
+  const response = await axios.get("./config.json");
+  config = response.data;
+
+  return config;
 };
 
 export default loadConfiguration;

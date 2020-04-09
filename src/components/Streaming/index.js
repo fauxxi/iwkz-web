@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 import {
   DEFAULT_CHANNEL_ID,
@@ -25,6 +26,9 @@ const Streaming = () => {
   const [isLoading, setLoading] = useState(false);
 
   const isEnableChatBox = selectedChannel === DEFAULT_CHANNEL_ID;
+  const [ref, inView] = useInView({
+    rootMargin: "-100px",
+  });
 
   useEffect(() => {
     window.scroll({
@@ -67,13 +71,13 @@ const Streaming = () => {
   });
 
   return (
-    <StreamSection className=" container">
+    <StreamSection className=" container" ref={ref}>
       <StreamList
         channelList={channelList}
         selectedChannel={selectedChannel}
         onChangeChannel={onChangeChannel}
       />
-      <Container>
+      <Container inView={inView}>
         {isLoading ? (
           <div
             style={{
@@ -99,20 +103,17 @@ const Streaming = () => {
           </h2>
         </TitleSection>
         <InfoDiv>
-          <div
-            style={{
-              width: "70%",
-              backgroundColor: "pink",
-              marginRight: "10px",
-            }}
-          >
-            disini kasih gambar kalender ramadhan acara sebulan(30 hari) aja
-            kali ya?
-          </div>
+          <iframe
+            src="https://calendar.google.com/calendar/b/1/embed?height=600&amp;wkst=1&amp;bgcolor=%23e3e9ff&amp;ctz=Europe%2FBerlin&amp;src=YWRtaW5AaXdrei5kZQ&amp;color=%23039BE5&amp;showTitle=0&amp;showNav=1&amp;showDate=1&amp;showPrint=0&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1&amp;hl=de&amp;mode=MONTH"
+            width="100%"
+            frameborder="0"
+            scrolling="no"
+            className="calendar"
+          ></iframe>
           <div
             style={{
               margin: "0 auto",
-              backgroundColor: "rgba(215, 90, 90, 0.2)",
+              backgroundColor: "rgba(227, 233, 255, 0.7)",
               padding: "55px",
               borderRadius: "10px",
             }}

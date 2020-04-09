@@ -14,8 +14,6 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   const smoothScroll = (value) => {
-    console.log(value);
-
     if (value === "hero" || value === "home") {
       window.scroll({
         top: 0,

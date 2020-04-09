@@ -9,13 +9,13 @@ export const StyledBox = styled.div`
   color: #444444;
   padding: 1rem;
   border-radius: 6px;
-  ${props =>
+  ${(props) =>
     props.highlightCurrent
       ? `transform: scale(1.3);
     background-color: #e8ffe2;
     box-shadow: 0px 0px 10px #e8ffe2;`
       : ``}
-  ${props =>
+  ${(props) =>
     props.highlightNext
       ? `transform: scale(1.1);
     background-color: #F3E3E4;
@@ -25,6 +25,9 @@ export const StyledBox = styled.div`
     transform: scale(1.2);
     background-color: #fbdfc4;
     box-shadow: 0px 0px 10px #fbdfc4;
+  }
+  &.normal {
+    opacity: 0.7;
   }
   @media only screen and (max-device-width: 360px) {
     font-size: 9px;
@@ -40,7 +43,7 @@ export const StyledText = styled.p`
 export const StyledDate = styled.p`
   font-size: 20px;
   padding-bottom: 20px;
-  color: white;
+  color: ${(props) => props.color};
   font-weight: 300;
   text-align: center;
 `;

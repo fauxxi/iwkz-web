@@ -8,10 +8,10 @@ const Navbar = () => {
   const [burgerActive, setBurgerActive] = useState(false);
 
   const activeBurgerClass = classNames("navbar-burger burger", {
-    "is-active": burgerActive
+    "is-active": burgerActive,
   });
   const activeDropdownClass = classNames("navbar-menu", {
-    "is-active": burgerActive
+    "is-active": burgerActive,
   });
 
   const navbarClass = classNames("navbar is-fixed-top");
@@ -57,11 +57,13 @@ const Navbar = () => {
           <StyledLink className="navbar-item" to="/#peran-iwkz">
             <StyledText>Peran IWKZ</StyledText>
           </StyledLink>
-
           <StyledLink className="navbar-item" to="/#sejarah">
             <StyledText>Sejarah IWKZ</StyledText>
+          </StyledLink>{" "}
+          <StyledLink className="navbar-item" to="/streaming">
+            <StyledText>Streaming</StyledText>
           </StyledLink>
-          <StyledLink className="navbar-item" to="#impressum">
+          <StyledLink className="navbar-item" to="/#impressum">
             <StyledText>Contact us</StyledText>
           </StyledLink>
           <StyledLink className="navbar-item" to="/jadwal-sholat">

@@ -4,16 +4,37 @@ import loadConfiguration from './loadConfigurations';
 //move to constants
 const youtubeUrl = 'https://www.googleapis.com/youtube/v3/search';
 
-export const DEFAULT_CHANNEL_ID = 'UCzlY1aUSt8z0c4NKOlDWUdQ';
+let streamData = {};
+
+const getStreamInfo = async() => {
+    if(!Object.keys(streamData).length) {
+        streamData = await loadConfiguration();
+
+        return streamData;
+    }
+
+    return streamData;
+}
+
+export const getDefaultStreamId = async() => {
+    const { DEFAULT_STREAMING_KEY } = await getStreamInfo();
+
+    return DEFAULT_STREAMING_KEY;
+}
 
 export const getChannels = async() => {
-    const { YOUTUBE_CHANNELS } = await loadConfiguration();
+    const { STREAMING_CHANNELS } = await getStreamInfo();
 
-    return YOUTUBE_CHANNELS;
+    return STREAMING_CHANNELS;
 };
 
 export const getLiveStreamId = async (channelId, cb) => {
-    const { YOUTUBE_KEY } = await loadConfiguration();
+    const { YOUTUBE_KEY, STREAMING_CHANNELS } = await getStreamInfo();
+
+    if(STREAMING_CHANNELS[channelId].streamId) {
+        return cb({ streamId: STREAMING_CHANNELS[channelId].streamId });
+    }
+
     const defaultParams = 'part=snippet&eventType=live&maxResults=1&type=video';
     const dynamicParams = `key=${YOUTUBE_KEY}&channelId=${channelId}`;
     const url = `${youtubeUrl}?${defaultParams}&${dynamicParams}`;
@@ -22,7 +43,8 @@ export const getLiveStreamId = async (channelId, cb) => {
     .then(({ data }) => {
         const { items } = data;
         const streamId = items.length ? items[0].id.videoId : null;
-        
+
+        console.log(streamId);
         return cb({ streamId });
     })
     .catch(() => cb({ streamId: null}));

@@ -7,7 +7,7 @@ const loadConfiguration = async () => {
     return config;
   }
 
-  const response = await axios.get("./config.json");
+  const response = await axios.get("/config.json");
   config = response.data;
 
   return config;

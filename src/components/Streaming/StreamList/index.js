@@ -10,7 +10,9 @@ const StreamList = ({
   onChangeChannel,
 }) => (
   <Container>
-    {Object.keys(channelList).map((channelId) => (
+    {Object.keys(channelList)
+    .filter((channelId) => !!channelList[channelId].active)
+    .map((channelId) => (
       <CustomList
         className={selectedChannel === channelId ? "is-active" : ""}
         key={channelId}
@@ -22,10 +24,11 @@ const StreamList = ({
                 ? IwkzLogo
                 : ExampleImage
             }
-            alt="example image"
+            alt={channelList[channelId].name}
             width="50"
             height="50"
           />
+          <p>{channelList[channelId].name}</p>
         </CustomLink>
       </CustomList>
     ))}

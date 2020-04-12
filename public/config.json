@@ -1,15 +1,32 @@
 {
-    "YOUTUBE_KEY": "AIzaSyBaRv7fGSu6dt0-_HDDXtA5c12rqUmg1D4",
-    "YOUTUBE_CHANNELS": {
+    "DEFAULT_STREAMING_KEY": "UCzlY1aUSt8z0c4NKOlDWUdQ",
+    "YOUTUBE_KEY": "AIzaSyAB2KQDFinWt_eyJrcFfi3vFbAPkUsVxM8",
+    "STREAMING_CHANNELS": {
         "UCzlY1aUSt8z0c4NKOlDWUdQ": {
+            "active": true,
+            "chatBox": true,
+            "streamId": "h7amQ8VIIyM",
             "name": "IWKZ Live",
             "image": "http://info.iwkz.de/images/iwkz.png"
-        },
+        },		
+        "UCzCPcD08UPxhqj3TFmGXxnA": {
+            "active": true,
+            "chatBox": false,
+            "streamId": null,
+            "name": "AQL Islamic Center",
+            "image": "http://info.iwkz.de/images/makkah_live.jpg"
+		},
         "UCos52azQNBgW63_9uDJoPDA": {
+            "active": true,
+            "chatBox": false,
+            "streamId": null,
             "name": "Makkah Live",
             "image": "http://info.iwkz.de/images/makkah_live.jpg"
         },
         "UC_ANPr8IkWibKlKhmi_-H1g": {
+            "active": true,
+            "chatBox": false,
+            "streamId": null,
             "name": "Madinah Live",
             "image": "http://info.iwkz.de/images/makkah_live.jpg"
         }

@@ -37,6 +37,7 @@ Class CalendarService {
         }
 
         return array_merge([
+            "date" => date('d.m.Y', time()),
             "title" => $title,
             "type" => $streamType,
             "startTime" => $this->fixTime($start),

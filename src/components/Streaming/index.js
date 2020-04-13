@@ -43,7 +43,7 @@ const Streaming = ({ match }) => {
     getLiveStreamId(channelId, callbackStreamId);
   };
 
-  const callbackStreamId = ({ streamId }) => {console.log(streamId)
+  const callbackStreamId = ({ streamId }) => {
     setStreamId(streamId);
     setLoading(false);
   };

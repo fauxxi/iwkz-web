@@ -40,12 +40,11 @@ export const getLiveStreamId = async (channelId, cb) => {
     const url = `${youtubeUrl}?${defaultParams}&${dynamicParams}`;
 
     axios.get(url)
-    .then(({ data }) => {
-        const { items } = data;
-        const streamId = items.length ? items[0].id.videoId : null;
+        .then(({ data }) => {
+            const { items } = data;
+            const streamId = items.length ? items[0].id.videoId : null;
 
-        console.log(streamId);
-        return cb({ streamId });
-    })
-    .catch(() => cb({ streamId: null}));
+            return cb({ streamId });
+        })
+        .catch(() => cb({ streamId: null}));
 }

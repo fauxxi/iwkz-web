@@ -14,7 +14,7 @@ Class CalendarService {
     public function getEventToday() {
         $today = date('Ymd', time());
         $todayEvents = [];
-        
+
         for($i = 0; $i < sizeof($this->events); $i++) {
             $dateStart = $this->events[$i]['DTSTART'];
 
@@ -32,13 +32,13 @@ Class CalendarService {
         $title = $data['SUMMARY'];
         $streamType = $data['LOCATION'];
         $streamTarget = $data['DESCRIPTION'];
-        if ($streamTarget) {
+        if (is_array($streamTarget)) {
             $streamTarget = implode($streamTarget);
         }
 
         return array_merge([
             "date" => date('d.m.Y', time()),
-            "title" => $title,
+            "name" => $title,
             "type" => $streamType,
             "startTime" => $this->fixTime($start),
             "endTime" => $this->fixTime($end),
@@ -65,7 +65,7 @@ Class CalendarService {
 
         //getting id
         $tmp = explode("id:", $info);
-        $tmp = explode("url", trim($tmp[1]));
+        $tmp = explode("-", trim($tmp[1]));
         $tmp = trim($tmp[0]);
         if (strpos($tmp, "<br>") !== false) {
             $tmp = explode("<br>", $tmp);
@@ -80,8 +80,8 @@ Class CalendarService {
         $infos["url"] = $tmp;
 
         //getting password
-        if (strpos($info, "password") !== false) {
-            $tmp = explode("password:", $info);
+        if (strpos($info, "pass") !== false) {
+            $tmp = explode("pass:", $info);
             $tmp = trim($tmp[1]);
             if (strpos($tmp, "<br>") !== false) {
                 $tmp = explode("<br>", $tmp);

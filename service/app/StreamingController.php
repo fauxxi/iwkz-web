@@ -118,8 +118,12 @@ Class StreamingController {
 
     private function addMoreStreamInfo($startedEvent) {
         $startedEvent['active'] = true;
-        $startedEvent['chatBox'] = true;
+        $startedEvent['chatBox'] = false;
         $startedEvent['streamId'] = null;
+
+        if (strpos(strtolower($startedEvent['name']), "iwkz") !== false) {
+            $startedEvent['chatBox'] = true;
+        }
 
         if ($startedEvent['type'] === 'youtube') {
             $streamId = $this->streamingService->getYoutubeLiveStreamId($startedEvent['id']);

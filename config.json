@@ -1,6 +1,6 @@
 {
     "DEFAULT_STREAMING_KEY": "UCzlY1aUSt8z0c4NKOlDWUdQ",
-    "YOUTUBE_KEY": "AIzaSyAB2KQDFinWt_eyJrcFfi3vFbAPkUsVxM8",
+    "STREAM_API_URL": "https://iwkz.de/service/index.php",
     "STREAMING_CHANNELS": {
         "UCzlY1aUSt8z0c4NKOlDWUdQ": {
             "active": true,

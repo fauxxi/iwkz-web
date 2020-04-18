@@ -8,7 +8,7 @@ Class StreamingService {
 
     public function getYoutubeLiveStreamId($channelId) {
         $url = "$this->apiUrl?$this->defaultParams&key=$this->apiKey&channelId=$channelId";
-echo "request to youtube";
+
         $data = file_get_contents($url);
         $data = json_decode($data, true);
 

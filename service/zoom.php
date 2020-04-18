@@ -9,10 +9,12 @@ $zoom_api_secret = '6AD3qvYGfTZO9HQTzUoI9GT3hiMuYQZylsmg';
 $zoom_role = 0;
 $data = [];
 $active = false;
+$zoomUrl = "https://zoom.us/j";
 
 if(isset($_GET['id']) && isset($_GET['pass'])) {
 	$meetingId = $_GET['id'];
 	$password = $_GET['pass'];
+	$zoomUrl = "$zoomUrl/$meetingId";
 	
 	$signature = generate_signature($meetingId);
 	
@@ -83,7 +85,7 @@ var meetConfig = {
 	userEmail: "<?= $data["userName"]?>@iwkz.de",
 	passWord: "<?= $data["password"]?>",
 	signature: "<?= $data["signature"]?>",
-	leaveUrl: "https://iwkz.de",
+	leaveUrl: <?= $zoomUrl ?>,
 	role: 0,
 };
 

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import {
-  getDefaultStreamId,
+  getNewConfig,
+  getDefaultChannelId,
   getChannels,
-  getLiveStreamId,
-} from "../../api/youtubeLiveStreamService";
+} from "../../api/streamServices";
 
 import LiveStreaming from "./LiveStreaming";
 import StreamList from "./StreamList";
@@ -19,10 +19,10 @@ import {
 } from "./styled.components";
 
 const Streaming = ({ match }) => {
-  const [defaultStreamId, setDefaultStreamId] = useState(null);
+  const [init, setInitialized] = useState(false);
+  const [defaultChannelId, setDefaultChannelId] = useState(null);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [channelList, setChannelList] = useState({});
-  const [streamId, setStreamId] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
   const isEnableChatBox = selectedChannel
@@ -35,17 +35,6 @@ const Streaming = ({ match }) => {
 
   const onChangeChannel = (channelId) => {
     setSelectedChannel(channelId);
-    getLiveStreamIdByChannel(channelId);
-  };
-
-  const getLiveStreamIdByChannel = (channelId) => {
-    setLoading(true);
-    getLiveStreamId(channelId, callbackStreamId);
-  };
-
-  const callbackStreamId = ({ streamId }) => {
-    setStreamId(streamId);
-    setLoading(false);
   };
 
   const getChannelList = async () => {
@@ -55,26 +44,65 @@ const Streaming = ({ match }) => {
     }
   };
 
-  const initDefaultStreamId = async() => {
+  const initDefaultChannelId = async() => {
     const { params : { channelId } } = match;
 
     if (channelId) {
-      setDefaultStreamId(channelId);
+      setDefaultChannelId(channelId);
     } else {
-      const streamId = await getDefaultStreamId();
-      setDefaultStreamId(streamId);
+      const channelId = await getDefaultChannelId();
+      setDefaultChannelId(channelId);
     }
   }
 
-  useEffect(() => {
-    if (!defaultStreamId) {
-      initDefaultStreamId();
-      getChannelList();
+  const initData = async() => {
+    await getNewConfig();
+    setInitialized(true);
+  }
+
+  const streamData = () => {
+    const data = {
+      streamAvailable: false,
+      streamUrl: null,
+    };
+
+    if(!Object.keys(channelList).length) return data;
+
+    const { type, streamId, url } = channelList[selectedChannel];
+
+    if (type === 'youtube' && streamId) {
+      data.streamAvailable = true;
+      data.streamUrl = `https://www.youtube.com/embed/${streamId}?autoplay=1`;
     }
 
-    if (!selectedChannel && defaultStreamId) {
-      setSelectedChannel(defaultStreamId);
-      getLiveStreamIdByChannel(defaultStreamId);
+    if (type === 'zoom' && streamId) {
+      data.streamAvailable = true;
+      data.streamUrl = streamId;
+    }
+
+    if (type === 'url' && url) {
+      data.streamAvailable = false;
+      data.streamUrl = url;
+    }
+
+    return data;
+  }
+
+  useEffect(() => {
+    if (init) {
+
+      if (!defaultChannelId) {
+        initDefaultChannelId();
+        getChannelList();
+      }
+  
+      if (!selectedChannel && defaultChannelId) {
+        setSelectedChannel(defaultChannelId);
+        setLoading(false);
+      }
+    } else {
+      setLoading(true);
+      initData();
     }
   });
 
@@ -107,7 +135,7 @@ const Streaming = ({ match }) => {
           </div>
         ) : (
           <ContentSection className={isEnableChatBox && "showChat"}>
-            <LiveStreaming streamId={streamId} />
+            <LiveStreaming {...streamData()} />
             <ChatBox isActive={isEnableChatBox} />
           </ContentSection>
         )}

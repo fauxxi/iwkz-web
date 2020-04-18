@@ -28,6 +28,7 @@ Class StreamingService {
     public function getIwkzStreaming() {
         return [
             "UCzlY1aUSt8z0c4NKOlDWUdQ" => [
+                "type" => "youtube",
                 "active" => true,
                 "chatBox" => true,
                 "streamId" => null,
@@ -39,12 +40,14 @@ Class StreamingService {
     public function getDefaultStreamings() {
         return [
             "UCos52azQNBgW63_9uDJoPDA" => [
+                "type" => "youtube",
                 "active" => true,
                 "chatBox" => false,
                 "streamId" => null,
                 "name" => "Makkah Live",
             ],
             "UC_ANPr8IkWibKlKhmi_-H1g" => [
+                "type" => "youtube",
                 "active" => true,
                 "chatBox" => false,
                 "streamId" => null,

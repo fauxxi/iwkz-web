@@ -3,12 +3,14 @@
     "STREAM_API_URL": "https://iwkz.de/service/index.php",
     "STREAMING_CHANNELS": {
         "UCzlY1aUSt8z0c4NKOlDWUdQ": {
+            "type": "youtube",
             "active": true,
             "chatBox": true,
             "streamId": null,
             "name": "IWKZ Live"
         },
         "UCos52azQNBgW63_9uDJoPDA": {
+            "type": "youtube",
             "active": true,
             "chatBox": false,
             "streamId": null,
@@ -16,6 +18,7 @@
             "lastUpdate": "00:00"
         },
         "UC_ANPr8IkWibKlKhmi_-H1g": {
+            "type": "youtube",
             "active": true,
             "chatBox": false,
             "streamId": null,

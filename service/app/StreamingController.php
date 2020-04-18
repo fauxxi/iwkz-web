@@ -1,24 +1,53 @@
 <?php
 
-require __DIR__ . './StreamingService.php';
+require __DIR__ . '/ConfigHandler.php';
+require __DIR__ . '/StreamingService.php';
+require __DIR__ . '/CalendarService.php';
 
 Class StreamingController {
     const MIN_DIFF_LAST_UPDATE_DEFAULT_STREAM = 5;
-    private $config;
     private $streamingService;
+    private $configHandler;
 
     public function __construct() {
         $this->streamingService = new StreamingService();
-        $configHandler = new ConfigHandler();
-        $this->config = $configHandler->readConfig();
+        $this->configHandler = new ConfigHandler();
     }
 
-    public function getDefaultIwkzStream() {
-        return $this->streamingService->getIwkzStreaming();
+    public function updateTodaySchedule() {
+        $calendarService = new CalendarService();
+        $config = $this->configHandler->readConfig();
+
+        $config[Enum::SCHEDULE] = $calendarService->getEventToday();
+        $this->configHandler->writeConfig($config);
     }
 
-    public function getDefaultStreamings() {
-        $configData = $this->config[Enum::STREAMING_CHANNELS];
+    public function updateStreamingChannels() {
+        $config = $this->configHandler->readConfig();
+        $defaultKey = $config[Enum::DEFAULT_STREAMING_KEY];
+        $startedEvents = $this->getStartedEvent();
+        $newConfigs = $this->getDefaultStreamings();
+
+        $tmp = [];
+        for($i=0; $i<count($startedEvents); $i++) {
+            if ($i == 0) {
+                $tmp[$defaultKey] = $startedEvents[$i];
+            } else {
+                $tmp[$i] = $startedEvents[$i];
+            }
+        }
+
+        if(count($tmp) === 0) {
+            $tmp = $this->streamingService->getIwkzStreaming();
+        }
+
+        $config[Enum::STREAMING_CHANNELS] = array_merge($tmp, $newConfigs);
+        $this->configHandler->writeConfig($config);
+    }
+
+    private function getDefaultStreamings() {
+        $config = $this->configHandler->readConfig();
+        $configData = $config[Enum::STREAMING_CHANNELS];
         $data = $this->streamingService->getDefaultStreamings();
         $currentTime = new Datetime("now");
 
@@ -41,20 +70,50 @@ Class StreamingController {
         return $data;
     }
 
-    public function getStartedEvent() {
+    private function getStartedEvent() {
+        $config = $this->configHandler->readConfig();
+        $existingChannels = $config[Enum::STREAMING_CHANNELS];
         $currentTime = new Datetime("now");
         $startedEvent = [];
 
-        foreach($this->config[Enum::SCHEDULE] as $index => $val) {
+        $keysOfExistingChannels = array_values(array_map(function($val) {
+            if(array_key_exists("key", $val)) {
+                return $val["key"];
+            } 
+            return "-";
+        }, $existingChannels));
+
+        foreach($config[Enum::SCHEDULE] as $index => $val) {
             $startTime = new DateTime($val['startTime']);
             $endTime = new DateTime($val['endTime']); 
 
             if ($currentTime >= $startTime && $currentTime <= $endTime) {
-                array_push($startedEvent, $this->addMoreStreamInfo($this->config[Enum::SCHEDULE][$index]));
+                $isStreamInfoExist = in_array ($val["key"], $keysOfExistingChannels);
+                array_push(
+                    $startedEvent, 
+                    $isStreamInfoExist
+                        ? $this->getExistingStreamInfo($config[Enum::SCHEDULE][$index])
+                        : $this->addMoreStreamInfo($config[Enum::SCHEDULE][$index])
+                );
             }
         }
 
         return $startedEvent;
+    }
+
+    private function getExistingStreamInfo($startedEvent) {
+        $config = $this->configHandler->readConfig();
+        $existingChannels = $config[Enum::STREAMING_CHANNELS];
+        $key = $startedEvent["key"];
+        $existingEvent = $startedEvent;
+
+        foreach($existingChannels as $val) {
+            if (array_key_exists("key", $val) && $val["key"] === $key) {
+                $existingEvent = $val;
+            }
+        }
+
+        return $existingEvent;
     }
 
     private function addMoreStreamInfo($startedEvent) {
@@ -69,7 +128,7 @@ Class StreamingController {
         }
 
         if ($startedEvent['type'] === 'zoom') {
-            $stream = $this->streamingService->getZoomUrl();
+            $stream = $this->streamingService->getZoomUrl($startedEvent['id'], $startedEvent['password']);
 
             $startedEvent['streamId'] = $stream;
         }

@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . './ICSReader.php';
+require __DIR__ . '/ICSReader.php';
 
 Class CalendarService {
     private $events;
@@ -37,6 +37,7 @@ Class CalendarService {
         }
 
         return array_merge([
+            "key" => md5("$title.$start.$end"),
             "date" => date('d.m.Y', time()),
             "name" => $title,
             "type" => $streamType,
@@ -74,10 +75,12 @@ Class CalendarService {
         $infos["id"] = $tmp;
 
         //getting url
-        $tmp = explode('"https://', $info);
-        $tmp = explode('"', $tmp[1]);
-        $tmp = $tmp[0];
-        $infos["url"] = $tmp;
+        if (strpos($info, "url") !== false) {
+            $tmp = explode('"https://', $info);
+            $tmp = explode('"', $tmp[1]);
+            $tmp = $tmp[0];
+            $infos["url"] = $tmp;
+        }
 
         //getting password
         if (strpos($info, "pass") !== false) {

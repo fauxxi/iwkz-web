@@ -4,11 +4,11 @@ Class StreamingService {
     private $apiKey = 'AIzaSyAB2KQDFinWt_eyJrcFfi3vFbAPkUsVxM8';
     private $apiUrl = 'https://www.googleapis.com/youtube/v3/search';  
     private $defaultParams = 'part=snippet&eventType=live&maxResults=1&type=video';
-    private $zoomClient = 'http://it-club.iwkz.de/zoom/index.php';
+    private $zoomClient = 'https://iwkz.de/service/zoom.php';
 
     public function getYoutubeLiveStreamId($channelId) {
         $url = "$this->apiUrl?$this->defaultParams&key=$this->apiKey&channelId=$channelId";
-
+echo "request to youtube";
         $data = file_get_contents($url);
         $data = json_decode($data, true);
 
@@ -20,7 +20,7 @@ Class StreamingService {
     }
 
     public function getZoomUrl($id, $pass) {
-        $url = "$this->url?id=$id&pass=$pass";
+        $url = "$this->zoomClient?id=$id&pass=$pass";
 
         return $url;
     }

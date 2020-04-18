@@ -1,13 +1,27 @@
 {
-  "YOUTUBE_KEY": "",
-  "YOUTUBE_CHANNELS": {
-    "UCzlY1aUSt8z0c4NKOlDWUdQ": {
-      "name": "IWKZ Live",
-      "image": "http://info.iwkz.de/images/iwkz.png"
+    "DEFAULT_STREAMING_KEY": "UCzlY1aUSt8z0c4NKOlDWUdQ",
+    "STREAM_API_URL": "https://iwkz.de/service/index.php",
+    "STREAMING_CHANNELS": {
+        "UCzlY1aUSt8z0c4NKOlDWUdQ": {
+            "active": true,
+            "chatBox": true,
+            "streamId": null,
+            "name": "IWKZ Live"
+        },
+        "UCos52azQNBgW63_9uDJoPDA": {
+            "active": true,
+            "chatBox": false,
+            "streamId": null,
+            "name": "Makkah Live",
+            "lastUpdate": "00:00"
+        },
+        "UC_ANPr8IkWibKlKhmi_-H1g": {
+            "active": true,
+            "chatBox": false,
+            "streamId": null,
+            "name": "Madinah Live",
+            "lastUpdate": "00:00"
+        }
     },
-    "UCos52azQNBgW63_9uDJoPDA": {
-      "name": "Makkah Live",
-      "image": "http://info.iwkz.de/images/makkah_live.jpg"
-    }
-  }
+    "SCHEDULE": []
 }

@@ -2,18 +2,29 @@ import React from "react";
 
 import { LiveStreamSection, StyledIframe } from "./styled.components";
 
-const LiveStreaming = ({ streamId }) => (
+const LiveStreaming = ({ streamAvailable, streamUrl }) => (
   <LiveStreamSection className="video">
-    {!streamId && (
+    {(!streamAvailable && !streamUrl) && (
       <h5 className="has-text-weight-medium has-text-white has-text-centered">
         no live streaming...
       </h5>
     )}
-    {streamId && (
+    {
+      (!streamAvailable && streamUrl) && (
+        <div className="has-text-weight-medium has-text-white has-text-centered">
+          <a href={streamUrl} target="_blank">
+            <button class="button is-primary is-rounded">
+              Join Live Streaming
+            </button>
+          </a>
+        </div>
+      )
+    }
+    {streamAvailable && (
       <StyledIframe
         allowFullScreen
         allow="autoplay; encrypted-media"
-        src={`https://www.youtube.com/embed/${streamId}?autoplay=1`}
+        src={streamUrl}
         frameBorder="0"
       />
     )}

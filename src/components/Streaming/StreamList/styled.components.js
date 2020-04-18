@@ -20,6 +20,7 @@ export const CustomList = styled.button`
     outline: 0;
   }
   &.is-active {
+    background-color: #ffebcd;
     opacity: 100%;
     outline: 0;
   }
@@ -30,4 +31,5 @@ export const CustomLink = styled.a`
   display: block;
   width: 100%;
   height: 100%;
+  padding 5px;
 `;

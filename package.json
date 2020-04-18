@@ -17,8 +17,8 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cp config.json ./public/config.json && react-scripts start",
+    "build": "react-scripts build && cp config.json ./build/config.json && cp -r service ./build/service",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

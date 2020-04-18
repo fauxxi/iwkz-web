@@ -1,0 +1,8 @@
+<?php
+
+abstract class Enum
+{
+    const SCHEDULE = 'SCHEDULE';
+    const STREAMING_CHANNELS = 'STREAMING_CHANNELS';
+    const DEFAULT_STREAMING_KEY = 'DEFAULT_STREAMING_KEY';
+}

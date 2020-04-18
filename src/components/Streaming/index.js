@@ -2,55 +2,39 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import {
-  DEFAULT_CHANNEL_ID,
+  getNewConfig,
+  getDefaultChannelId,
   getChannels,
-  getLiveStreamId,
-} from "../../api/youtubeLiveStreamService";
+} from "../../api/streamServices";
 
 import LiveStreaming from "./LiveStreaming";
 import StreamList from "./StreamList";
 import ChatBox from "./ChatBox";
+import Info from './Info';
 import {
   StreamSection,
   TitleSection,
   ContentSection,
   Container,
-  InfoDiv,
 } from "./styled.components";
-import JadwalSholat from "../Home/Hero/HeroComponents/JadwalSholat/JadwalSholat";
 
-const Streaming = () => {
+const Streaming = ({ match }) => {
+  const [init, setInitialized] = useState(false);
+  const [defaultChannelId, setDefaultChannelId] = useState(null);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [channelList, setChannelList] = useState({});
-  const [streamId, setStreamId] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
-  const isEnableChatBox = selectedChannel === DEFAULT_CHANNEL_ID;
+  const isEnableChatBox = selectedChannel
+    && Object.keys(channelList).length
+    && channelList[selectedChannel].chatBox;
+    
   const [ref, inView] = useInView({
     rootMargin: "-100px",
   });
 
-  useEffect(() => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  }, []);
-
   const onChangeChannel = (channelId) => {
     setSelectedChannel(channelId);
-    getLiveStreamIdByChannel(channelId);
-  };
-
-  const getLiveStreamIdByChannel = (channelId) => {
-    setLoading(true);
-    getLiveStreamId(channelId, callbackStreamId);
-  };
-
-  const callbackStreamId = ({ streamId }) => {
-    setStreamId(streamId);
-    setLoading(false);
   };
 
   const getChannelList = async () => {
@@ -60,15 +44,75 @@ const Streaming = () => {
     }
   };
 
-  useEffect(() => {
-    //get default selected channel
-    if (!selectedChannel) {
-      setSelectedChannel(DEFAULT_CHANNEL_ID);
-      getLiveStreamIdByChannel(DEFAULT_CHANNEL_ID);
+  const initDefaultChannelId = async() => {
+    const { params : { channelId } } = match;
+
+    if (channelId) {
+      setDefaultChannelId(channelId);
+    } else {
+      const channelId = await getDefaultChannelId();
+      setDefaultChannelId(channelId);
+    }
+  }
+
+  const initData = async() => {
+    await getNewConfig();
+    setInitialized(true);
+  }
+
+  const streamData = () => {
+    const data = {
+      streamAvailable: false,
+      streamUrl: null,
+    };
+
+    if(!Object.keys(channelList).length) return data;
+
+    const { type, streamId, url } = channelList[selectedChannel];
+
+    if (type === 'youtube' && streamId) {
+      data.streamAvailable = true;
+      data.streamUrl = `https://www.youtube.com/embed/${streamId}?autoplay=1`;
     }
 
-    getChannelList();
+    if (type === 'zoom' && streamId) {
+      data.streamAvailable = true;
+      data.streamUrl = streamId;
+    }
+
+    if (type === 'url' && url) {
+      data.streamAvailable = false;
+      data.streamUrl = url;
+    }
+
+    return data;
+  }
+
+  useEffect(() => {
+    if (init) {
+
+      if (!defaultChannelId) {
+        initDefaultChannelId();
+        getChannelList();
+      }
+  
+      if (!selectedChannel && defaultChannelId) {
+        setSelectedChannel(defaultChannelId);
+        setLoading(false);
+      }
+    } else {
+      setLoading(true);
+      initData();
+    }
   });
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <StreamSection className=" container" ref={ref}>
@@ -91,7 +135,7 @@ const Streaming = () => {
           </div>
         ) : (
           <ContentSection className={isEnableChatBox && "showChat"}>
-            <LiveStreaming streamId={streamId} />
+            <LiveStreaming {...streamData()} />
             <ChatBox isActive={isEnableChatBox} />
           </ContentSection>
         )}
@@ -102,25 +146,7 @@ const Streaming = () => {
               : null}
           </h2>
         </TitleSection>
-        <InfoDiv>
-          <iframe
-            src="https://calendar.google.com/calendar/b/1/embed?height=600&amp;wkst=1&amp;bgcolor=%23e3e9ff&amp;ctz=Europe%2FBerlin&amp;src=YWRtaW5AaXdrei5kZQ&amp;color=%23039BE5&amp;showTitle=0&amp;showNav=1&amp;showDate=1&amp;showPrint=0&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1&amp;hl=de&amp;mode=MONTH"
-            width="100%"
-            frameborder="0"
-            scrolling="no"
-            className="calendar"
-          ></iframe>
-          <div
-            style={{
-              margin: "0 auto",
-              backgroundColor: "rgba(227, 233, 255, 0.7)",
-              padding: "55px",
-              borderRadius: "10px",
-            }}
-          >
-            <JadwalSholat titleColor="" />
-          </div>
-        </InfoDiv>
+        <Info />
       </Container>
     </StreamSection>
   );

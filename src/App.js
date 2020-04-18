@@ -56,8 +56,10 @@ function App() {
             <Route path="/jadwal-sholat">
               <Download />
             </Route>
-            <Route path="/streaming">
-              <Streaming />
+            <Route path="/streaming/:channelId?">
+              {withRouter((props) => (
+                <Streaming {...props} />
+              ))}
             </Route>
             <Route path="/">
               {withRouter((props) => (

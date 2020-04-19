@@ -113,6 +113,10 @@ Class StreamingController {
             }
         }
 
+        if ($existingEvent["type"] === 'youtube' && !$existingEvent["streamId"]) {
+            $existingEvent["streamId"] = $this->streamingService->getYoutubeLiveStreamId($startedEvent['id']);
+        }
+
         return $existingEvent;
     }
 

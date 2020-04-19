@@ -27,31 +27,39 @@ Class CalendarService {
     }
 
     private function getEventDetails($data) {
-        $start = $data['DTSTART'];
-        $end = $data['DTEND'];
+        $start = $this->fixTime($data['DTSTART']);
+        $end = $this->fixTime($data['DTEND']);
         $title = $data['SUMMARY'];
         $streamType = $data['LOCATION'];
         $streamTarget = $data['DESCRIPTION'];
         if (is_array($streamTarget)) {
             $streamTarget = implode($streamTarget);
         }
-
+var_dump($data);
         return array_merge([
             "key" => md5("$title.$start.$end"),
             "date" => date('d.m.Y', time()),
             "name" => $title,
             "type" => $streamType,
-            "startTime" => $this->fixTime($start),
-            "endTime" => $this->fixTime($end),
+            "startTime" => $start,
+            "endTime" => $end,
         ], $this->extractStreamInfo($streamTarget));
     }
 
     private function fixTime($dateTime) {
+        $needFix = true;
+        if(is_array($dateTime)) {
+            if($dateTime["TZID"] === "Europe/Berlin") {
+                $needFix = false;
+            }    
+            $dateTime = $dateTime["value"];
+        }
+
         $tmp = explode('T', $dateTime);
         $tmp = explode('00Z', $tmp[1]);
         $time = $tmp[0];
 
-        $hour = ((int)substr($time, 0, 2)) + 2;
+        $hour = $needFix ? ((int)substr($time, 0, 2)) + 2 : substr($time, 0, 2);
         $minute = substr($time, -2);
 
         return $hour.':'.$minute;

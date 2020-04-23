@@ -2,11 +2,17 @@ import React from "react";
 
 import { ChatBoxSection } from "./styled.components";
 
-const ChatBox = ({ isActive }) =>
-  isActive && (
+const ChatBox = ({ isActive, streamId }) =>{
+  let chatSource = "https://www5.cbox.ws/box/?boxid=918815&boxtag=4PBvyW";
+
+  if (isActive && streamId) {
+    chatSource = `https://www.youtube.com/live_chat?v=${streamId}&embed_domain=iwkz.de`;
+  }
+
+  return isActive && (
     <ChatBoxSection className="chatbox">
       <iframe
-        src="https://www5.cbox.ws/box/?boxid=918815&boxtag=4PBvyW"
+        src={chatSource}
         width="100%"
         height="450"
         allowtransparency="yes"
@@ -18,5 +24,6 @@ const ChatBox = ({ isActive }) =>
       ></iframe>
     </ChatBoxSection>
   );
+};
 
 export default ChatBox;

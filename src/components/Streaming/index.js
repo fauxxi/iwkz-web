@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { isMobile } from "react-device-detect";
 
 import {
   getNewConfig,
@@ -24,10 +25,6 @@ const Streaming = ({ match }) => {
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [channelList, setChannelList] = useState({});
   const [isLoading, setLoading] = useState(false);
-
-  const isEnableChatBox = selectedChannel
-    && Object.keys(channelList).length
-    && channelList[selectedChannel].chatBox;
     
   const [ref, inView] = useInView({
     rootMargin: "-100px",
@@ -64,6 +61,7 @@ const Streaming = ({ match }) => {
     const data = {
       streamAvailable: false,
       streamUrl: null,
+      streamId: null,
     };
 
     if(!Object.keys(channelList).length) return data;
@@ -73,6 +71,7 @@ const Streaming = ({ match }) => {
     if (type === 'youtube' && streamId) {
       data.streamAvailable = true;
       data.streamUrl = `https://www.youtube.com/embed/${streamId}?autoplay=1`;
+      data.streamId = streamId;
     }
 
     if (type === 'zoom' && streamId) {
@@ -87,6 +86,12 @@ const Streaming = ({ match }) => {
 
     return data;
   }
+
+  const isYoutubeLiveAndNotMobileDevice = streamData().streamAvailable && streamData().streamId;// && !isMobile;
+  const isEnableChatBox = selectedChannel
+    && Object.keys(channelList).length
+    && channelList[selectedChannel].chatBox 
+    && isYoutubeLiveAndNotMobileDevice;
 
   useEffect(() => {
     if (init) {
@@ -136,7 +141,7 @@ const Streaming = ({ match }) => {
         ) : (
           <ContentSection className={isEnableChatBox && "showChat"}>
             <LiveStreaming {...streamData()} />
-            <ChatBox isActive={isEnableChatBox} />
+            <ChatBox isActive={isEnableChatBox} streamId={streamData().streamId} />
           </ContentSection>
         )}
         <TitleSection className="content">

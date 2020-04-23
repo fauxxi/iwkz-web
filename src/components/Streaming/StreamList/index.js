@@ -11,7 +11,7 @@ const StreamList = ({
 }) => (
   <Container>
     {Object.keys(channelList)
-    .filter((channelId) => !!channelList[channelId].active)
+    .filter((channelId) => channelList[channelId] && channelList[channelId].active)
     .map((channelId) => (
       <CustomList
         className={selectedChannel === channelId ? "is-active" : ""}

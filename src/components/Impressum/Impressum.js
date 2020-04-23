@@ -16,7 +16,7 @@ const Impressum = () => {
             <p className="is-size-5">Support our Masjid</p>
             <br />
             <p className="text" style={{ fontSize: font }}>
-              Indonesisches Weisheits- & Kulturzentrum <br />
+              indonesischer Weisheits- & Kulturzentrum e.V. <br />
               Feldzeugmeister. 1<br />
               10557 Berlin
               <br />

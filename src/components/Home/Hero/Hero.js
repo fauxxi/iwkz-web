@@ -28,7 +28,7 @@ const Hero = () => {
               </StyledTitle>
               <div className="content is-hidden-mobile">
                 <p className="has-text-weight-medium is-size-5">
-                  Indonesisches Weisheits- und Kulturzentrum e.V.
+                  indonesischer Weisheits- & Kulturzentrum e.V.
                 </p>
                 <p className="is-size-6">
                   Saat ini kami berencana untuk membeli gedung sendiri, klik

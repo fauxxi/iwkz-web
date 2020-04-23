@@ -63,11 +63,11 @@ const Navbar = () => {
           <StyledLink className="navbar-item" to="/streaming">
             <StyledText>Streaming</StyledText>
           </StyledLink>
-          <StyledLink className="navbar-item" to="/#impressum">
-            <StyledText>Contact us</StyledText>
-          </StyledLink>
           <StyledLink className="navbar-item" to="/jadwal-sholat">
             <StyledText>Download Jadwal Sholat</StyledText>
+          </StyledLink>
+          <StyledLink className="navbar-item" to="/#impressum">
+            <StyledText>Contact us</StyledText>
           </StyledLink>
         </div>
       </div>

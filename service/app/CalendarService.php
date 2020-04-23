@@ -17,13 +17,25 @@ Class CalendarService {
 
         for($i = 0; $i < sizeof($this->events); $i++) {
             $dateStart = $this->events[$i]['DTSTART'];
+            $isDailyEvent = $this->isDailyEventAndValid($this->events[$i]);
 
-            if(strpos($dateStart, $today) !== false) {
+            if($isDailyEvent || strpos($dateStart, $today) !== false) {
                 array_push($todayEvents, $this->getEventDetails($this->events[$i]));
             }
         }
 
         return $todayEvents;
+    }
+
+    private function isDailyEventAndValid($event) {
+        if (array_key_exists('RRULE', $event) && $event['RRULE']['FREQ'] === 'DAILY') {
+            $lastEvent = new DateTime($event['RRULE']['UNTIL']);
+            $today = new DateTime('now');
+
+            return $today <= $lastEvent;
+        } 
+
+        return false;
     }
 
     private function getEventDetails($data) {
@@ -35,7 +47,7 @@ Class CalendarService {
         if (is_array($streamTarget)) {
             $streamTarget = implode($streamTarget);
         }
-var_dump($data);
+
         return array_merge([
             "key" => md5("$title.$start.$end"),
             "date" => date('d.m.Y', time()),
@@ -74,7 +86,7 @@ var_dump($data);
 
         //getting id
         $tmp = explode("id:", $info);
-        $tmp = explode("-", trim($tmp[1]));
+        $tmp = explode("#", trim($tmp[1]));
         $tmp = trim($tmp[0]);
         if (strpos($tmp, "<br>") !== false) {
             $tmp = explode("<br>", $tmp);

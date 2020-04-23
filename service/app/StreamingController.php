@@ -41,8 +41,40 @@ Class StreamingController {
             $tmp = $this->streamingService->getIwkzStreaming();
         }
 
-        $config[Enum::STREAMING_CHANNELS] = array_merge($tmp, $newConfigs);
-        $this->configHandler->writeConfig($config);
+        $configStreamingChannels = array_merge($tmp, $newConfigs);
+        if($this->isAnyChangesOnStreamChannels($configStreamingChannels)) {
+            $config[Enum::STREAMING_CHANNELS] = $configStreamingChannels;
+            $this->configHandler->writeConfig($config);
+            echo "new data";
+        }
+        echo "old data";
+    }
+
+    private function isAnyChangesOnStreamChannels($newConfig) {
+        $config = $this->configHandler->readConfig();
+        $oldConfig = $config[Enum::STREAMING_CHANNELS];
+
+        if(sizeof($newConfig) !== sizeof($oldConfig)) {
+            return true;
+        }
+
+        $keys = array_keys($newConfig);
+        $isNeedUpdate = false;
+        foreach($keys as $key) {
+            if(array_key_exists('lastUpdate', $newConfig[$key])) {
+                if($oldConfig[$key]['lastUpdate'] !== $newConfig[$key]['lastUpdate']) {
+                    $isNeedUpdate = true;
+                    break;
+                }
+            }
+
+            if($oldConfig[$key]['streamId'] !== $newConfig[$key]['streamId']) {
+                $isNeedUpdate = true;
+                break;
+            }
+        }
+
+        return $isNeedUpdate;
     }
 
     private function getDefaultStreamings() {
@@ -52,8 +84,8 @@ Class StreamingController {
         $currentTime = new Datetime("now");
 
         foreach($data as $key=>$val) {
-            $data[$key] = $configData[$key];
-            $lastUpdateTime = new DateTime($configData[$key]['lastUpdate']);
+            $lastUpdateExistingStream = array_key_exists('lastUpdate', $configData[$key]) ? $configData[$key]['lastUpdate'] : '00:00';
+            $lastUpdateTime = new DateTime($lastUpdateExistingStream);
 
             $timeDiff = $currentTime->diff($lastUpdateTime);
             $hoursDiff = $timeDiff->h;
@@ -64,6 +96,9 @@ Class StreamingController {
 
                 $data[$key]["lastUpdate"] = date('H:i', time());
                 $data[$key]["streamId"] = $streamId;
+            } else {
+                $data[$key]["lastUpdate"] = $configData[$key]["lastUpdate"];
+                $data[$key]["streamId"] = $configData[$key]["streamId"];
             }
         }
 
@@ -125,14 +160,11 @@ Class StreamingController {
         $startedEvent['chatBox'] = false;
         $startedEvent['streamId'] = null;
 
-        if (strpos(strtolower($startedEvent['name']), "iwkz") !== false) {
-            $startedEvent['chatBox'] = true;
-        }
-
         if ($startedEvent['type'] === 'youtube') {
             $streamId = $this->streamingService->getYoutubeLiveStreamId($startedEvent['id']);
 
             $startedEvent['streamId'] = $streamId;
+            $startedEvent['chatBox'] = $streamId ? true : false;
         }
 
         if ($startedEvent['type'] === 'zoom') {

@@ -4,8 +4,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, Authorization');
 
-$zoom_api_key = 'AwBepAvpRBesquukX0UotQ';
-$zoom_api_secret = '6AD3qvYGfTZO9HQTzUoI9GT3hiMuYQZylsmg';
+require __DIR__ . '/env.php';
+
+$zoom_api_key = Config::ZOOM_KEY;
+$zoom_api_secret = Config::ZOOM_SECRET;
 $zoom_role = 0;
 $data = [];
 $active = false;

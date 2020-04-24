@@ -6,6 +6,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Authorization');
 
 date_default_timezone_set("Europe/Berlin");
 
+require __DIR__ . '/env.php';
 require __DIR__ . '/app/Enum.php';
 require __DIR__ . '/app/StreamingController.php';
 

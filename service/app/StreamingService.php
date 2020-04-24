@@ -1,7 +1,7 @@
 <?php
 
 Class StreamingService {
-    private $apiKey = 'AIzaSyAB2KQDFinWt_eyJrcFfi3vFbAPkUsVxM8';
+    private $apiKey = Config::YOUTUBE_API_KEY;
     private $apiUrl = 'https://www.googleapis.com/youtube/v3/search';  
     private $defaultParams = 'part=snippet&eventType=live&maxResults=1&type=video';
     private $zoomClient = 'https://iwkz.de/service/zoom.php';
@@ -39,7 +39,7 @@ Class StreamingService {
 
     public function getDefaultStreamings() {
         return [
-            "UCos52azQNBgW63_9uDJoPDA" => [
+            "UClIIopOeuwL8KEK0wnFcodw" => [
                 "type" => "youtube",
                 "active" => true,
                 "chatBox" => false,

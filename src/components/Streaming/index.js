@@ -64,7 +64,7 @@ const Streaming = ({ match }) => {
       streamId: null,
     };
 
-    if(!Object.keys(channelList).length) return data;
+    if(!Object.keys(channelList).length || selectedChannel == null || !Object.keys(channelList[selectedChannel]).length) return data;
 
     const { type, streamId, url } = channelList[selectedChannel];
 
@@ -87,11 +87,14 @@ const Streaming = ({ match }) => {
     return data;
   }
 
-  const isYoutubeLiveAndNotMobileDevice = streamData().streamAvailable && streamData().streamId;// && !isMobile;
+  const isYoutubeLive = streamData().streamAvailable && streamData().streamId;
   const isEnableChatBox = selectedChannel
     && Object.keys(channelList).length
     && channelList[selectedChannel].chatBox 
-    && isYoutubeLiveAndNotMobileDevice;
+    && isYoutubeLive;
+  const customChat = isEnableChatBox
+    && isMobile
+    && channelList[selectedChannel].name.toLowerCase().includes('iwkz');
 
   useEffect(() => {
     if (init) {
@@ -141,7 +144,7 @@ const Streaming = ({ match }) => {
         ) : (
           <ContentSection className={isEnableChatBox && "showChat"}>
             <LiveStreaming {...streamData()} />
-            <ChatBox isActive={isEnableChatBox} streamId={streamData().streamId} />
+            <ChatBox isActive={isEnableChatBox} streamId={streamData().streamId} customChat={customChat} />
           </ContentSection>
         )}
         <TitleSection className="content">

@@ -2,10 +2,10 @@ import React from "react";
 
 import { ChatBoxSection } from "./styled.components";
 
-const ChatBox = ({ isActive, streamId }) =>{
+const ChatBox = ({ isActive, streamId, customChat }) =>{
   let chatSource = "https://www5.cbox.ws/box/?boxid=918815&boxtag=4PBvyW";
 
-  if (isActive && streamId) {
+  if (isActive && streamId && !customChat) {
     chatSource = `https://www.youtube.com/live_chat?v=${streamId}&embed_domain=iwkz.de`;
   }
 

@@ -99,7 +99,7 @@ Class CalendarService {
             $tmp = explode('"https://', $info);
             $tmp = explode('"', $tmp[1]);
             $tmp = $tmp[0];
-            $infos["url"] = $tmp;
+            $infos["url"] = "https://$tmp";
         }
 
         //getting password

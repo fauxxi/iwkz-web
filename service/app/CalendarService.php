@@ -110,7 +110,7 @@ Class CalendarService {
 
         //getting url
         if (strpos($info, "url") !== false) {
-            $tmp = explode('"https://', $info);
+            $tmp = explode('https://', $info);
             $tmp = explode('"', $tmp[1]);
             $tmp = $tmp[0];
             $infos["url"] = "https://$tmp";

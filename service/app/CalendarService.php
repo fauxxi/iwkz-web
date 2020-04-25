@@ -18,13 +18,27 @@ Class CalendarService {
         for($i = 0; $i < sizeof($this->events); $i++) {
             $dateStart = $this->events[$i]['DTSTART'];
             $isDailyEvent = $this->isDailyEventAndValid($this->events[$i]);
+            $isWeeklyEvent = $this->isWeeklyEventAndValid($this->events[$i]);
 
-            if($isDailyEvent || strpos($dateStart, $today) !== false) {
+            if($isDailyEvent || $isWeeklyEvent || strpos($dateStart, $today) !== false) {
                 array_push($todayEvents, $this->getEventDetails($this->events[$i]));
             }
         }
 
         return $todayEvents;
+    }
+
+    private function isWeeklyEventAndValid($event) {
+        $days = ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
+        if (array_key_exists('RRULE', $event) && $event['RRULE']['FREQ'] === 'WEEKLY') {
+            $lastEvent = new DateTime($event['RRULE']['UNTIL']);
+            $today = new DateTime('now');
+            $dayN = date('N', time()) - 1;
+
+            return $today <= $lastEvent && strpos($event['RRULE']['BYDAY'], $days[$dayN]) !== false;
+        } 
+
+        return false;
     }
 
     private function isDailyEventAndValid($event) {

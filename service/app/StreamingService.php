@@ -7,15 +7,20 @@ Class StreamingService {
     private $zoomClient = 'https://iwkz.de/service/zoom.php';
 
     public function getYoutubeLiveStreamId($channelId) {
+        $curl = curl_init();
         $url = "$this->apiUrl?$this->defaultParams&key=$this->apiKey&channelId=$channelId";
 
-        $data = file_get_contents($url);
-        $data = json_decode($data, true);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $result = curl_exec($curl);
+        $data = json_decode($result, true);
+
+        curl_close($curl);
 
         if(sizeof($data["items"]) > 0) {
             return $data['items'][0]['id']['videoId'];
         }
-        
         return '';
     }
 

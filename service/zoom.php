@@ -49,7 +49,7 @@ function generate_signature ($meeting_number){
 
 <!DOCTYPE html>
 <head>
-    <title>Zoom WebSDK</title>
+    <title>IWKZ Zoom Client</title>
     <meta charset="utf-8" />
     <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.5/css/bootstrap.css"/>
     <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.5/css/react-select.css"/>
@@ -61,8 +61,24 @@ function generate_signature ($meeting_number){
     body {
         padding-top: 50px;
     }
+	#join_meeting {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
 </style>
 
+<?php if($active) {?> 
+	<nav id="nav-tool" class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+        <div id="navbar">
+			<button type="button" class="btn btn-primary btn-lg btn-block" id="join_meeting">Join Langsung</button>
+			<a href="<?=$zoomUrl?>" target="_blank">
+				<button type="button" class="btn btn-danger btn-lg btn-block">Join Via Zoom | pass: <?=$password?></button>
+			</a>
+        </div><!--/.navbar-collapse -->
+    </div>
+	</nav>
+<?php }?>
 
 <script src="https://source.zoom.us/1.7.5/lib/vendor/react.min.js"></script>
 <script src="https://source.zoom.us/1.7.5/lib/vendor/react-dom.min.js"></script>
@@ -76,56 +92,60 @@ function generate_signature ($meeting_number){
 <script>
 (function(){
 <?php if($active) {?>    
-ZoomMtg.preLoadWasm();
-ZoomMtg.prepareJssdk();
+	ZoomMtg.preLoadWasm();
+	ZoomMtg.prepareJssdk();
 
-var meetConfig = {
-	apiKey: "<?= $data["apiKey"]?>",
-	apiSecret: "<?= $zoom_api_secret?>",
-	meetingNumber: <?= $data["meetingNumber"]?>,
-	userName: "<?= $data["userName"]?>",
-	userEmail: "<?= $data["userName"]?>@iwkz.de",
-	passWord: "<?= $data["password"]?>",
-	signature: "<?= $data["signature"]?>",
-	leaveUrl: <?= $zoomUrl ?>,
-	role: 0,
-};
+	document.getElementById('join_meeting').addEventListener('click', function(e){
+		e.preventDefault();
 
-var signature = ZoomMtg.generateSignature({
-	meetingNumber: meetConfig.meetingNumber,
-	apiKey: meetConfig.apiKey,
-	apiSecret: meetConfig.apiSecret,
-	role: meetConfig.role,
-	success: function(res){
-		console.log(res.result);
-	}
-});
+		var meetConfig = {
+			apiKey: "<?= $data["apiKey"]?>",
+			apiSecret: "<?= $zoom_api_secret?>",
+			meetingNumber: <?= $data["meetingNumber"]?>,
+			userName: "<?= $data["userName"]?>",
+			userEmail: "<?= $data["userName"]?>@iwkz.de",
+			passWord: "<?= $data["password"]?>",
+			signature: "<?= $data["signature"]?>",
+			leaveUrl: "<?= $zoomUrl ?>",
+			role: 0,
+		};
 
-ZoomMtg.init({
-	leaveUrl: meetConfig.leaveUrl,
-	isSupportAV: true,
-	success: function () {
-		ZoomMtg.join(
-			{
-				meetingNumber: meetConfig.meetingNumber,
-				userName: meetConfig.userName,
-				signature: signature,
-				apiKey: meetConfig.apiKey,
-				passWord: meetConfig.passWord,
-				success: function(res){
-					console.log('join meeting success');
-				},
-				error: function(res) {
-					console.log(res);
-				}
+		var signature = ZoomMtg.generateSignature({
+			meetingNumber: meetConfig.meetingNumber,
+			apiKey: meetConfig.apiKey,
+			apiSecret: meetConfig.apiSecret,
+			role: meetConfig.role,
+			success: function(res){
+				console.log(res.result);
 			}
-		);
-	},
-	error: function(res) {
-		console.log(res);
-	}
-});
+		});
 
+		ZoomMtg.init({
+			leaveUrl: meetConfig.leaveUrl,
+			isSupportAV: true,
+			success: function () {
+				ZoomMtg.join(
+					{
+						meetingNumber: meetConfig.meetingNumber,
+						userName: meetConfig.userName,
+						signature: signature,
+						apiKey: meetConfig.apiKey,
+						passWord: meetConfig.passWord,
+						success: function(res){
+							$('#nav-tool').hide();
+							console.log('join meeting success');
+						},
+						error: function(res) {
+							console.log(res);
+						}
+					}
+				);
+			},
+			error: function(res) {
+				console.log(res);
+			}
+		});
+    });
 <?php }?>
 
 })();

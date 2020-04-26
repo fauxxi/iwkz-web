@@ -5,7 +5,7 @@ require __DIR__ . '/StreamingService.php';
 require __DIR__ . '/CalendarService.php';
 
 Class StreamingController {
-    const MIN_DIFF_LAST_UPDATE_DEFAULT_STREAM = 5;
+    const MIN_DIFF_LAST_UPDATE_DEFAULT_STREAM = 8;
     private $streamingService;
     private $configHandler;
 

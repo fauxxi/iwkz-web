@@ -46,15 +46,26 @@ const Streaming = ({ match }) => {
 
     if (channelId) {
       setDefaultChannelId(channelId);
+      setSelectedChannel(channelId);
     } else {
       const channelId = await getDefaultChannelId();
       setDefaultChannelId(channelId);
+      setSelectedChannel(channelId);
     }
   }
 
   const initData = async() => {
-    await getNewConfig();
     setInitialized(true);
+    const result = await getNewConfig();
+
+    if(result) {
+      if (!defaultChannelId) {
+        await initDefaultChannelId();
+        await getChannelList();
+  
+        setLoading(false);
+      }
+    }
   }
 
   const streamData = () => {
@@ -97,18 +108,7 @@ const Streaming = ({ match }) => {
     && channelList[selectedChannel].name.toLowerCase().includes('iwkz');
 
   useEffect(() => {
-    if (init) {
-
-      if (!defaultChannelId) {
-        initDefaultChannelId();
-        getChannelList();
-      }
-  
-      if (!selectedChannel && defaultChannelId) {
-        setSelectedChannel(defaultChannelId);
-        setLoading(false);
-      }
-    } else {
+    if(!init) {
       setLoading(true);
       initData();
     }

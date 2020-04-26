@@ -18,5 +18,7 @@ export const getNewConfig = async() => {
 
     const url = `${STREAM_API_URL}?update=true`;
 
-    await axios.get(url);
+    const data = await axios.get(url);
+
+    return data.data.updateChannel;
 }

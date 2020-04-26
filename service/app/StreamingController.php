@@ -45,9 +45,7 @@ Class StreamingController {
         if($this->isAnyChangesOnStreamChannels($configStreamingChannels)) {
             $config[Enum::STREAMING_CHANNELS] = $configStreamingChannels;
             $this->configHandler->writeConfig($config);
-            echo "new data";
         }
-        echo "old data";
     }
 
     private function isAnyChangesOnStreamChannels($newConfig) {

@@ -20,7 +20,9 @@ Class CalendarService {
             $isDailyEvent = $this->isDailyEventAndValid($this->events[$i]);
             $isWeeklyEvent = $this->isWeeklyEventAndValid($this->events[$i]);
 
-            if($isDailyEvent || $isWeeklyEvent || strpos($dateStart, $today) !== false) {
+            if($isDailyEvent
+                || $isWeeklyEvent
+                || (!is_array($dateStart) && strpos($dateStart, $today) !== false)) {
                 array_push($todayEvents, $this->getEventDetails($this->events[$i]));
             }
         }

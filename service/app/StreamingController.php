@@ -89,7 +89,7 @@ Class StreamingController {
             $hoursDiff = $timeDiff->h;
             $hoursDiff = $hoursDiff + ($timeDiff->days*24);
 
-            if ($hoursDiff > self::MIN_DIFF_LAST_UPDATE_DEFAULT_STREAM || empty($data[$key]["streamId"])) {
+            if ($hoursDiff > self::MIN_DIFF_LAST_UPDATE_DEFAULT_STREAM) {
                 $streamId = $this->streamingService->getYoutubeLiveStreamId($key);
 
                 $data[$key]["lastUpdate"] = date('H:i', time());

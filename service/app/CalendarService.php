@@ -36,8 +36,13 @@ Class CalendarService {
             $lastEvent = new DateTime($event['RRULE']['UNTIL']);
             $today = new DateTime('now');
             $dayN = date('N', time()) - 1;
+            $todayDateString = date('Ymd', time());
+            $startEventString = $event['DTSTART']['value'];
+            $startEvent = new DateTime($startEventString);
 
-            return $today <= $lastEvent && strpos($event['RRULE']['BYDAY'], $days[$dayN]) !== false;
+            return (strpos($startEventString, $todayDateString) !== false || $startEvent >= $today)
+                && $today <= $lastEvent 
+                && strpos($event['RRULE']['BYDAY'], $days[$dayN]) !== false;
         } 
 
         return false;

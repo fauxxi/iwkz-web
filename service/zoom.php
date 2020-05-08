@@ -8,15 +8,23 @@ require __DIR__ . '/env.php';
 
 $zoom_api_key = Config::ZOOM_KEY;
 $zoom_api_secret = Config::ZOOM_SECRET;
+$zoomJoinUrl = Config::ZOOM_JOIN_URL;
 $zoom_role = 0;
 $data = [];
 $active = false;
 $zoomUrl = "https://zoom.us/j";
+$showedPassword = '';
 
 if(isset($_GET['id']) && isset($_GET['pass'])) {
 	$meetingId = $_GET['id'];
 	$password = $_GET['pass'];
+	$showedPassword = "| pass: $password";
 	$zoomUrl = "$zoomUrl/$meetingId";
+
+	if(in_array($meetingId, array_keys($zoomJoinUrl))) {
+		$zoomUrl = $zoomJoinUrl[$meetingId];
+		$showedPassword = '';
+	}
 	
 	$signature = generate_signature($meetingId);
 	
@@ -73,7 +81,7 @@ function generate_signature ($meeting_number){
         <div id="navbar">
 			<button type="button" class="btn btn-primary btn-lg btn-block" id="join_meeting">Join Langsung</button>
 			<a href="<?=$zoomUrl?>" target="_blank">
-				<button type="button" class="btn btn-danger btn-lg btn-block">Join Via Zoom | pass: <?=$password?></button>
+				<button type="button" class="btn btn-danger btn-lg btn-block">Join via Zoom-App <?="$showedPassword"?></button>
 			</a>
         </div><!--/.navbar-collapse -->
     </div>

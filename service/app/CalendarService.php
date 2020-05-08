@@ -113,6 +113,10 @@ Class CalendarService {
             $tmp = explode("<br>", $tmp);
             $tmp = $tmp[0];
         }
+        if (strpos($tmp, "</span>") !== false) {
+            $tmp = explode("</span>", $tmp);
+            $tmp = $tmp[0];
+        }
         $infos["id"] = $tmp;
 
         //getting url
@@ -129,6 +133,10 @@ Class CalendarService {
             $tmp = trim($tmp[1]);
             if (strpos($tmp, "<br>") !== false) {
                 $tmp = explode("<br>", $tmp);
+                $tmp = $tmp[0];
+            }
+            if (strpos($tmp, "</span>") !== false) {
+                $tmp = explode("</span>", $tmp);
                 $tmp = $tmp[0];
             }
             $infos["password"] = $tmp;

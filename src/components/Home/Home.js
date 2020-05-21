@@ -3,6 +3,7 @@ import Hero from "./Hero/Hero";
 import AboutMasjid from "./HomeComponents/AboutMasjid";
 import PeranIwkz from "./HomeComponents/PeranIwkz/PeranIwkz";
 import Timeline from "./Timeline/Timeline";
+import Blogs from "../Blogs";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
           d="M0,64L60,85.3C120,107,240,149,360,176C480,203,600,213,720,202.7C840,192,960,160,1080,160C1200,160,1320,192,1380,208L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
         ></path>
       </svg>
+      <Blogs />
       <PeranIwkz />
       <svg
         xmlns="http://www.w3.org/2000/svg"

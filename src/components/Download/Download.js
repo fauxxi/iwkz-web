@@ -25,11 +25,11 @@ const Download = () => {
           Marhaban ya Ramadhan
         </StyledTitle>
         <p className="has-text-weight-medium">
-          {`Klik tombol dibawah untuk download jadwal sholat selama bulan Ramadhan 1441H`}
+          {`Klik tombol dibawah untuk download jadwal sholat selama bulan Ramadhan 1442H`}
         </p>
         <a
-          href="http://it-club.iwkz.de/data/Jadwal_Imsakiyah_1441H.pdf"
-          download="ramadhan_1441H.pdf"
+          href="http://it-club.iwkz.de/data/Jadwal_Shalat_Ramadhan_1442H.pdf"
+          download="ramadhan_1442H.pdf"
           target="_blank"
         >
           <StyledButton class="btn">Download </StyledButton>

@@ -3,6 +3,7 @@ import { StyledFooter, StyledIcon, StyledText } from "./styled.components";
 import FacebookIcon from "../../img/facebook-round-color.svg";
 import InstagramIcon from "../../img/instagram-round-color.svg";
 import YoutubeIcon from "../../img/youtube-round-color.svg";
+import DiscordIcon from "../../img/discord-logo.svg";
 
 const Footer = () => {
   return (
@@ -37,6 +38,13 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <StyledIcon className="icon" src={YoutubeIcon} alt="youtube-icon" />
+        </a>
+        <a
+          target="_blank"
+          href="https://discord.gg/QBrqSQayA7"
+          rel="noopener noreferrer"
+        >
+          <StyledIcon className="icon" src={DiscordIcon} alt="discord" />
         </a>
       </div>
     </StyledFooter>

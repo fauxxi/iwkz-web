@@ -35,9 +35,7 @@ const Impressum = () => {
           </SyledDiv>
         </div>
 
-        <div className="level-item">
-          <SyledImage src={ladiLogo} alt="ladi logo" />
-        </div>
+        <div className="level-item"></div>
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <StyledFooter className="footer level is-mobile">
       <div className="level-item">
-        <StyledText>© 2020 IWKZ.</StyledText>
+        <StyledText>© 2021 IWKZ.</StyledText>
       </div>
 
       <div className="level-item ">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { isMobile } from "react-device-detect";
+import ZoomIcon from "../../img/zoom.png";
 
 import {
   getNewConfig,
@@ -11,7 +12,7 @@ import {
 import LiveStreaming from "./LiveStreaming";
 import StreamList from "./StreamList";
 import ChatBox from "./ChatBox";
-import Info from './Info';
+import Info from "./Info";
 import {
   StreamSection,
   TitleSection,
@@ -25,7 +26,7 @@ const Streaming = ({ match }) => {
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [channelList, setChannelList] = useState({});
   const [isLoading, setLoading] = useState(false);
-    
+
   const [ref, inView] = useInView({
     rootMargin: "-100px",
   });
@@ -41,8 +42,10 @@ const Streaming = ({ match }) => {
     }
   };
 
-  const initDefaultChannelId = async() => {
-    const { params : { channelId } } = match;
+  const initDefaultChannelId = async () => {
+    const {
+      params: { channelId },
+    } = match;
 
     if (channelId) {
       setDefaultChannelId(channelId);
@@ -52,21 +55,21 @@ const Streaming = ({ match }) => {
       setDefaultChannelId(channelId);
       setSelectedChannel(channelId);
     }
-  }
+  };
 
-  const initData = async() => {
+  const initData = async () => {
     setInitialized(true);
     const result = await getNewConfig();
 
-    if(result) {
+    if (result) {
       if (!defaultChannelId) {
         await initDefaultChannelId();
         await getChannelList();
-  
+
         setLoading(false);
       }
     }
-  }
+  };
 
   const streamData = () => {
     const data = {
@@ -75,40 +78,52 @@ const Streaming = ({ match }) => {
       streamId: null,
     };
 
-    if(!Object.keys(channelList).length || selectedChannel == null || !Object.keys(channelList[selectedChannel]).length) return data;
+    if (
+      !Object.keys(channelList).length ||
+      selectedChannel == null ||
+      !Object.keys(channelList[selectedChannel]).length
+    )
+      return data;
 
     const { type, streamId, url } = channelList[selectedChannel];
 
-    if (type === 'youtube' && streamId) {
+    if (type === "youtube" && streamId) {
       data.streamAvailable = true;
       data.streamUrl = `https://www.youtube.com/embed/${streamId}?autoplay=1`;
       data.streamId = streamId;
     }
 
-    if (type === 'zoom' && streamId) {
+    if (type === "zoom" && streamId) {
       data.streamAvailable = true;
       data.streamUrl = streamId;
     }
 
-    if (type === 'url' && url) {
+    if (type === "url" && url) {
       data.streamAvailable = false;
       data.streamUrl = url;
     }
 
     return data;
-  }
+  };
 
   const isYoutubeLive = streamData().streamAvailable && streamData().streamId;
-  const isEnableChatBox = selectedChannel
-    && Object.keys(channelList).length
-    && channelList[selectedChannel].chatBox 
-    && isYoutubeLive;
-  const customChat = isEnableChatBox
-    && isMobile
-    && channelList[selectedChannel].name.toLowerCase().includes('iwkz');
+  const isEnableChatBox =
+    selectedChannel &&
+    Object.keys(channelList).length &&
+    channelList[selectedChannel].chatBox &&
+    isYoutubeLive;
+  const customChat =
+    isEnableChatBox &&
+    isMobile &&
+    channelList[selectedChannel].name.toLowerCase().includes("iwkz");
+
+  const showIWKZMeetButton =
+    selectedChannel &&
+    isYoutubeLive &&
+    channelList[selectedChannel].name.toLowerCase().includes("iwkz");
 
   useEffect(() => {
-    if(!init) {
+    if (!init) {
       setLoading(true);
       initData();
     }
@@ -143,8 +158,21 @@ const Streaming = ({ match }) => {
           </div>
         ) : (
           <ContentSection className={isEnableChatBox && "showChat"}>
+            {showIWKZMeetButton && (
+              <div className="zoom-button">
+                <a href="http://meet.iwkz.de" target="_blank">
+                  <button class="button is-primary is-fullwidth">
+                    Bergabung ke Zoom <img src={ZoomIcon} />
+                  </button>
+                </a>
+              </div>
+            )}
             <LiveStreaming {...streamData()} />
-            <ChatBox isActive={isEnableChatBox} streamId={streamData().streamId} customChat={customChat} />
+            <ChatBox
+              isActive={isEnableChatBox}
+              streamId={streamData().streamId}
+              customChat={customChat}
+            />
           </ContentSection>
         )}
         <TitleSection className="content">

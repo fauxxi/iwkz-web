@@ -12,6 +12,15 @@ export const TitleSection = styled.div`
 export const ContentSection = styled.div`
   padding: 1rem 1.5rem;
 
+  .zoom-button {
+    margin-bottom: 20px;
+
+    img {
+      max-width: 20px;
+      margin-left: 5px;
+    }
+  }
+
   &.showChat {
     display: flex;
     flex-direction: row;

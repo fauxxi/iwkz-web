@@ -1,12 +1,14 @@
 <?php
 
-Class StreamingService {
+class StreamingService
+{
     private $apiKey = Config::YOUTUBE_API_KEY;
-    private $apiUrl = 'https://www.googleapis.com/youtube/v3/search';  
+    private $apiUrl = 'https://www.googleapis.com/youtube/v3/search';
     private $defaultParams = 'part=snippet&eventType=live&maxResults=1&type=video';
     private $zoomClient = 'https://iwkz.de/service/zoom.php';
 
-    public function getYoutubeLiveStreamId($channelId) {
+    public function getYoutubeLiveStreamId($channelId)
+    {
         $curl = curl_init();
         $url = "$this->apiUrl?$this->defaultParams&key=$this->apiKey&channelId=$channelId";
 
@@ -18,19 +20,21 @@ Class StreamingService {
 
         curl_close($curl);
 
-        if(sizeof($data["items"]) > 0) {
+        if (sizeof($data["items"]) > 0) {
             return $data['items'][0]['id']['videoId'];
         }
         return '';
     }
 
-    public function getZoomUrl($id, $pass) {
+    public function getZoomUrl($id, $pass)
+    {
         $url = "$this->zoomClient?id=$id&pass=$pass";
 
         return $url;
     }
 
-    public function getIwkzStreaming() {
+    public function getIwkzStreaming()
+    {
         return [
             "UCzlY1aUSt8z0c4NKOlDWUdQ" => [
                 "type" => "youtube",
@@ -42,9 +46,10 @@ Class StreamingService {
         ];
     }
 
-    public function getDefaultStreamings() {
+    public function getDefaultStreamings()
+    {
         return [
-            "UClIIopOeuwL8KEK0wnFcodw" => [
+            "UCos52azQNBgW63_9uDJoPDA" => [
                 "type" => "youtube",
                 "active" => true,
                 "chatBox" => false,

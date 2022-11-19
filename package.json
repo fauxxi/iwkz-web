@@ -12,7 +12,7 @@
     "react-iframe": "^1.8.0",
     "react-intersection-observer": "^8.25.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "react-vertical-timeline-component": "^2.5.0",
     "styled-components": "^5.0.1",
     "typescript": "^3.7.2"
